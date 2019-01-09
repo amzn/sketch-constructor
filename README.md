@@ -1,12 +1,9 @@
 # Sketch Constructor
 
-This library provides helpers objects that make it easy to read/write/manipulate Sketch files in Javascript (with or without Sketch installed).
+This library provides helpers and classes that make it easy to read/write/manipulate Sketch files in Javascript, without Sketch installed!
 
-## ⚠️ Warning ⚠️
-This library is a work in progress, use at your own risk. But feel free to help out where you see bugs or incomplete things! Also, because this library is not using any Sketch APIs/libraries and manipulating the underlying sketch files, the internal file API might change in the future. We will do our best to keep up with any Sketch changes and communicate any breaking API changes.
-
-## How is this different from html-sketchapp or react-sketchapp?
-Those tools are great and very powerful, but rely on creating sketch plugins on the fly and manipulating a Sketch document that is open on your computer. They are also focused on rendering sketch files and not using a Sketch file as input or data. This tool however helps you directly manipulate and generate Sketch files without a sketch plugin or even having Sketch open or installed.
+## Why?
+If you want to produce Sketch assets for your design team that are generated from your production codebase in a reliable and consistent way, like part of a build process or CI/CD pipeline. Or maybe you want to have your source of truth for your design tokens or components in Sketch, you can use this to extract that data out into your codebase.
 
 ## What can you do with this?
 
@@ -15,9 +12,28 @@ Those tools are great and very powerful, but rely on creating sketch plugins on 
 * Build Sketch files in a CI/CD pipeline
 * Read a Sketch file as a template, hydrate it with data, output a new Sketch file
 
+## How is this different from html-sketchapp or react-sketchapp?
+Those tools are great and very powerful, but rely on creating sketch plugins on the fly and manipulating a Sketch document that is open on your computer. They are also focused on rendering sketch files and not using a Sketch file as input or data. This tool however helps you directly manipulate and generate Sketch files without a sketch plugin or even having Sketch open or installed.
+
+## ⚠️ Warning ⚠️
+This library is a work in progress, use at your own risk. But feel free to help out where you see bugs or incomplete things! Also, because this library is not using any Sketch APIs/libraries and manipulating the underlying sketch files, the internal file API might change in the future. We will do our best to keep up with any Sketch changes and communicate any breaking API changes.
+
+## Installation
+
+This library is published as an npm module, you can install it via npm or yarn:
+
+```bash
+npm install --save-dev sketch-constructor
+```
+
+```bash
+yarn add sketch-constructor
+```
+
 ## Usage
 
-Creating a completely new Sketch file from scratch
+### Creating a Sketch file
+Creating a completely new Sketch file from scratch, programmatically in node.
 
 ```javascript
 const {Sketch, Page, Artboard} = require('sketch-constructor');
@@ -45,6 +61,7 @@ newSketch.addPage({
 newSketch.build('newSketch.sketch');
 ```
 
+### Read/manipulate an existing Sketch file
 Getting data from or manipulating an existing Sketch file.
 
 ```javascript
