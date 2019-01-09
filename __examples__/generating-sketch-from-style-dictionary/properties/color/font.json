@@ -1,0 +1,18 @@
+{
+  "color": {
+    "font": {
+      "base":         { "value": "{color.core.grey.120.value}" },
+      "secondary":    { "value": "{color.core.grey.80.value}" },
+      "tertiary":     { "value": "{color.core.grey.60.value}" },
+      "quaternary":   { "value": "{color.core.grey.40.value}" },
+      "link":         { "value": "{color.brand.primary.base.value}" },
+      "active":       { "value": "{color.brand.secondary.base.value}" },
+      "hover":        { "value": "{color.font.active.value}" },
+      "error":        { "value": "{color.core.red.100.value}" },
+      "danger":       { "value": "{color.core.red.100.value}" },
+      "warning":      { "value": "{color.core.orange.100.value}" },
+      "success":      { "value": "{color.core.green.100.value}" },
+      "disabled":     { "value": "{color.font.secondary.value}" }
+    }
+  }
+}

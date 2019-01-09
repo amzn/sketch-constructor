@@ -1,0 +1,27 @@
+{
+  "component": {
+    "typography": {
+      "h1": {
+        "font-size": { "value": "{size.font.xxl.value}" },
+        "font-weight": { "value": 300 },
+        "color": { "value": "{color.font.base.value}" },
+        "margin-bottom": { "value": "{size.spacing.xxl.value}" },
+        "line-height": { "value": 1 }
+      },
+      "h2": {
+        "font-size": { "value": "{size.font.xl.value}" },
+        "font-weight": { "value": 400 },
+        "color": { "value": "{color.font.secondary.value}" },
+        "margin-bottom": { "value": "{size.spacing.xl.value}" },
+        "line-height": { "value": 1 }
+      },
+      "h3": {
+        "font-size": { "value": "{size.font.large.value}" },
+        "font-weight": { "value": 600 },
+        "color": { "value": "{color.font.tertiary.value}" },
+        "margin-bottom": { "value": "{size.spacing.large.value}" },
+        "line-height": { "value": 1 }
+      }
+    }
+  }
+}

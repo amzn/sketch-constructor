@@ -1,0 +1,12 @@
+{
+  "size": {
+    "font": {
+      "tiny": { "value": 12 },
+      "small": { "value": 14 },
+      "base": { "value": 16 },
+      "large": { "value": 24 },
+      "xl": { "value": 32 },
+      "xxl": { "value": 48 }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "size": {
+    "spacing": {
+      "tiny": { "value": 4 },
+      "small": { "value": 8 },
+      "base": { "value": 12 },
+      "large": { "value": 18 },
+      "xl": { "value": 24 },
+      "xxl": { "value": 36 }
+    }
+  }
+}

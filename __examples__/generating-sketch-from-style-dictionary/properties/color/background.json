@@ -1,0 +1,16 @@
+{
+  "color": {
+    "background": {
+      "base":         { "value":"{color.core.white.value}" },
+      "alt":          { "value":"{color.core.grey.10.value}" },
+      "disabled":     { "value":"{color.core.grey.10.value}" },
+      "inverse":      { "value":"{color.core.grey.120.value}" },
+      "success":      { "value":"{color.core.green.100.value}" },
+      "error":        { "value":"{color.core.red.100.value}" },
+      "warning":      { "value":"{color.core.orange.100.value}" },
+      "info":         { "value":"{color.core.blue.100.value}" },
+      "link":         { "value":"{color.core.blue.100.value}" },
+      "low-priority": { "value":"{color.core.grey.60.value}" }
+    }
+  }
+}

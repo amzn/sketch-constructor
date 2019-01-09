@@ -1,7 +1,77 @@
-## Sketch Constructor
+# Sketch Constructor
 
-Read/write/manipulate Sketch files in Node without Sketch plugins!
+This library provides helpers objects that make it easy to read/write/manipulate Sketch files in Javascript (with or without Sketch installed).
+
+## ⚠️ Warning ⚠️
+This library is a work in progress, use at your own risk. But feel free to help out where you see bugs or incomplete things! Also, because this library is not using any Sketch APIs/libraries and manipulating the underlying sketch files, the internal file API might change in the future. We will do our best to keep up with any Sketch changes and communicate any breaking API changes.
+
+## How is this different from html-sketchapp or react-sketchapp?
+Those tools are great and very powerful, but rely on creating sketch plugins on the fly and manipulating a Sketch document that is open on your computer. They are also focused on rendering sketch files and not using a Sketch file as input or data. This tool however helps you directly manipulate and generate Sketch files without a sketch plugin or even having Sketch open or installed.
+
+## What can you do with this?
+
+* Generate Sketch files programmatically without actually running Sketch (no plugins!)
+* Use Sketch as input to create resources/documentation for a design system
+* Build Sketch files in a CI/CD pipeline
+* Read a Sketch file as a template, hydrate it with data, output a new Sketch file
+
+## Usage
+
+Creating a completely new Sketch file from scratch
+
+```javascript
+const {Sketch, Page, Artboard} = require('sketch-constructor');
+
+// Without a path it creates an empty sketch class to work with
+const newSketch = new Sketch();
+
+// Create a new Page instance
+const page = new Page({ });
+
+// Add an artboard to the page
+const artboard = new Artboard({});
+page.addArtboard(artboard);
+
+// Add the page to the Sketch instance
+newSketch.addPage( page );
+
+// You can also add a page by giving it an object, the arguments
+// are the same as that of the Page constructor
+newSketch.addPage({
+  name: 'My Page'
+});
+
+// Creates the sketch file
+newSketch.build('newSketch.sketch');
+```
+
+Getting data from or manipulating an existing Sketch file.
+
+```javascript
+const {Sketch, Page} = require('sketch-constructor');
+
+// static method fromFile returns a promise
+Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`)
+  .then((sketch) => {
+    // You can now get data from the sketch instance
+    // For example, get all the Groups in a particular artboard
+    // and page that has a name that includes 'test'
+    sketch.getPage('Page 1')
+      .getArtboard('Artboard 1')
+      .getGroups((group) => group.name.includes('test'));
+
+    // Or manipulate the sketch file the same way you would
+    // with a new sketch instance
+    var page = new Page({});
+    sketch.addPage( page );
+  });
+```
+
+### Models
+
+This library consists of ES6 classes that map to representations in the JSON structure of sketch files. [Read more information about the models](models/)
+
 
 ## License
 
-This library is licensed under the Apache 2.0 License. 
+This library is licensed under the Apache 2.0 License.

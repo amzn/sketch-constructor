@@ -1,0 +1,41 @@
+{
+  "name": "sketch-constructor",
+  "version": "0.1.0",
+  "description": "Read/write/manipulate Sketch files in Node without Sketch plugins!",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": false,
+    "testPathIgnorePatterns": [
+      "/__tests__/__helpers.js"
+    ],
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amzn/sketch-constructor.git"
+  },
+  "keywords": [
+    "sketch",
+    "node"
+  ],
+  "author": "Amazon",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/amzn/sketch-constructor/issues"
+  },
+  "homepage": "https://github.com/amzn/sketch-constructor#readme",
+  "dependencies": {
+    "jszip": "^3.1.5",
+    "tinycolor2": "^1.4.1",
+    "uuid-v4": "^0.1.0"
+  },
+  "devDependencies": {
+    "fs-extra": "^7.0.1",
+    "jest": "^23.6.0"
+  }
+}
