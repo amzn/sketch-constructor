@@ -23,10 +23,6 @@ class Rect {
       Object.assign(this, Rect.model, args);
     }
   }
-
-  toString() {
-    return JSON.stringify(this);
-  }
 }
 
 Rect.model = {

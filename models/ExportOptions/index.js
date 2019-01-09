@@ -12,10 +12,6 @@
  */
 
 class ExportOptions {
-  static fromJSON(json) {
-    return new this(null, json);
-  }
-
   constructor(args = {}, json) {
     if (json) {
       Object.assign(this, json);
@@ -23,10 +19,6 @@ class ExportOptions {
       Object.assign(this, ExportOptions.model, args);
     }
     return this;
-  }
-
-  toString() {
-    return JSON.stringify(this);
   }
 }
 

@@ -56,10 +56,6 @@ class Style {
       });
     }
   }
-
-  toString() {
-    return JSON.stringify(this);
-  }
 }
 
 Style.model = {

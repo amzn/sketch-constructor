@@ -21,7 +21,6 @@ module.exports = {
   Document: require('./Document'),
   ExportOptions: require('./ExportOptions'),
   Fill: require('./Fill'),
-  Layer: require('./Layer'),
   Meta: require('./Meta'),
   Page: require('./Page'),
   Rect: require('./Rect'),

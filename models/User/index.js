@@ -29,10 +29,7 @@ class User {
       scrollOrigin: "{100, 100}",
       zoomValue: 1
     }, opts);
-  }
-
-  toString() {
-    return JSON.stringify(this);
+    return this;
   }
 }
 

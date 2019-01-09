@@ -124,9 +124,9 @@ class Sketch {
 
 
   build(output) {
-    this.zip.file('meta.json', this.meta.toString())
-            .file('user.json', this.user.toString())
-            .file('document.json', this.document.toString());
+    this.zip.file('meta.json', JSON.stringify(this.meta))
+            .file('user.json', JSON.stringify(this.user))
+            .file('document.json', JSON.stringify(this.document));
 
     this.zip.folder('pages');
     this.zip.folder('previews');

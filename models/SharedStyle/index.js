@@ -19,10 +19,6 @@ const Border = require('../Border');
 const Shadow = require('../Shadow');
 
 class SharedStyle {
-  static fromJSON(json) {
-    return new SharedStyle(json);
-  }
-
   static LayerStyle(args) {
     const id = args.id || uuid().toUpperCase();
     return new SharedStyle({
@@ -65,10 +61,6 @@ class SharedStyle {
         })
       });
     }
-  }
-
-  toString() {
-    return JSON.stringify(this);
   }
 }
 

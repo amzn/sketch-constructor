@@ -56,10 +56,6 @@ class Base {
   }
 
   getID() { return this.do_objectID; }
-
-  toString() {
-    return JSON.stringify(this);
-  }
 }
 
 Base.model = {

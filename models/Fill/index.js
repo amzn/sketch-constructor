@@ -32,10 +32,6 @@ class Fill {
     }
     return this;
   }
-
-  toString() {
-    return JSON.stringify(this);
-  }
 }
 
 module.exports = Fill;

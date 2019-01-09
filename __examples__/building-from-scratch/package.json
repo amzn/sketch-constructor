@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js && open dist/output.sketch"
+    "test": "npm build",
+    "build": "node index.js",
+    "start": "npm build && open dist/output.sketch"
   },
   "author": "",
   "license": "Apache-2.0",

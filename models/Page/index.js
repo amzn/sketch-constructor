@@ -77,10 +77,6 @@ class Page extends Base {
     this.layers = this.layers.concat( artboard );
     return this;
   }
-
-  toString() {
-    return JSON.stringify(this);
-  }
 }
 
 module.exports = Page;

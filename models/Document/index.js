@@ -15,10 +15,6 @@ const uuid = require('uuid-v4');
 const SharedStyle = require('../SharedStyle');
 
 class Document {
-  static fromJSON(json) {
-    return new this(null, json);
-  }
-
   constructor(args = {}, json) {
     if (json) {
       Object.assign(this, json);
@@ -94,10 +90,6 @@ class Document {
       _ref_class: "MSImmutablePage",
       _ref: `pages/${pageID}`
     })
-  }
-
-  toString() {
-    return JSON.stringify(this);
   }
 }
 

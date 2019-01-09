@@ -35,10 +35,6 @@ class Meta {
       name: artboard.name
     };
   }
-
-  toString() {
-    return JSON.stringify(this);
-  }
 }
 
 Meta.model = {

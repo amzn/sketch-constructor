@@ -1,10 +1,10 @@
-const {Sketch, Artboard, Group} = require('../../index');
-const {fileExists, clearOutput} = require('../__helpers');
+const {Sketch, Artboard, Group} = require('../index');
+const {fileExists, clearOutput} = require('./__helpers');
 
 describe('Editing', () => {
-  // beforeEach(() => {
-  //   clearOutput();
-  // });
+  beforeEach(() => {
+    clearOutput();
+  });
 
   it('should build', () => {
     return Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`)

@@ -20,10 +20,6 @@ const position = {
 }
 
 class Border {
-  static fromJSON(json) {
-    return new Border(json);
-  }
-
   constructor(args, json) {
     if (json) {
       Object.assign(this, json);
@@ -39,10 +35,6 @@ class Border {
       });
     }
     return this;
-  }
-
-  toString() {
-    return JSON.stringify(this);
   }
 }
 

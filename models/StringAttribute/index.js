@@ -12,19 +12,7 @@
  */
 
 const Color = require('../Color');
-
-const alignmentMap = {
-  center: 2,
-  left: 0,
-  right: 1,
-  justify: 3
-}
-
-const verticalAlignmentMap = {
-  center: 2,
-  top: 0,
-  bottom: 1
-}
+const { textAlignmentMap, verticalAlignmentMap } = require('../../utils/maps');
 
 class StringAttribute {
 
@@ -47,7 +35,7 @@ class StringAttribute {
           textStyleVerticalAlignmentKey: verticalAlignmentMap[args.verticalAlignment || 'top'],
           paragraphStyle: {
             _class: "paragraphStyle",
-            alignment: alignmentMap[args.alignment || 'left']
+            alignment: textAlignmentMap[args.alignment || 'left']
           }
         }
       });

@@ -19,7 +19,6 @@ class AttributedString {
     if (json) {
       Object.assign(this, json);
     } else {
-      const id = args.id || uuid().toUpperCase();
       Object.assign(this, {
         _class: "attributedString",
         string: args.string || '',

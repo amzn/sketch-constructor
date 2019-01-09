@@ -14,9 +14,14 @@
 const { Sketch, SharedStyle, Page, Artboard } = require('../index');
 
 describe('Sketch', () => {
-  it('should work', () => {
+  it('should set pages', () => {
     let sketch = new Sketch();
     expect(sketch.getPages()).toEqual([]);
+  });
+
+  it('should set meta', () => {
+    let sketch = new Sketch();
+    expect(sketch.meta).toBeDefined();
   });
 
   describe('build', () => {

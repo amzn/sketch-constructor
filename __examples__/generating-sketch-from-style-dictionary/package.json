@@ -4,8 +4,9 @@
   "description": "",
   "main": "config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "style-dictionary build --config ./config.js && open dist/style-dictionary.sketch"
+    "test": "npm build",
+    "build": "style-dictionary build --config ./config.js",
+    "start": "npm build && open dist/style-dictionary.sketch"
   },
   "author": "",
   "license": "Apache-2.0",

@@ -14,10 +14,6 @@
 const TinyColor = require('tinycolor2');
 
 class Color {
-  static fromJSON(json) {
-    return new this(null, json);
-  }
-
   constructor(args, json) {
     if (json) {
       Object.assign(this, json);
@@ -31,7 +27,7 @@ class Color {
       });
     }
     // Map all tinycolor's methods
-    // NOTE: should check if this will cause performance issues
+    // TODO: should check if this will cause performance issues
     for (const key in TinyColor.prototype) {
       if (TinyColor.prototype.hasOwnProperty(key)) {
         this[key] = (args) => {
@@ -67,10 +63,6 @@ class Color {
       b: Math.round(this.blue * 255),
       a: this.alpha,
     })
-  }
-
-  toString() {
-    return JSON.stringify(this);
   }
 }
 

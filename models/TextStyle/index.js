@@ -54,10 +54,6 @@ class TextStyle {
   getFontName() {
     return this.encodedAttributes.MSAttributedStringFontAttribute.attributes.name;
   }
-
-  // toString() {
-  //   return JSON.stringify(this);
-  // }
 }
 
 TextStyle.model = {

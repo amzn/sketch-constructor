@@ -1,10 +1,10 @@
-const {Sketch, Text, Page, Artboard} = require('../../index');
-const {fileExists, clearOutput} = require('../__helpers');
+const {Sketch, Text, Page, Artboard} = require('../index');
+const {fileExists, clearOutput} = require('./__helpers');
 
-describe('Integration', () => {
-  // beforeEach(() => {
-  //   clearOutput();
-  // });
+describe('Building from scratch', () => {
+  beforeEach(() => {
+    clearOutput();
+  });
 
   it('should write a valid file', () => {
     let sketch = new Sketch();
