@@ -12,12 +12,11 @@
  */
 
 const Text = require('./index');
-const json = {}
+
+const json = {};
 
 describe('Text', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

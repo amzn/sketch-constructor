@@ -12,12 +12,11 @@
  */
 
 const CurvePoint = require('./index');
-const json = {}
+
+const json = {};
 
 describe('CurvePoint', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

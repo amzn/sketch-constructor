@@ -27,17 +27,15 @@ class Document {
     if (json) {
       Object.assign(this, json);
       // Create nested classes
-      this.layerTextStyles.objects = this.layerTextStyles.objects.map(sharedStyle => {
-        return new SharedStyle(null, sharedStyle);
-      });
-      this.layerStyles.objects = this.layerStyles.objects.map(sharedStyle => {
-        return new SharedStyle(null, sharedStyle);
-      });
+      this.layerTextStyles.objects = this.layerTextStyles.objects.map(
+        sharedStyle => new SharedStyle(null, sharedStyle)
+      );
+      this.layerStyles.objects = this.layerStyles.objects.map(sharedStyle => new SharedStyle(null, sharedStyle));
     } else {
       const id = args.id || uuid().toUpperCase();
 
       Object.assign(this, Document.Model, {
-        id: id
+        id,
       });
     }
     return this;
@@ -93,26 +91,26 @@ class Document {
    */
   addPage(pageID) {
     this.pages = this.pages.concat({
-      _class: "MSJSONFileReference",
-      _ref_class: "MSImmutablePage",
-      _ref: `pages/${pageID}`
+      _class: 'MSJSONFileReference',
+      _ref_class: 'MSImmutablePage',
+      _ref: `pages/${pageID}`,
     });
     return this;
   }
 }
 
 Document.Model = {
-  _class: "document",
-  do_objectID: "",
+  _class: 'document',
+  do_objectID: '',
   assets: {
-    _class: "assetCollection",
+    _class: 'assetCollection',
     colors: [],
     gradients: [],
     imageCollection: {
-      _class: "imageCollection",
-      images: {}
+      _class: 'imageCollection',
+      images: {},
     },
-    images: []
+    images: [],
   },
   colorSpace: 0,
   currentPageIndex: 1,
@@ -120,18 +118,18 @@ Document.Model = {
   foreignSymbols: [],
   foreignTextStyles: [],
   layerStyles: {
-    _class: "sharedStyleContainer",
-    objects: []
+    _class: 'sharedStyleContainer',
+    objects: [],
   },
   layerSymbols: {
-    _class: "symbolContainer",
-    objects: []
+    _class: 'symbolContainer',
+    objects: [],
   },
   layerTextStyles: {
-    _class: "sharedTextStyleContainer",
-    objects: []
+    _class: 'sharedTextStyleContainer',
+    objects: [],
   },
-  pages: []
-}
+  pages: [],
+};
 
 module.exports = Document;

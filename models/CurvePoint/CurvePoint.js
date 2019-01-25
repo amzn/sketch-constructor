@@ -11,9 +11,9 @@
  * and limitations under the License.
  */
 
- /**
-  * CurvePoints are used to create Shapes
-  */
+/**
+ * CurvePoints are used to create Shapes
+ */
 class CurvePoint {
   /**
    *
@@ -39,14 +39,14 @@ class CurvePoint {
  * @property {boolean} hasCurveTo
  */
 CurvePoint.Model = {
-  _class: "curvePoint",
+  _class: 'curvePoint',
   cornerRadius: 0,
-  curveFrom: "{0, 0}",
+  curveFrom: '{0, 0}',
   curveMode: 1,
-  curveTo: "{0, 0}",
+  curveTo: '{0, 0}',
   hasCurveFrom: false,
   hasCurveTo: false,
-  point: "{0, 0}"
-}
+  point: '{0, 0}',
+};
 
 module.exports = CurvePoint;

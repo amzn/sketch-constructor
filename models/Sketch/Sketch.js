@@ -22,30 +22,28 @@ const SharedStyle = require('../SharedStyle');
 
 class Sketch {
   static fromFile(path) {
-    let sketch = new Sketch();
+    const sketch = new Sketch();
 
-    return JSZip.loadAsync(fs.readFileSync(path)).then((zip) => {
-      return Promise.all([
+    return JSZip.loadAsync(fs.readFileSync(path)).then(zip =>
+      Promise.all([
         zip.file('document.json').async('string'),
         zip.file('meta.json').async('string'),
-        zip.file('user.json').async('string')
-      ]).then((args) => {
-        sketch.document = new Document(null, JSON.parse(args[0]) ),
-        sketch.meta = new Meta(null, JSON.parse(args[1]) ),
-        sketch.user = new User(null, JSON.parse(args[2]) );
+        zip.file('user.json').async('string'),
+      ])
+        .then(args => {
+          sketch.document = new Document(null, JSON.parse(args[0]));
+          sketch.meta = new Meta(null, JSON.parse(args[1]));
+          sketch.user = new User(null, JSON.parse(args[2]));
 
-        return Promise.all(
-          Object.keys(sketch.meta.pagesAndArtboards).map((pageID) => {
-            return zip.file(`pages/${pageID}.json`).async('string');
-          })
-        );
-      }).then((args) => {
-        sketch.pages = args.map((str) => {
-          return new Page( null, JSON.parse(str) );
-        });
-        return sketch;
-      });
-    });
+          return Promise.all(
+            Object.keys(sketch.meta.pagesAndArtboards).map(pageID => zip.file(`pages/${pageID}.json`).async('string'))
+          );
+        })
+        .then(args => {
+          sketch.pages = args.map(str => new Page(null, JSON.parse(str)));
+          return sketch;
+        })
+    );
   }
 
   constructor(args = {}) {
@@ -54,7 +52,7 @@ class Sketch {
       document: new Document(args.document),
       user: new User(args.use),
       pages: [],
-      zip: new JSZip()
+      zip: new JSZip(),
     });
     return this;
   }
@@ -62,9 +60,8 @@ class Sketch {
   getPages(predicate) {
     if (predicate) {
       return this.pages.filter(predicate);
-    } else {
-      return this.pages;
     }
+    return this.pages;
   }
 
   getPage(name) {
@@ -81,18 +78,18 @@ class Sketch {
 
   addLayerStyle(style) {
     if (!(style instanceof SharedStyle)) {
-      style = SharedStyle.LayerStyle( style );
+      style = SharedStyle.LayerStyle(style);
     }
 
-    this.document.addLayerStyle( style );
+    this.document.addLayerStyle(style);
   }
 
   addTextStyle(style) {
     if (!(style instanceof SharedStyle)) {
-      style = SharedStyle.TextStyle( style );
+      style = SharedStyle.TextStyle(style);
     }
 
-    this.document.addTextStyle( style );
+    this.document.addTextStyle(style);
   }
 
   getTextStyles() {
@@ -101,45 +98,43 @@ class Sketch {
 
   addPage(page, args) {
     if (!(page instanceof Page)) {
-      page = new Page( page );
+      page = new Page(page);
     }
     this.document.addPage(page.getID());
     this.meta.addPage(page);
     this.user.addPage(page.getID(), args);
-    this.pages = this.pages.concat( page );
+    this.pages = this.pages.concat(page);
     page.getArtboards().forEach(artboard => {
       this.meta.addArtboard(page.getID(), artboard);
     });
   }
 
   addArtboard(pageID, artboard) {
-    if (!artboard instanceof Artboard) {
-      artboard = new Artboard( artboard );
+    if (!(artboard instanceof Artboard)) {
+      artboard = new Artboard(artboard);
     }
-    let page = this.pages.find(page => page.getID() === pageID);
+    const page = this.pages.find(p => p.getID() === pageID);
     page.addArtboard(artboard);
     this.meta.addArtboard(pageID, artboard);
   }
 
-
-
   build(output) {
-    this.zip.file('meta.json', JSON.stringify(this.meta))
-            .file('user.json', JSON.stringify(this.user))
-            .file('document.json', JSON.stringify(this.document));
+    this.zip
+      .file('meta.json', JSON.stringify(this.meta))
+      .file('user.json', JSON.stringify(this.user))
+      .file('document.json', JSON.stringify(this.document));
 
     this.zip.folder('pages');
     this.zip.folder('previews');
 
-    this.pages.forEach((page) => {
-      this.zip.file(`pages/${page.do_objectID}.json`, JSON.stringify(page))
+    this.pages.forEach(page => {
+      this.zip.file(`pages/${page.do_objectID}.json`, JSON.stringify(page));
     });
 
-    return this.zip.generateAsync({ type:'nodebuffer', streamFiles:true })
-        .then((buffer) => {
-          fs.writeFileSync(output, buffer);
-          return output;
-        });
+    return this.zip.generateAsync({ type: 'nodebuffer', streamFiles: true }).then(buffer => {
+      fs.writeFileSync(output, buffer);
+      return output;
+    });
   }
 }
 

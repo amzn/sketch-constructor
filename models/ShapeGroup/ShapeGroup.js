@@ -25,9 +25,9 @@ class ShapeGroup extends Layer {
       Object.assign(this, ShapeGroup.Model, {
         do_objectID: id,
         name: args.name || id,
-        style: args.style ? Style.LayerStyle( args.style ) : null,
+        style: args.style ? Style.LayerStyle(args.style) : null,
         layers: args.layers || [],
-        frame: new Rect( args.frame )
+        frame: new Rect(args.frame),
       });
     }
   }
@@ -41,26 +41,26 @@ class ShapeGroup extends Layer {
         x: args.x,
         y: args.y,
         width: args.width,
-        height: args.height
+        height: args.height,
       },
       layers: [
         new Rectangle({
           x: 0,
           y: 0,
           width: args.width,
-          height: args.height
-        })
-      ]
+          height: args.height,
+        }),
+      ],
     });
   }
 }
 
 ShapeGroup.Model = Object.assign({}, Layer.Model, {
-  _class: "shapeGroup",
+  _class: 'shapeGroup',
   layerListExpandedType: 1,
   clippingMaskMode: 0,
   hasClippingMask: false,
-  windingRule: 1
+  windingRule: 1,
 });
 
 module.exports = ShapeGroup;

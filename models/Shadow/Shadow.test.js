@@ -12,12 +12,11 @@
  */
 
 const Shadow = require('./index');
-const json = {}
+
+const json = {};
 
 describe('Shadow', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

@@ -18,7 +18,7 @@ class SymbolMaster extends Artboard {
     super(args, json);
     if (!json) {
       Object.assign(this, {
-        symbolID: ''
+        symbolID: '',
       });
     }
   }
@@ -26,7 +26,7 @@ class SymbolMaster extends Artboard {
 
 SymbolMaster.Model = Object.assign(Artboard.Model, {
   symbolID: '',
-  changeIdentifier: 3
+  changeIdentifier: 3,
 });
 
 module.exports = SymbolMaster;

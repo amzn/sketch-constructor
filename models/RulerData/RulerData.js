@@ -11,9 +11,9 @@
  * and limitations under the License.
  */
 
- /**
-  *
-  */
+/**
+ *
+ */
 class RulerData {
   /**
    *
@@ -34,9 +34,9 @@ class RulerData {
  * @property {Array} guides
  */
 RulerData.Model = {
-  _class: "rulerData",
+  _class: 'rulerData',
   base: 0,
-  guides: []
-}
+  guides: [],
+};
 
 module.exports = RulerData;

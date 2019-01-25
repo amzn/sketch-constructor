@@ -34,4 +34,4 @@ module.exports = {
   Text: require('./Text'),
   TextStyle: require('./TextStyle'),
   User: require('./User'),
-}
+};

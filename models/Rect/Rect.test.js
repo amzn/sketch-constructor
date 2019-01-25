@@ -12,12 +12,11 @@
  */
 
 const Rect = require('./index');
-const json = {}
+
+const json = {};
 
 describe('Rect', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

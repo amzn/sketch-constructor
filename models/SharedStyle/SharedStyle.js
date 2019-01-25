@@ -23,22 +23,20 @@ class SharedStyle {
     const id = args.id || uuid().toUpperCase();
     return new SharedStyle({
       name: args.name,
-      id: id,
-      fills: (args.fills||[]).map(fill => new Fill(fill)),
-      borders: (args.borders||[]).map(border => new Border(border)),
-      shadows: (args.shadows||[]).map(shadow => new Shadow(shadow)),
-    })
+      id,
+      fills: (args.fills || []).map(fill => new Fill(fill)),
+      borders: (args.borders || []).map(border => new Border(border)),
+      shadows: (args.shadows || []).map(shadow => new Shadow(shadow)),
+    });
   }
 
   static TextStyle(args) {
     const id = args.id || uuid().toUpperCase();
     return new SharedStyle({
       name: args.name,
-      id: id,
-      textStyle: new TextStyle(
-        Object.assign(args, {id: id})
-      )
-    })
+      id,
+      textStyle: new TextStyle(Object.assign(args, { id })),
+    });
   }
 
   constructor(args, json) {
@@ -49,16 +47,16 @@ class SharedStyle {
     } else {
       const id = args.id || uuid().toUpperCase();
       Object.assign(this, {
-        name: args.name || "Name",
+        name: args.name || 'Name',
         do_objectID: id,
-        _class: "sharedStyle",
+        _class: 'sharedStyle',
         value: new Style({
-          id: id,
+          id,
           textStyle: args.textStyle,
           borders: args.borders,
           fills: args.fills,
-          shadows: args.shadows
-        })
+          shadows: args.shadows,
+        }),
       });
     }
   }

@@ -11,9 +11,9 @@
  * and limitations under the License.
  */
 
- /**
-  * This is an internal class, you shouldn't be directly dealing with this class. It outputs the meta.json file in the top level directory of a Sketch file.
-  */
+/**
+ * This is an internal class, you shouldn't be directly dealing with this class. It outputs the meta.json file in the top level directory of a Sketch file.
+ */
 class Meta {
   /**
    *
@@ -32,15 +32,15 @@ class Meta {
     this.pagesAndArtboards[page.getID()] = {
       name: page.name,
       artboards: page.getArtboards().reduce((ret, artboard) => {
-        ret[artboard.do_objectID] = { name: artboard.name }
+        ret[artboard.do_objectID] = { name: artboard.name };
         return ret;
-      }, {})
+      }, {}),
     };
   }
 
   addArtboard(pageID, artboard) {
     this.pagesAndArtboards[pageID].artboards[artboard.getID()] = {
-      name: artboard.name
+      name: artboard.name,
     };
   }
 }
@@ -54,28 +54,26 @@ class Meta {
  * @property {String} app
  */
 Meta.Model = {
-  commit: "ebc3e0ead0906f5810891944454a71b877934b56",
-  pagesAndArtboards: {  },
+  commit: 'ebc3e0ead0906f5810891944454a71b877934b56',
+  pagesAndArtboards: {},
   version: 112,
   fonts: [],
   compatibilityVersion: 99,
-  app: "com.bohemiancoding.sketch3",
+  app: 'com.bohemiancoding.sketch3',
   autosaved: 0,
-  variant: "NONAPPSTORE",
+  variant: 'NONAPPSTORE',
   created: {
-    commit: "ebc3e0ead0906f5810891944454a71b877934b56",
-    appVersion: "52.5",
+    commit: 'ebc3e0ead0906f5810891944454a71b877934b56',
+    appVersion: '52.5',
     build: 67469,
-    app: "com.bohemiancoding.sketch3",
+    app: 'com.bohemiancoding.sketch3',
     compatibilityVersion: 99,
     version: 112,
-    variant: "NONAPPSTORE"
+    variant: 'NONAPPSTORE',
   },
-  saveHistory: [
-    "NONAPPSTORE.67469"
-  ],
-  appVersion: "52.5",
-  build: 67469
-}
+  saveHistory: ['NONAPPSTORE.67469'],
+  appVersion: '52.5',
+  build: 67469,
+};
 
 module.exports = Meta;

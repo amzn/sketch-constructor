@@ -12,12 +12,11 @@
  */
 
 const Fill = require('./index');
-const json = {}
+
+const json = {};
 
 describe('Fill', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

@@ -11,9 +11,9 @@
  * and limitations under the License.
  */
 
- /**
-  * Border options
-  */
+/**
+ * Border options
+ */
 class BorderOptions {
   /**
    *
@@ -23,17 +23,17 @@ class BorderOptions {
    * @param {BorderOptions.LineJoinStyle} args.lineJoinStyle
    * @param {BorderOptions.Model} json
    */
- constructor(args = {}, json) {
-   if (json) {
-     Object.assign(this, json);
-   } else {
-     Object.assign(this, BorderOptions.Model, {
-       dashPattern: args.dashPattern,
-       lineCapStyle: BorderOptions.LineCapStyle[args.lineCapStyle || 'butt'],
-       lineJoinStyle: BorderOptions.LineJoinStyle[args.lineCapStyle || 'miter']
-     });
-   }
- }
+  constructor(args = {}, json) {
+    if (json) {
+      Object.assign(this, json);
+    } else {
+      Object.assign(this, BorderOptions.Model, {
+        dashPattern: args.dashPattern,
+        lineCapStyle: BorderOptions.LineCapStyle[args.lineCapStyle || 'butt'],
+        lineJoinStyle: BorderOptions.LineJoinStyle[args.lineCapStyle || 'miter'],
+      });
+    }
+  }
 }
 
 /**
@@ -43,7 +43,7 @@ BorderOptions.LineCapStyle = {
   butt: 0,
   round: 1,
   projecting: 2,
-}
+};
 
 /**
  * @enum
@@ -52,7 +52,7 @@ BorderOptions.LineJoinStyle = {
   miter: 0,
   round: 1,
   bevel: 2,
-}
+};
 
 /**
  * @property {boolean} isEnabled
@@ -61,11 +61,11 @@ BorderOptions.LineJoinStyle = {
  * @property {BorderOptions.LineJoinStyle} lineJoinStyle
  */
 BorderOptions.Model = {
-  _class: "borderOptions",
+  _class: 'borderOptions',
   isEnabled: false,
   dashPattern: [],
   lineCapStyle: 1,
-  lineJoinStyle: 1
-}
+  lineJoinStyle: 1,
+};
 
 module.exports = BorderOptions;

@@ -12,12 +12,11 @@
  */
 
 const Group = require('./index');
-const json = {}
+
+const json = {};
 
 describe('Group', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

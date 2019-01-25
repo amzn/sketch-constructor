@@ -31,30 +31,28 @@ class Color {
     if (json) {
       Object.assign(this, json);
     } else {
-      const color = TinyColor( args || "#000" ).toRgb();
+      const color = TinyColor(args || '#000').toRgb();
       Object.assign(this, Color.Model, {
         alpha: color.a,
         blue: color.b / 255,
         green: color.g / 255,
-        red: color.r / 255
+        red: color.r / 255,
       });
     }
     // Map all tinycolor's methods
     // TODO: should check if this will cause performance issues
-    for (const key in TinyColor.prototype) {
-      if (TinyColor.prototype.hasOwnProperty(key)) {
-        this[key] = (args) => {
-          let ret = this._getTinyColor()[key](args);
-          // If the return value is a TinyColor class,
-          // it is modifying the value
-          if (ret instanceof TinyColor) {
-            return this.set(ret);
-          } else {
-            return ret;
-          }
+    Object.keys(TinyColor.prototype).forEach(key => {
+      this[key] = arg => {
+        const ret = this._getTinyColor()[key](arg);
+        // If the return value is a TinyColor class,
+        // it is modifying the value
+        if (ret instanceof TinyColor) {
+          return this.set(ret);
         }
-      }
-    }
+        return ret;
+      };
+    });
+
     return this;
   }
 
@@ -64,12 +62,12 @@ class Color {
    * @returns {this} Returns this for chaining
    */
   set(tinyColor) {
-    let rgb = tinyColor.toRgb();
+    const rgb = tinyColor.toRgb();
     Object.assign(this, {
       alpha: rgb.a,
       blue: rgb.b / 255,
       green: rgb.g / 255,
-      red: rgb.r / 255
+      red: rgb.r / 255,
     });
     return this;
   }
@@ -83,7 +81,7 @@ class Color {
       g: Math.round(this.green * 255),
       b: Math.round(this.blue * 255),
       a: this.alpha,
-    })
+    });
   }
 }
 
@@ -94,11 +92,11 @@ class Color {
  * @property {float} red 0-1
  */
 Color.Model = {
-  _class: "color",
+  _class: 'color',
   alpha: 1,
   blue: 0,
   green: 0,
-  red: 0
-}
+  red: 0,
+};
 
 module.exports = Color;

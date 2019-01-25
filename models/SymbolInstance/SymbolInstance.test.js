@@ -12,12 +12,11 @@
  */
 
 const SymbolInstance = require('./index');
-const json = {}
+
+const json = {};
 
 describe('SymbolInstance', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

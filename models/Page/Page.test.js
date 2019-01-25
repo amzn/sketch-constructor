@@ -12,12 +12,11 @@
  */
 
 const Page = require('./index');
-const json = {}
+
+const json = {};
 
 describe('Page', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

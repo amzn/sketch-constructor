@@ -12,12 +12,11 @@
  */
 
 const Gradient = require('./index');
-const json = {}
+
+const json = {};
 
 describe('Gradient', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

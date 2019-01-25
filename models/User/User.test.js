@@ -12,12 +12,11 @@
  */
 
 const User = require('./index');
-const json = {}
+
+const json = {};
 
 describe('User', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

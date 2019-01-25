@@ -14,33 +14,32 @@
 const Color = require('./index');
 
 const json = {
-  "_class": "color",
-  "alpha": 1,
-  "blue": 0.592,
-  "green": 0.592,
-  "red": 0.592
-}
+  _class: 'color',
+  alpha: 1,
+  blue: 0.592,
+  green: 0.592,
+  red: 0.592,
+};
 
 describe('Color', () => {
-
   it('should work from raw JSON', () => {
-    let color = new Color(null, json);
+    const color = new Color(null, json);
     expect(color).toBeDefined();
   });
 
   it('should work being user generated', () => {
-    let color = new Color('#fff');
+    const color = new Color('#fff');
     expect(color).toBeDefined();
   });
 
   it('should have tinycolor methods', () => {
-    let color = new Color('#fff');
+    const color = new Color('#fff');
     expect(color.toHexString()).toEqual('#ffffff');
   });
 
   it('should be able to be modified with tinycolor methods', () => {
-    let color = new Color('#000');
+    const color = new Color('#000');
     color.lighten(100);
     expect(color.toHexString()).toEqual('#ffffff');
-  })
+  });
 });

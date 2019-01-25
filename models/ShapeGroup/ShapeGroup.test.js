@@ -12,12 +12,11 @@
  */
 
 const ShapeGroup = require('./index');
-const json = {}
+
+const json = {};
 
 describe('ShapeGroup', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

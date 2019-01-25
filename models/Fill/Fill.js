@@ -36,7 +36,7 @@ class Fill {
       }
     } else {
       Object.assign(this, {
-        _class: "fill",
+        _class: 'fill',
         // Default is true, but can be explicitly set to false
         isEnabled: args.isEnabled !== false,
         color: new Color(args.color),
@@ -45,7 +45,7 @@ class Fill {
         noiseIntensity: args.noiseIntensity || 0,
         patternFillType: args.patternFillType || 0,
         patternTileScale: args.patternTileScale || 1,
-        gradient: args.gradient ? new Gradient( args.gradient ) : null
+        gradient: args.gradient ? new Gradient(args.gradient) : null,
       });
     }
     return this;
@@ -60,7 +60,7 @@ Fill.FillType = {
   Gradient: 1, // A gradient fill/border.
   Pattern: 4, // A pattern fill/border.
   Noise: 5, // A noise fill/border.
-}
+};
 
 /**
  * @property {boolean} isEnabled
@@ -72,7 +72,7 @@ Fill.FillType = {
  * @property {integer} patternTileScale
  */
 Fill.Model = {
-  _class: "fill",
+  _class: 'fill',
   isEnabled: false,
   color: Color.Model,
   fillType: 0,
@@ -80,7 +80,7 @@ Fill.Model = {
   noiseIntensity: 0,
   patternFillType: 0,
   patternTileScale: 1,
-  gradient: Gradient.Model
-}
+  gradient: Gradient.Model,
+};
 
 module.exports = Fill;

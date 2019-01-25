@@ -25,6 +25,7 @@
       },
       "rules": {
         "global-require": "off",
+        "no-unused-vars": "off",
         "import/no-unresolved": "off"
       }
     }

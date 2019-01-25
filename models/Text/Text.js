@@ -38,19 +38,19 @@ class Text extends Layer {
     if (!json) {
       const id = args.id || uuid().toUpperCase();
       Object.assign(this, {
-        _class: "text",
+        _class: 'text',
         do_objectID: id,
         booleanOperation: -1,
         automaticallyDrawOnUnderlyingPath: false,
         dontSynchroniseWithSymbol: false,
         exportOptions: {
-          _class: "exportOptions",
+          _class: 'exportOptions',
           exportFormats: [],
           includedLayerIds: [],
           layerOptions: 0,
-          shouldTrim: false
+          shouldTrim: false,
         },
-        frame: new Rect( args.frame ),
+        frame: new Rect(args.frame),
         isFixedToViewport: false,
         isFlippedHorizontal: false,
         isFlippedVertical: false,
@@ -66,23 +66,26 @@ class Text extends Layer {
         shouldBreakMaskChain: false,
         userInfo: {},
 
-        style: args.style || Style.TextStyle({
-          fontName: args.fontName,
-          fontSize: args.fontSize,
-          alignment: args.alignment,
-          verticalAlignment: args.verticalAlignment,
-          color: args.color
-        }),
+        style:
+          args.style ||
+          Style.TextStyle({
+            fontName: args.fontName,
+            fontSize: args.fontSize,
+            alignment: args.alignment,
+            verticalAlignment: args.verticalAlignment,
+            color: args.color,
+          }),
 
-        attributedString: args.attributedString || new AttributedString({
-          string: args.string || "",
-          fontName: args.fontName,
-          fontSize: args.fontSize,
-          alignment: args.alignment,
-          verticalAlignment: args.verticalAlignment,
-          color: args.color
-        }),
-
+        attributedString:
+          args.attributedString ||
+          new AttributedString({
+            string: args.string || '',
+            fontName: args.fontName,
+            fontSize: args.fontSize,
+            alignment: args.alignment,
+            verticalAlignment: args.verticalAlignment,
+            color: args.color,
+          }),
       });
     }
   }
@@ -100,9 +103,9 @@ Text.Model = Object.assign({}, Layer.Model, {
   automaticallyDrawOnUnderlyingPath: false,
   dontSynchroniseWithSymbol: false,
   attributedString: AttributedString.Model,
-  glyphBounds: "{{5, 15}, {122, 55}}",
+  glyphBounds: '{{5, 15}, {122, 55}}',
   lineSpacingBehaviour: 2,
-  textBehaviour: 2
+  textBehaviour: 2,
 });
 
 module.exports = Text;

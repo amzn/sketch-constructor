@@ -12,12 +12,11 @@
  */
 
 const StringAttribute = require('./index');
-const json = {}
+
+const json = {};
 
 describe('StringAttribute', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

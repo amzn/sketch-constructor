@@ -12,12 +12,11 @@
  */
 
 const Artboard = require('./index');
-const json = {}
+
+const json = {};
 
 describe('Artboard', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

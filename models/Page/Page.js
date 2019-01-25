@@ -12,7 +12,7 @@
  */
 
 const uuid = require('uuid-v4');
-const Layer = require('../Layer');
+const Rect = require('../Rect');
 const Style = require('../Style');
 const Group = require('../Group');
 
@@ -33,14 +33,16 @@ class Page extends Group {
       Object.assign(this, Page.Model, {
         do_objectID: id,
         name: args.name || id,
-        frame: new Rect( args.frame ),
-        style: new Style( args.style ),
-        layers: args.layers || []
+        frame: new Rect(args.frame),
+        style: new Style(args.style),
+        layers: args.layers || [],
       });
     }
   }
 
-  getID() { return this.do_objectID; }
+  getID() {
+    return this.do_objectID;
+  }
 
   /**
    *
@@ -48,12 +50,11 @@ class Page extends Group {
    * @returns {Artboard[]}
    */
   getArtboards(predicate) {
-    const arr = this.layers.filter(layer => layer._class === 'artboard')
+    const arr = this.layers.filter(layer => layer._class === 'artboard');
     if (predicate) {
       return arr.filter(predicate);
-    } else {
-      return arr;
     }
+    return arr;
   }
 
   /**
@@ -71,7 +72,7 @@ class Page extends Group {
    * @returns {this}
    */
   addArtboard(artboard) {
-    this.layers = this.layers.concat( artboard );
+    this.layers = this.layers.concat(artboard);
     return this;
   }
 }
@@ -80,7 +81,7 @@ class Page extends Group {
  * @mixes Group.Model
  */
 Page.Model = Object.assign({}, Group.Model, {
-  _class: "page",
+  _class: 'page',
 });
 
 module.exports = Page;

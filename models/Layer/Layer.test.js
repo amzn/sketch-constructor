@@ -12,12 +12,11 @@
  */
 
 const Layer = require('./index');
-const json = {}
+
+const json = {};
 
 describe('Layer', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

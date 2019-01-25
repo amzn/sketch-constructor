@@ -27,8 +27,8 @@ class User {
     } else {
       Object.assign(this, {
         document: {
-          pageListHeight: args.pageListHeight || "200"
-        }
+          pageListHeight: args.pageListHeight || '200',
+        },
       });
     }
   }
@@ -42,10 +42,14 @@ class User {
    * @returns {this}
    */
   addPage(pageID, opts = {}) {
-    this[pageID] = Object.assign({}, {
-      scrollOrigin: "{100, 100}",
-      zoomValue: 1
-    }, opts);
+    this[pageID] = Object.assign(
+      {},
+      {
+        scrollOrigin: '{100, 100}',
+        zoomValue: 1,
+      },
+      opts
+    );
     return this;
   }
 }
@@ -56,8 +60,8 @@ class User {
  */
 User.Model = {
   document: {
-    pageListHeight: "200"
-  }
-}
+    pageListHeight: '200',
+  },
+};
 
 module.exports = User;

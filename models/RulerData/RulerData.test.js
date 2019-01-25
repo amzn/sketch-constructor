@@ -12,12 +12,11 @@
  */
 
 const RulerData = require('./index');
-const json = {}
+
+const json = {};
 
 describe('RulerData', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

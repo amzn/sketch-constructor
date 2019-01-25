@@ -19,25 +19,25 @@ class Shadow {
       Object.assign(this, json);
     } else {
       Object.assign(this, Shadow.Model, args, {
-        color: new Color( args.color )
+        color: new Color(args.color),
       });
     }
   }
 }
 
 Shadow.Model = {
-  _class: "shadow",
+  _class: 'shadow',
   isEnabled: true,
   blurRadius: 4,
   color: Color.Model,
   contextSettings: {
-    _class: "graphicsContextSettings",
+    _class: 'graphicsContextSettings',
     blendMode: 0,
-    opacity: 1
+    opacity: 1,
   },
   offsetX: 0,
   offsetY: 2,
-  spread: 0
-}
+  spread: 0,
+};
 
 module.exports = Shadow;

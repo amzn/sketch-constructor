@@ -12,12 +12,11 @@
  */
 
 const Rectangle = require('./index');
-const json = {}
+
+const json = {};
 
 describe('Rectangle', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

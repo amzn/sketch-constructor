@@ -12,12 +12,11 @@
  */
 
 const Style = require('./index');
-const json = {}
+
+const json = {};
 
 describe('Style', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

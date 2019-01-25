@@ -26,35 +26,33 @@ class Gradient {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, Gradient.Model, {
-
-      });
+      Object.assign(this, Gradient.Model, {});
     }
   }
 }
 
 Gradient.GradientStop = {
-  _class: "gradientStop",
+  _class: 'gradientStop',
   color: Color.Model,
-  position: 0
-}
+  position: 0,
+};
 
 Gradient.GradientType = {
   Linear: 0,
   Radial: 1,
   Angular: 2,
-}
+};
 
 /**
  *
  */
 Gradient.Model = {
-  _class: "gradient",
+  _class: 'gradient',
   elipseLength: 0,
-  from: "{0.5, 0}",
-  to: "{0.5, 1}",
+  from: '{0.5, 0}',
+  to: '{0.5, 1}',
   gradientType: 1,
   stops: [],
-}
+};
 
 module.exports = Gradient;

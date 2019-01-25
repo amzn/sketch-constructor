@@ -16,7 +16,6 @@ const ExportOptions = require('../ExportOptions');
 const Rect = require('../Rect');
 const Style = require('../Style');
 const Color = require('../Color');
-const Layer = require('../Layer');
 const Group = require('../Group');
 const RulerData = require('../RulerData');
 
@@ -43,14 +42,14 @@ class Artboard extends Group {
       const id = args.id || uuid().toUpperCase();
       Object.assign(this, Artboard.Model, {
         do_objectID: id,
-        exportOptions: new ExportOptions( args.exportOptions ),
-        frame: new Rect( args.frame || {} ),
+        exportOptions: new ExportOptions(args.exportOptions),
+        frame: new Rect(args.frame || {}),
         name: args.name || id,
-        style: new Style( args.style ),
+        style: new Style(args.style),
         layers: args.layers || [],
-        backgroundColor: new Color( args.backgroundColor || "#fff" ),
-        horizontalRulerData: new RulerData( args.horizontalRulerData ),
-        verticalRulerData: new RulerData( args.verticalRulerData ),
+        backgroundColor: new Color(args.backgroundColor || '#fff'),
+        horizontalRulerData: new RulerData(args.horizontalRulerData),
+        verticalRulerData: new RulerData(args.verticalRulerData),
       });
     }
     return this;
@@ -71,7 +70,7 @@ class Artboard extends Group {
  * @property {Color.Model} backgroundColor
  */
 Artboard.Model = Object.assign({}, Group.Model, {
-  _class: "artboard",
+  _class: 'artboard',
   shouldBreakMaskChain: true,
   backgroundColor: {},
   hasBackgroundColor: false,

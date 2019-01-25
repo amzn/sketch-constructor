@@ -12,18 +12,18 @@
  */
 
 const SharedStyle = require('./index');
-const json = {}
+
+const json = {};
 
 describe('SharedStyle', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
 
   it('should work', () => {
-    let sharedStyle = new SharedStyle({
-      name: "foo"
+    const sharedStyle = new SharedStyle({
+      name: 'foo',
     });
-    expect(sharedStyle.name).toEqual("foo");
+    expect(sharedStyle.name).toEqual('foo');
   });
 });

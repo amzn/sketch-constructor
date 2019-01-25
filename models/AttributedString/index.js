@@ -11,4 +11,4 @@
  * and limitations under the License.
  */
 
- module.exports = require('./AttributedString');
+module.exports = require('./AttributedString');

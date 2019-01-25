@@ -12,12 +12,11 @@
  */
 
 const SymbolMaster = require('./index');
-const json = {}
+
+const json = {};
 
 describe('SymbolMaster', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

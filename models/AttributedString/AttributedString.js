@@ -29,14 +29,16 @@ class AttributedString {
       Object.assign(this, json);
     } else {
       Object.assign(this, {
-        _class: "attributedString",
+        _class: 'attributedString',
         string: args.string || '',
         attributes: args.attributes || [
-          new StringAttribute(Object.assign({}, args, {
-            location: 0,
-            length: args.string.length
-          }))
-        ]
+          new StringAttribute(
+            Object.assign({}, args, {
+              location: 0,
+              length: args.string.length,
+            })
+          ),
+        ],
       });
     }
   }
@@ -47,9 +49,9 @@ class AttributedString {
  * @property {StringAttribute[]} attributes
  */
 AttributedString.Model = {
-  _class: "attributedString",
+  _class: 'attributedString',
   string: '',
-  attributes: []
-}
+  attributes: [],
+};
 
 module.exports = AttributedString;

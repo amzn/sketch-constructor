@@ -12,12 +12,11 @@
  */
 
 const AttributedString = require('./AttributedString');
-const json = {}
+
+const json = {};
 
 describe('AttributedString', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

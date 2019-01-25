@@ -11,9 +11,9 @@
  * and limitations under the License.
  */
 
- /**
-  * Options for exporting an artboard
-  */
+/**
+ * Options for exporting an artboard
+ */
 class ExportOptions {
   /**
    *
@@ -37,11 +37,11 @@ class ExportOptions {
  * @property {boolean} shouldTrim
  */
 ExportOptions.Model = {
-  _class: "exportOptions",
+  _class: 'exportOptions',
   exportFormats: [],
   includedLayerIds: [],
   layerOptions: 0,
-  shouldTrim: false
-}
+  shouldTrim: false,
+};
 
 module.exports = ExportOptions;

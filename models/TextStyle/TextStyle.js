@@ -28,26 +28,29 @@ class TextStyle {
     if (json) {
       Object.assign(this, json);
       // Created nested class
-      this.encodedAttributes.MSAttributedStringColorAttribute = new Color(null, this.encodedAttributes.MSAttributedStringColorAttribute);
+      this.encodedAttributes.MSAttributedStringColorAttribute = new Color(
+        null,
+        this.encodedAttributes.MSAttributedStringColorAttribute
+      );
     } else {
       Object.assign(this, {
-        _class: "textStyle",
+        _class: 'textStyle',
         verticalAlignment: verticalAlignmentMap[args.verticalAlignment || 'top'],
         encodedAttributes: {
           MSAttributedStringFontAttribute: {
-            _class: "fontDescriptor",
+            _class: 'fontDescriptor',
             attributes: {
-              name: args.fontName || "Helvetica",
-              size: args.fontSize || 16
-            }
+              name: args.fontName || 'Helvetica',
+              size: args.fontSize || 16,
+            },
           },
           MSAttributedStringColorAttribute: new Color(args.color),
           textStyleVerticalAlignmentKey: 2,
           paragraphStyle: {
-            _class: "paragraphStyle",
-            alignment: textAlignmentMap[args.alignment || 'left']
-          }
-        }
+            _class: 'paragraphStyle',
+            alignment: textAlignmentMap[args.alignment || 'left'],
+          },
+        },
       });
     }
   }
@@ -66,25 +69,25 @@ class TextStyle {
 }
 
 TextStyle.Model = {
-  _class: "textStyle",
+  _class: 'textStyle',
   encodedAttributes: {
     MSAttributedStringFontAttribute: {
-      _class: "fontDescriptor",
+      _class: 'fontDescriptor',
       attributes: {
-        name: "Helvetica",
-        size: 36
-      }
+        name: 'Helvetica',
+        size: 36,
+      },
     },
     MSAttributedStringColorAttribute: Color.Model,
     textStyleVerticalAlignmentKey: 0,
     underlineStyle: 0,
     strikethroughStyle: 0,
     paragraphStyle: {
-      _class: "paragraphStyle",
-      alignment: 0
-    }
+      _class: 'paragraphStyle',
+      alignment: 0,
+    },
   },
-  verticalAlignment: 0
-}
+  verticalAlignment: 0,
+};
 
 module.exports = TextStyle;

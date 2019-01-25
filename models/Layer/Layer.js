@@ -27,7 +27,7 @@ class Layer {
     // classes.
     if (json) {
       Object.assign(this, json, {
-        layers: json.layers.map( require('../../utils/layerToClass') )
+        layers: json.layers.map(require('../../utils/layerToClass')),
       });
     }
   }
@@ -44,9 +44,7 @@ class Layer {
     this.sharedStyleID = style.do_objectID;
   }
 
-  getGroup(id) {
-
-  }
+  // getGroup(id) {}
 
   getGroups() {
     return this.layers.filter(layer => layer._class === 'group');
@@ -60,12 +58,13 @@ class Layer {
   getLayers(predicate) {
     if (predicate) {
       return this.layers.filter(predicate);
-    } else {
-      return this.layers;
     }
+    return this.layers;
   }
 
-  getID() { return this.do_objectID; }
+  getID() {
+    return this.do_objectID;
+  }
 }
 
 /**
@@ -82,8 +81,8 @@ class Layer {
  * @property {boolean} nameIsFixed
  */
 Layer.Model = {
-  _class: "",
-  do_objectID: "",
+  _class: '',
+  do_objectID: '',
   booleanOperation: -1,
   exportOptions: ExportOptions.Model,
   frame: Rect.Model,
@@ -93,13 +92,13 @@ Layer.Model = {
   isLocked: false,
   isVisible: true,
   layerListExpandedType: 0,
-  name: "",
+  name: '',
   nameIsFixed: false,
   resizingConstraint: 47,
   resizingType: 0,
   rotation: 0,
   shouldBreakMaskChain: false,
   style: Style.Model,
-}
+};
 
 module.exports = Layer;

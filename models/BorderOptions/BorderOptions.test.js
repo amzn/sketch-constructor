@@ -12,12 +12,11 @@
  */
 
 const BorderOptions = require('./index');
-const json = {}
+
+const json = {};
 
 describe('BorderOptions', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

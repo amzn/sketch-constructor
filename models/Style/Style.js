@@ -24,20 +24,18 @@ class Style {
   static LayerStyle(args = {}) {
     const id = args.id || uuid().toUpperCase();
     return new Style({
-      id: id,
-      fills: (args.fills||[]).map(fill => new Fill(fill)),
-      borders: (args.borders||[]).map(border => new Border(border))
-    })
+      id,
+      fills: (args.fills || []).map(fill => new Fill(fill)),
+      borders: (args.borders || []).map(border => new Border(border)),
+    });
   }
 
   static TextStyle(args = {}) {
     const id = args.id || uuid().toUpperCase();
     return new Style({
-      id: id,
-      textStyle: new TextStyle(
-        Object.assign(args, {id: id})
-      )
-    })
+      id,
+      textStyle: new TextStyle(Object.assign(args, { id })),
+    });
   }
 
   /**
@@ -51,22 +49,18 @@ class Style {
   constructor(args = {}, json) {
     if (json) {
       Object.assign(this, json);
-      if (this.textStyle)
-        this.textStyle = new TextStyle(null, this.textStyle);
-      if (this.fills)
-        this.fills = this.fills.map(fill => new Fill(null, fill));
-      if (this.borders)
-        this.borders = this.borders.map(border => new Border(null, border));
-      if (this.shadows)
-        this.shadows = this.shadows.map(shadow => new Shadow(null, shadow));
+      if (this.textStyle) this.textStyle = new TextStyle(null, this.textStyle);
+      if (this.fills) this.fills = this.fills.map(fill => new Fill(null, fill));
+      if (this.borders) this.borders = this.borders.map(border => new Border(null, border));
+      if (this.shadows) this.shadows = this.shadows.map(shadow => new Shadow(null, shadow));
     } else {
       const id = args.id || uuid().toUpperCase();
       Object.assign(this, Style.Model, {
         do_objectID: id,
-        borders: (args.borders||[]).map(border => new Border(border)),
-        fills: (args.fills||[]).map(fill => new Fill(fill)),
-        shadows: (args.shadows||[]).map(shadow => new Shadow(shadow)),
-        textStyle: new TextStyle(args.textStyle)
+        borders: (args.borders || []).map(border => new Border(border)),
+        fills: (args.fills || []).map(fill => new Fill(fill)),
+        shadows: (args.shadows || []).map(shadow => new Shadow(shadow)),
+        textStyle: new TextStyle(args.textStyle),
       });
     }
   }
@@ -84,14 +78,12 @@ Style.MarkerType = {
   filledCircle: 5,
   openSquare: 6,
   filledSquare: 7,
-}
+};
 
 /**
  * @enum {integer}
  */
-Style.WindingRule = {
-
-}
+Style.WindingRule = {};
 
 /**
  * @enum {integer}
@@ -113,7 +105,7 @@ Style.BlendMode = {
   Saturation: 13,
   Color: 14,
   Luminosity: 15,
-}
+};
 
 /**
  * @property {Style.MarkerType} startMarkerType
@@ -125,8 +117,8 @@ Style.BlendMode = {
  * @property {Object} contextSettings
  */
 Style.Model = {
-  _class: "style",
-  do_objectID: "",
+  _class: 'style',
+  do_objectID: '',
   startMarkerType: 0,
   endMarkerType: 0,
   miterLimit: 10,
@@ -136,10 +128,10 @@ Style.Model = {
   shadows: [],
   textStyle: {},
   contextSettings: {
-    _class: "graphicsContextSettings",
+    _class: 'graphicsContextSettings',
     blendMode: Style.BlendMode.Normal,
-    opacity: 1
-  }
-}
+    opacity: 1,
+  },
+};
 
 module.exports = Style;

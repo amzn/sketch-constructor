@@ -11,20 +11,20 @@
  * and limitations under the License.
  */
 
- /**
-  * Maps text alignment integer enums to human-readable strings
-  * @example
-  * textAlignmentMap.left // => 0
-  */
+/**
+ * Maps text alignment integer enums to human-readable strings
+ * @example
+ * textAlignmentMap.left // => 0
+ */
 const textAlignmentMap = {
   left: 0,
   right: 1,
   center: 2,
-  justify: 3
-}
+  justify: 3,
+};
 
 Object.keys(textAlignmentMap).forEach(key => {
-  textAlignmentMap[textAlignmentMap[key]] = key
+  textAlignmentMap[textAlignmentMap[key]] = key;
 });
 
 /**
@@ -35,14 +35,14 @@ Object.keys(textAlignmentMap).forEach(key => {
 const verticalAlignmentMap = {
   top: 0,
   bottom: 1,
-  center: 2
-}
+  center: 2,
+};
 
 Object.keys(verticalAlignmentMap).forEach(key => {
-  verticalAlignmentMap[verticalAlignmentMap[key]] = key
+  verticalAlignmentMap[verticalAlignmentMap[key]] = key;
 });
 
 module.exports = {
-  textAlignmentMap: textAlignmentMap,
-  verticalAlignmentMap: verticalAlignmentMap
-}
+  textAlignmentMap,
+  verticalAlignmentMap,
+};

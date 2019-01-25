@@ -32,13 +32,13 @@ class Border {
       Object.assign(this, json);
     } else {
       Object.assign(this, {
-        _class: "border",
+        _class: 'border',
         // Default is true, but can be explicitly set to false
         isEnabled: args.isEnabled !== false,
         color: new Color(args.color),
         fillType: Fill.FillType[args.fillType || 'Color'],
         position: Border.Position[args.position || 'Center'],
-        thickness: args.thickness || 1
+        thickness: args.thickness || 1,
       });
     }
     return this;
@@ -52,8 +52,8 @@ class Border {
 Border.Position = {
   Inside: 1,
   Center: 0,
-  Outside: 2
-}
+  Outside: 2,
+};
 
 /**
  * @property {boolean} isEnabled
@@ -63,12 +63,12 @@ Border.Position = {
  * @property {integer} thickness
  */
 Border.Model = {
-  _class: "border",
+  _class: 'border',
   isEnabled: false,
   color: Color.Model,
   fillType: 0,
   position: 0,
-  thickness: 0
-}
+  thickness: 0,
+};
 
 module.exports = Border;

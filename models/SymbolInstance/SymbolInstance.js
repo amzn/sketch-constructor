@@ -31,13 +31,12 @@ class SymbolInstance extends Layer {
   }
 }
 
-
 /**
  *
  */
 SymbolInstance.Model = Object.assign({}, Layer.Model, {
-  symbolID: "",
-  overrideValues: []
+  symbolID: '',
+  overrideValues: [],
 });
 
 module.exports = SymbolInstance;

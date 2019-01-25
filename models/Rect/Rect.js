@@ -39,12 +39,12 @@ class Rect {
  * @property {integer} y
  */
 Rect.Model = {
-  _class: "rect",
+  _class: 'rect',
   constrainProportions: false,
   height: 100,
   width: 100,
   x: 0,
-  y: 0
-}
+  y: 0,
+};
 
 module.exports = Rect;

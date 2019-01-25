@@ -12,12 +12,11 @@
  */
 
 const ExportOptions = require('./index');
-const json = {}
+
+const json = {};
 
 describe('ExportOptions', () => {
-
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
-
 });

@@ -15,7 +15,7 @@ const Document = require('.');
 
 describe('Document', () => {
   it('should work', () => {
-    let document = new Document();
+    const document = new Document();
     expect(document.do_objectID).toBeDefined();
   });
 });

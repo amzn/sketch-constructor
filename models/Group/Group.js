@@ -11,10 +11,10 @@
  * and limitations under the License.
  */
 
+const uuid = require('uuid-v4');
 const Layer = require('../Layer');
 const Rect = require('../Rect');
 const Style = require('../Style');
-const uuid = require('uuid-v4');
 
 /**
  * A group extends
@@ -33,13 +33,13 @@ class Group extends Layer {
   constructor(args = {}, json) {
     super(args, json);
     if (!json) {
-      const id = args.id || uuid().toUpperCase()
+      const id = args.id || uuid().toUpperCase();
       Object.assign(this, Group.Model, {
         do_objectID: id,
         name: args.name || id,
-        frame: new Rect( args.frame ),
-        style: new Style( args.style ),
-        layers: args.layers || []
+        frame: new Rect(args.frame),
+        style: new Style(args.style),
+        layers: args.layers || [],
       });
     }
 
@@ -51,10 +51,10 @@ class Group extends Layer {
  * @mixes Layer.Model
  */
 Group.Model = Object.assign({}, Layer.Model, {
-  _class: "group",
+  _class: 'group',
   layerListExpandedType: 2,
   resizingConstraint: 63,
-  hasClickThrough: false
+  hasClickThrough: false,
 });
 
 module.exports = Group;

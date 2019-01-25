@@ -14,5 +14,5 @@
 module.exports = {
   layerToClass: require('./layerToClass'),
   stackLayers: require('./stackLayers'),
-  maps: require('./maps')
-}
+  maps: require('./maps'),
+};

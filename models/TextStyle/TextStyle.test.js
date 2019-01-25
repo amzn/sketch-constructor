@@ -15,62 +15,59 @@ const TextStyle = require('./index');
 const Color = require('../Color');
 
 const json = {
-  "_class": "textStyle",
-  "encodedAttributes": {
-    "underlineStyle": 1,
-    "paragraphStyle": {
-      "_class": "paragraphStyle",
-      "alignment": 1
+  _class: 'textStyle',
+  encodedAttributes: {
+    underlineStyle: 1,
+    paragraphStyle: {
+      _class: 'paragraphStyle',
+      alignment: 1,
     },
-    "strikethroughStyle": 0,
-    "MSAttributedStringFontAttribute": {
-      "_class": "fontDescriptor",
-      "attributes": {
-        "name": "Helvetica",
-        "size": 36
-      }
+    strikethroughStyle: 0,
+    MSAttributedStringFontAttribute: {
+      _class: 'fontDescriptor',
+      attributes: {
+        name: 'Helvetica',
+        size: 36,
+      },
     },
-    "textStyleVerticalAlignmentKey": 0,
-    "MSAttributedStringColorAttribute": {
-      "_class": "color",
-      "alpha": 1,
-      "blue": 0.2588235294117647,
-      "green": 0.2235294117647059,
-      "red": 0.1882352941176471
-    }
+    textStyleVerticalAlignmentKey: 0,
+    MSAttributedStringColorAttribute: {
+      _class: 'color',
+      alpha: 1,
+      blue: 0.2588235294117647,
+      green: 0.2235294117647059,
+      red: 0.1882352941176471,
+    },
   },
-  "verticalAlignment": 0
-}
+  verticalAlignment: 0,
+};
 
 describe('TextStyle', () => {
-
   it('should work from raw JSON', () => {
-    let textStyle = new TextStyle(null, json);
+    const textStyle = new TextStyle(null, json);
     expect(textStyle).toBeDefined();
   });
 
   it('should generate nested classes from raw JSON', () => {
-    let textStyle = new TextStyle(null, json);
-    expect(
-      textStyle.encodedAttributes.MSAttributedStringColorAttribute instanceof Color
-    ).toBeTruthy();
-  })
+    const textStyle = new TextStyle(null, json);
+    expect(textStyle.encodedAttributes.MSAttributedStringColorAttribute instanceof Color).toBeTruthy();
+  });
 
   it('should work with no args', () => {
-    let textStyle = new TextStyle();
+    const textStyle = new TextStyle();
     expect(textStyle).toBeDefined();
   });
 
   it('getFontSize should work', () => {
-    let textStyle = new TextStyle({
-      fontSize: 16
+    const textStyle = new TextStyle({
+      fontSize: 16,
     });
     expect(textStyle.getFontSize()).toEqual(16);
   });
 
   it('getFontName should work', () => {
-    let textStyle = new TextStyle({
-      fontName: 'OpenSans'
+    const textStyle = new TextStyle({
+      fontName: 'OpenSans',
     });
     expect(textStyle.getFontName()).toEqual('OpenSans');
   });

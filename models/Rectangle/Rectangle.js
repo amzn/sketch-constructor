@@ -11,13 +11,13 @@
  * and limitations under the License.
  */
 
+const uuid = require('uuid-v4');
 const Layer = require('../Layer');
 const CurvePoint = require('../CurvePoint');
 const Rect = require('../Rect');
 const Style = require('../Style');
-const uuid = require('uuid-v4');
 
-const points = ["{0, 0}", "{1, 0}", "{1, 1}", "{0, 1}"];
+const points = ['{0, 0}', '{1, 0}', '{1, 1}', '{0, 1}'];
 
 /**
  *
@@ -39,21 +39,24 @@ class Rectangle extends Layer {
     if (!json) {
       const id = args.id || uuid().toUpperCase();
       Object.assign(this, Rectangle.Model, {
-        points: points.map(point => new CurvePoint({
-          curveFrom: point,
-          curveTo: point,
-          point: point
-        })),
+        points: points.map(
+          point =>
+            new CurvePoint({
+              curveFrom: point,
+              curveTo: point,
+              point,
+            })
+        ),
         do_objectID: id,
         frame: new Rect({
           x: args.x,
           y: args.y,
           width: args.width,
-          height: args.height
+          height: args.height,
         }),
         style: Style.LayerStyle(args.style),
-        name: args.name || id
-      })
+        name: args.name || id,
+      });
     }
   }
 }
@@ -74,7 +77,7 @@ Rectangle.Model = Object.assign({}, Layer.Model, {
   pointRadiusBehaviour: 1,
   points: [],
   fixedRadius: 0,
-  hasConvertedToNewRoundCorners: true
+  hasConvertedToNewRoundCorners: true,
 });
 
 module.exports = Rectangle;

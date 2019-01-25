@@ -15,7 +15,6 @@ const Color = require('../Color');
 const { textAlignmentMap, verticalAlignmentMap } = require('../../utils/maps');
 
 class StringAttribute {
-
   constructor(args, json) {
     if (json) {
       Object.assign(this, json);
@@ -25,47 +24,46 @@ class StringAttribute {
         length: args.length || 0,
         attributes: {
           MSAttributedStringFontAttribute: {
-            _class: "fontDescriptor",
+            _class: 'fontDescriptor',
             attributes: {
-              name: args.fontName || "Helvetica",
-              size: args.fontSize || 16
-            }
+              name: args.fontName || 'Helvetica',
+              size: args.fontSize || 16,
+            },
           },
           MSAttributedStringColorAttribute: new Color(args.color),
           textStyleVerticalAlignmentKey: verticalAlignmentMap[args.verticalAlignment || 'top'],
           paragraphStyle: {
-            _class: "paragraphStyle",
-            alignment: textAlignmentMap[args.alignment || 'left']
-          }
-        }
+            _class: 'paragraphStyle',
+            alignment: textAlignmentMap[args.alignment || 'left'],
+          },
+        },
       });
     }
   }
-
 }
 
 StringAttribute.Model = {
-  _class: "stringAttribute",
+  _class: 'stringAttribute',
   location: 0,
   length: 1,
   attributes: {
     MSAttributedStringTextTransformAttribute: 1,
     MSAttributedStringFontAttribute: {
-      _class: "fontDescriptor",
+      _class: 'fontDescriptor',
       attributes: {
-        name: "Helvetica",
-        size: 36
-      }
+        name: 'Helvetica',
+        size: 36,
+      },
     },
     MSAttributedStringColorAttribute: Color.Model,
     textStyleVerticalAlignmentKey: 0,
     underlineStyle: 0,
     strikethroughStyle: 0,
     paragraphStyle: {
-      _class: "paragraphStyle",
-      alignment: 0
-    }
-  }
-}
+      _class: 'paragraphStyle',
+      alignment: 0,
+    },
+  },
+};
 
 module.exports = StringAttribute;
