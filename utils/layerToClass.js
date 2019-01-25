@@ -11,13 +11,13 @@
  * and limitations under the License.
  */
 
- // TODO: Add more layer types
+// TODO: Add more layer types
 const strToClass = {
-  artboard: require('...Models/Artboard'),
-  group: require('...Models/Group'),
-  text: require('...Models/Text'),
-  shapeGroup: require('...Models/ShapeGroup')
-}
+  artboard: require('../models/Artboard'),
+  group: require('../models/Group'),
+  text: require('../models/Text'),
+  shapeGroup: require('../models/ShapeGroup'),
+};
 
 /**
  * layerToClass
@@ -28,10 +28,9 @@ const strToClass = {
  */
 function layerToClass(layer) {
   if (strToClass[layer._class]) {
-    return new strToClass[layer._class]( layer )
-  } else {
-    return layer;
+    return new strToClass[layer._class](layer);
   }
-};
+  return layer;
+}
 
 module.exports = layerToClass;

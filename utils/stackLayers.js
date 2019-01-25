@@ -11,7 +11,7 @@
  * and limitations under the License.
  */
 
-const Rect = require('...Models/Rect');
+const Rect = require('../models/Rect');
 
 /**
  * stackLayers
@@ -21,11 +21,9 @@ const Rect = require('...Models/Rect');
  * @returns {Layer[]} - An array of Layers
  */
 function stackLayers(layers, gutter = 0) {
-  return layers.reduce((prev, curr, i) => {
-    let y = prev.reduce((ret, item) => ret + item.frame.height + gutter, 0);
-    curr.frame = new Rect(
-      Object.assign({}, curr.frame, {y: y})
-    );
+  return layers.reduce((prev, curr) => {
+    const y = prev.reduce((ret, item) => ret + item.frame.height + gutter, 0);
+    curr.frame = new Rect(Object.assign({}, curr.frame, { y }));
     return prev.concat(curr);
   }, []);
 }
