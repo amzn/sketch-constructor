@@ -6,16 +6,28 @@
   "scripts": {
     "lint": "eslint --fix index.js models/**/*.js utils/**/*.js",
     "test": "npm run prettier:check && npm run lint && jest --runInBand",
-    "precommit": "lint-staged",
+    "commit": "git-cz",
     "preversion": "npm test",
+    "release": "git add . && standard-version -a",
     "prettier:check": "prettier --list-different index.js \"models/**/*.js\" \"utils/**/*.js\"",
     "docs:build": "jsdoc --configure jsdoc.json"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test && lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "lint-staged": {
     "*.js": [
       "prettier --write",
       "eslint --fix",
       "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
     ]
   },
   "jest": {
@@ -48,6 +60,10 @@
     "uuid-v4": "^0.1.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.3.2",
+    "@commitlint/config-conventional": "^7.3.1",
+    "commitizen": "^3.0.5",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.6.0",
@@ -58,6 +74,12 @@
     "jsdoc": "^3.5.5",
     "lint-staged": "^8.1.0",
     "minami": "^1.2.3",
-    "prettier": "^1.16.1"
+    "prettier": "^1.16.1",
+    "standard-version": "^4.4.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
