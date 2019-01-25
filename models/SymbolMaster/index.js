@@ -11,22 +11,4 @@
  * and limitations under the License.
  */
 
-const Artboard = require('../Artboard');
-
-class SymbolMaster extends Artboard {
-  constructor(args, json) {
-    super(args, json);
-    if (!json) {
-      Object.assign(this, {
-        symbolID: ''
-      });
-    }
-  }
-}
-
-SymbolMaster.model = Object.assign(Artboard.model, {
-  symbolID: '',
-  changeIdentifier: 3
-});
-
-module.exports = SymbolMaster;
+module.exports = require('./SymbolMaster');

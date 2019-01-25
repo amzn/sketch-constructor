@@ -11,33 +11,4 @@
  * and limitations under the License.
  */
 
-const Color = require('../Color');
-
-class Shadow {
-  constructor(args, json) {
-    if (json) {
-      Object.assign(this, json);
-    } else {
-      Object.assign(this, Shadow.model, args, {
-        color: new Color( args.color )
-      });
-    }
-  }
-}
-
-Shadow.model = {
-  _class: "shadow",
-  isEnabled: true,
-  blurRadius: 4,
-  color: Color.model,
-  contextSettings: {
-    _class: "graphicsContextSettings",
-    blendMode: 0,
-    opacity: 1
-  },
-  offsetX: 0,
-  offsetY: 2,
-  spread: 0
-}
-
-module.exports = Shadow;
+module.exports = require('./Shadow');

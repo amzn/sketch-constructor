@@ -11,26 +11,4 @@
  * and limitations under the License.
  */
 
-class User {
-  constructor(args = {}, json) {
-    if (json) {
-      Object.assign(this, json);
-    } else {
-      Object.assign(this, {
-        document: {
-          pageListHeight: args.pageListHeight || "200"
-        }
-      });
-    }
-  }
-
-  addPage(pageID, opts = {}) {
-    this[pageID] = Object.assign({}, {
-      scrollOrigin: "{100, 100}",
-      zoomValue: 1
-    }, opts);
-    return this;
-  }
-}
-
-module.exports = User;
+module.exports = require('./User');

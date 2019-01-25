@@ -6,7 +6,7 @@ In this example we take an existing sketch file, myFile.sketch, and inspect it i
 
 index.js
 
-This file is doing all the work. It starts by importing the required node modules and then calling `Sketch.fromFile()` with the path of a sketch file. This method returns a promise which returns a `Sketch` instance. This Sketch class creates all necessary sub-classes so you can manipulate or get information from any part of the sketch document using the model classes.
+This file is doing all the work. It starts by importing the required node modules and then calling `Sketch.fromFile()` with the path of a sketch file. This method returns a promise which returns a `Sketch` instance. This Sketch class creates all necessary sub-classes so you can manipulate or get information from any part of the sketch document using the.Model classes.
 
 In this example we are looking at the shared text styles in the sketch document and writing those out to a CSS file. When you run `npm start` it will generate 'dist/styles.css' based on the text styles in the sketch document. You should be able to open that css file and see:
 

@@ -11,20 +11,4 @@
  * and limitations under the License.
  */
 
-class RulerData {
-  constructor(args, json) {
-    if (json) {
-      Object.assign(this, json);
-    } else {
-      Object.assign(this, RulerData.model, args);
-    }
-  }
-}
-
-RulerData.model = {
-  _class: "rulerData",
-  base: 0,
-  guides: []
-}
-
-module.exports = RulerData;
+module.exports = require('./RulerData');

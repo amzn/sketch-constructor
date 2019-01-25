@@ -11,27 +11,4 @@
  * and limitations under the License.
  */
 
-class Rect {
-  static fromJSON(json) {
-    return new Rect(null, json);
-  }
-
-  constructor(args = {}, json) {
-    if (json) {
-      Object.assign(this, json);
-    } else {
-      Object.assign(this, Rect.model, args);
-    }
-  }
-}
-
-Rect.model = {
-  _class: "rect",
-  constrainProportions: false,
-  height: 100,
-  width: 100,
-  x: 0,
-  y: 0
-}
-
-module.exports = Rect;
+module.exports = require('./Rect');

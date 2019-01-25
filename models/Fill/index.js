@@ -11,27 +11,4 @@
  * and limitations under the License.
  */
 
-const Color = require('../Color');
-
-class Fill {
-  constructor(args, json) {
-    if (json) {
-      Object.assign(this, json);
-    } else {
-      Object.assign(this, {
-        _class: "fill",
-        // Default is true, but can be explicitly set to false
-        isEnabled: args.isEnabled !== false,
-        color: new Color(args.color),
-        fillType: args.fillType || 0,
-        noiseIndex: args.noiseIndex || 0,
-        noiseIntensity: args.noiseIntensity || 0,
-        patternFillType: args.patternFillType || 0,
-        patternTileScale: args.patternTileScale || 1
-      });
-    }
-    return this;
-  }
-}
-
-module.exports = Fill;
+module.exports = require('./Fill');

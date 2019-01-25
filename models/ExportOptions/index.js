@@ -11,23 +11,4 @@
  * and limitations under the License.
  */
 
-class ExportOptions {
-  constructor(args = {}, json) {
-    if (json) {
-      Object.assign(this, json);
-    } else {
-      Object.assign(this, ExportOptions.model, args);
-    }
-    return this;
-  }
-}
-
-ExportOptions.model = {
-  _class: "exportOptions",
-  exportFormats: [],
-  includedLayerIds: [],
-  layerOptions: 0,
-  shouldTrim: false
-}
-
-module.exports = ExportOptions;
+module.exports = require('./ExportOptions');

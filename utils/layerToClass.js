@@ -11,19 +11,27 @@
  * and limitations under the License.
  */
 
+ // TODO: Add more layer types
 const strToClass = {
-  artboard: require('../models/Artboard'),
-  group: require('../models/Group'),
-  text: require('../models/Text'),
-  shapeGroup: require('../models/ShapeGroup')
+  artboard: require('...Models/Artboard'),
+  group: require('...Models/Group'),
+  text: require('...Models/Text'),
+  shapeGroup: require('...Models/ShapeGroup')
 }
 
+/**
+ * layerToClass
+ *
+ * Takes a raw JSON layer and returns a new class instance.
+ * @param {Object} layer - The raw JSON of a layer as an object
+ * @returns {Layer} - An instance of a subclass of a Layer, such as Artboard, Group, or Text
+ */
 function layerToClass(layer) {
   if (strToClass[layer._class]) {
     return new strToClass[layer._class]( layer )
   } else {
     return layer;
   }
-}
+};
 
 module.exports = layerToClass;

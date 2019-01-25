@@ -12,7 +12,7 @@
  */
 
 module.exports = {
-  Base: require('./Base'),
+  // Base: require('./Base'),
   Artboard: require('./Artboard'),
   Group: require('./Group'),
   Border: require('./Border'),

@@ -11,16 +11,16 @@
  * and limitations under the License.
  */
 
-const Rect = require('../models/Rect');
+const Rect = require('...Models/Rect');
 
 /**
  * stackLayers
- * Positions an array of layers so they flow like they would on the web.
- * @param Array[Layer] layers - An array of Layers
- * @param int gutter - Optional gutter between layers
- * @returns Array[Layer] - An array of Layers
+ * Positions an array of layers so they flow vertically like they would on the web.
+ * @param {Layer[]} layers - An array of Layers
+ * @param {int} gutter - Optional gutter between layers
+ * @returns {Layer[]} - An array of Layers
  */
-module.exports = function(layers, gutter = 0) {
+function stackLayers(layers, gutter = 0) {
   return layers.reduce((prev, curr, i) => {
     let y = prev.reduce((ret, item) => ret + item.frame.height + gutter, 0);
     curr.frame = new Rect(
@@ -29,3 +29,5 @@ module.exports = function(layers, gutter = 0) {
     return prev.concat(curr);
   }, []);
 }
+
+module.exports = stackLayers;

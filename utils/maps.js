@@ -11,6 +11,11 @@
  * and limitations under the License.
  */
 
+ /**
+  * Maps text alignment integer enums to human-readable strings
+  * @example
+  * textAlignmentMap.left // => 0
+  */
 const textAlignmentMap = {
   left: 0,
   right: 1,
@@ -22,6 +27,11 @@ Object.keys(textAlignmentMap).forEach(key => {
   textAlignmentMap[textAlignmentMap[key]] = key
 });
 
+/**
+ * Maps vertical alignment int enums to human-readable strings
+ * @example
+ * verticalAlignmentMap.top // => 0
+ */
 const verticalAlignmentMap = {
   top: 0,
   bottom: 1,

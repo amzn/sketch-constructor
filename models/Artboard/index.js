@@ -11,48 +11,4 @@
  * and limitations under the License.
  */
 
-const uuid = require('uuid-v4');
-const ExportOptions = require('../ExportOptions');
-const Rect = require('../Rect');
-const Style = require('../Style');
-const Color = require('../Color');
-const Base = require('../Base');
-const RulerData = require('../RulerData');
-
-class Artboard extends Base {
-  constructor(args = {}, json) {
-    super(args, json);
-    if (!json) {
-      const id = args.id || uuid().toUpperCase();
-      Object.assign(this, Artboard.model, {
-        do_objectID: id,
-        exportOptions: new ExportOptions( args.exportOptions ),
-        frame: new Rect( args.frame || {} ),
-        name: args.name || id,
-        style: new Style( args.style ),
-        layers: args.layers || [],
-        backgroundColor: new Color( args.backgroundColor || "#fff" ),
-        horizontalRulerData: new RulerData( args.horizontalRulerData ),
-        verticalRulerData: new RulerData( args.verticalRulerData ),
-      });
-    }
-    return this;
-  }
-}
-
-Artboard.model = Object.assign({}, Base.model, {
-  _class: "artboard",
-  shouldBreakMaskChain: true,
-  hasClickThrough: true,
-  layers: [],
-  backgroundColor: {},
-  hasBackgroundColor: false,
-  horizontalRulerData: RulerData.model,
-  includeBackgroundColorInExport: true,
-  includeInCloudUpload: true,
-  isFlowHome: false,
-  resizesContent: false,
-  verticalRulerData: RulerData.model
-});
-
-module.exports = Artboard;
+module.exports = require('./Artboard');

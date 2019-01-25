@@ -1,0 +1,75 @@
+{
+  "_class": "artboard",
+  "do_objectID": "90CA1336-C5FC-4729-B576-711952931AD3",
+  "booleanOperation": -1,
+  "exportOptions": {
+      "_class": "exportOptions",
+      "exportFormats": [
+          {
+              "_class": "exportFormat",
+              "absoluteSize": 0,
+              "fileFormat": "png",
+              "name": "",
+              "namingScheme": 0,
+              "scale": 1,
+              "visibleScaleType": 0
+          }
+      ],
+      "includedLayerIds": [],
+      "layerOptions": 0,
+      "shouldTrim": false
+  },
+  "frame": {
+      "_class": "rect",
+      "constrainProportions": false,
+      "height": 261,
+      "width": 346,
+      "x": 232,
+      "y": 279
+  },
+  "isFixedToViewport": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Artboard",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": true,
+  "clippingMaskMode": 0,
+  "hasClippingMask": false,
+  "style": {
+      "_class": "style",
+      "endMarkerType": 0,
+      "miterLimit": 10,
+      "startMarkerType": 0,
+      "windingRule": 1
+  },
+  "hasClickThrough": false,
+  "layers": [],
+  "backgroundColor": {
+      "_class": "color",
+      "alpha": 1,
+      "blue": 1,
+      "green": 1,
+      "red": 1
+  },
+  "hasBackgroundColor": true,
+  "horizontalRulerData": {
+      "_class": "rulerData",
+      "base": 0,
+      "guides": []
+  },
+  "includeBackgroundColorInExport": true,
+  "includeInCloudUpload": true,
+  "isFlowHome": false,
+  "resizesContent": true,
+  "verticalRulerData": {
+      "_class": "rulerData",
+      "base": 0,
+      "guides": []
+  }
+}

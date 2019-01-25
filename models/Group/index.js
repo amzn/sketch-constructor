@@ -11,34 +11,4 @@
  * and limitations under the License.
  */
 
-const Base = require('../Base');
-const Rect = require('../Rect');
-const Style = require('../Style');
-const uuid = require('uuid-v4');
-
-class Group extends Base {
-  constructor(args = {}, json) {
-    super(args, json);
-    if (!json) {
-      const id = args.id || uuid().toUpperCase()
-      Object.assign(this, Group.model, {
-        do_objectID: id,
-        name: args.name || id,
-        frame: new Rect( args.frame ),
-        style: new Style( args.style ),
-        layers: args.layers || []
-      });
-    }
-
-    return this;
-  }
-}
-
-Group.model = Object.assign({}, Base.model, {
-  _class: "group",
-  layerListExpandedType: 2,
-  resizingConstraint: 63,
-  hasClickThrough: false
-});
-
-module.exports = Group;
+module.exports = require('./Group');

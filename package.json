@@ -4,6 +4,7 @@
   "description": "Read/write/manipulate Sketch files in Node without Sketch plugins!",
   "main": "index.js",
   "scripts": {
+    "docs:build": "jsdoc --configure jsdoc.json",
     "test": "jest"
   },
   "jest": {
@@ -28,6 +29,9 @@
   "bugs": {
     "url": "https://github.com/amzn/sketch-constructor/issues"
   },
+  "contributors": [
+    "Danny Banks <djb@amazon.com>"
+  ],
   "homepage": "https://github.com/amzn/sketch-constructor#readme",
   "dependencies": {
     "jszip": "^3.1.5",
@@ -36,6 +40,8 @@
   },
   "devDependencies": {
     "fs-extra": "^7.0.1",
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "jsdoc": "^3.5.5",
+    "minami": "^1.2.3"
   }
 }

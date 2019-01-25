@@ -11,31 +11,4 @@
  * and limitations under the License.
  */
 
-const Color = require('../Color');
-
-const position = {
-  inside: 1,
-  center: 0,
-  outside: 2
-}
-
-class Border {
-  constructor(args, json) {
-    if (json) {
-      Object.assign(this, json);
-    } else {
-      Object.assign(this, {
-        _class: "border",
-        // Default is true, but can be explicitly set to false
-        isEnabled: args.isEnabled !== false,
-        color: new Color(args.color),
-        fillType: args.fillType || 0,
-        position: position[args.position || 'center'],
-        thickness: args.thickness || 1
-      });
-    }
-    return this;
-  }
-}
-
-module.exports = Border;
+module.exports = require('./Border');

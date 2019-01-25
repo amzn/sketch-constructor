@@ -11,25 +11,4 @@
  * and limitations under the License.
  */
 
-class CurvePoint {
-  constructor(args, json) {
-    if (json) {
-      Object.assign(this, json);
-    } else {
-      Object.assign(this, CurvePoint.model, args);
-    }
-  }
-}
-
-CurvePoint.model = {
-  _class: "curvePoint",
-  cornerRadius: 0,
-  curveFrom: "{0, 0}",
-  curveMode: 1,
-  curveTo: "{0, 0}",
-  hasCurveFrom: false,
-  hasCurveTo: false,
-  point: "{0, 0}"
-}
-
-module.exports = CurvePoint;
+module.exports = require('./CurvePoint');
