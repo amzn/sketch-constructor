@@ -4,13 +4,14 @@
   "description": "Read/write/manipulate Sketch files in Node without Sketch plugins!",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --fix index.js models/**/*.js utils/**/*.js",
+    "lint": "eslint index.js models/**/*.js utils/**/*.js",
     "test": "npm run prettier:check && npm run lint && jest --runInBand",
     "commit": "git-cz",
-    "preversion": "npm test",
+    "preversion": "npm test && npm run docs:build",
     "release": "git add . && standard-version -a",
     "prettier:check": "prettier --list-different index.js \"models/**/*.js\" \"utils/**/*.js\"",
-    "docs:build": "jsdoc --configure jsdoc.json"
+    "docs:build": "node ./scripts/generateDocs.js",
+    "docs:serve": "docsify serve ./docs"
   },
   "husky": {
     "hooks": {
@@ -23,7 +24,8 @@
       "prettier --write",
       "eslint --fix",
       "git add"
-    ]
+    ],
+    "ignore": ["scripts/**/*.js"]
   },
   "commitlint": {
     "extends": [
@@ -64,6 +66,7 @@
     "@commitlint/config-conventional": "^7.3.1",
     "commitizen": "^3.0.5",
     "cz-conventional-changelog": "^2.1.0",
+    "docsify-cli": "^4.3.0",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.6.0",
@@ -72,6 +75,7 @@
     "husky": "^1.3.1",
     "jest": "^23.6.0",
     "jsdoc": "^3.5.5",
+    "jsdoc-to-markdown": "^4.0.1",
     "lint-staged": "^8.1.0",
     "minami": "^1.2.3",
     "prettier": "^1.16.1",

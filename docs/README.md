@@ -2,20 +2,20 @@
 
 This library provides helpers and classes that make it easy to read/write/manipulate Sketch files in Javascript, without Sketch installed!
 
-## ⚠️ Warning ⚠️
+### ⚠️ Warning ⚠️
 This library is a work in progress, use at your own risk. But feel free to help out where you see bugs or incomplete things! Also, because this library is not using any Sketch APIs/libraries and manipulating the underlying sketch files, the internal file API might change in the future. We will do our best to keep up with any Sketch changes and communicate any breaking API changes.
 
 ## Why?
 If you want to produce Sketch assets for your design team that are generated from your production codebase in a reliable and consistent way, like part of a build process or CI/CD pipeline. Or maybe you want to have your source of truth for your design tokens or components in Sketch, you can use this to extract that data out into your codebase.
 
-## What can you do with this?
+### What can you do with this?
 
 * Generate Sketch files programmatically without actually running Sketch (no plugins!)
 * Use Sketch as input to create resources/documentation for a design system
 * Build Sketch files in a CI/CD pipeline
 * Read a Sketch file as a template, hydrate it with data, output a new Sketch file
 
-## How is this different from html-sketchapp or react-sketchapp?
+### How is this different from html-sketchapp or react-sketchapp?
 Those tools are great and very powerful, but rely on creating sketch plugins on the fly and manipulating a Sketch document that is open on your computer. They are also focused on rendering sketch files and not using a Sketch file as input or data. This tool however helps you directly manipulate and generate Sketch files without a sketch plugin or even having Sketch open or installed.
 
 ## Installation
@@ -84,9 +84,11 @@ Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`)
   });
 ```
 
-## Models
+## Structure
 
-These are all the classes Sketch uses in it's JSON schema. They should all map 1:1 with any object in the JSON that has `_class` attribute. All the models are ES6 classes which have instance properties that map 1:1 with the attributes of JSON schema of that class. This makes it easy automatically create class instances from a sketch document as well as write the JSON of a sketch document because calling `JSON.stringify()` on a class will only output instance properties.
+This library wraps all the objects that make up a Sketch file like pages, groups, layers, etc. into ES6 classes. They should all map 1:1 with any object in the Sketch JSON that has `_class` attribute. All the models are ES6 classes which have instance properties that map 1:1 with the attributes of JSON schema of that class. This makes it easy automatically create class instances from a sketch document as well as write the JSON of a sketch document because calling `JSON.stringify()` on a class will only output instance properties.
+
+However, the classes will have simplified APIs for working with them so you don't need to know the underlying JSON structure.
 
 All classes have the same constructor method signature:
 ```javascript
@@ -155,6 +157,7 @@ Sketch.fromFile('myFile.sketch')
 ## Contributing
 
 We love contributors! This project is still WIP so any help would be amazing. Please take a look at our [contributing docs](CONTRIBUTING.md)
+
 
 ## License
 

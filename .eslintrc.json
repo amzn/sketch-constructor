@@ -1,7 +1,6 @@
 {
   "env": {
-    "node": true,
-    "mocha": true
+    "node": true
   },
   "globals": {
     "Buffer": true,
@@ -18,6 +17,9 @@
   "overrides": [
     {
       "files": ["**/*.test.js"],
+      "env": {
+        "jest": true
+      },
       "globals": {
         "expect": true,
         "beforeAll": true,
@@ -27,6 +29,14 @@
         "global-require": "off",
         "no-unused-vars": "off",
         "import/no-unresolved": "off"
+      }
+    },{
+      "files": ["scripts/*.js"],
+      "rules": {
+        "global-require": "off",
+        "no-unused-vars": "off",
+        "import/no-unresolved": "off",
+        "import/no-extraneous-dependencies": "off"
       }
     }
   ]
