@@ -24,8 +24,7 @@
       "prettier --write",
       "eslint --fix",
       "git add"
-    ],
-    "ignore": ["scripts/**/*.js"]
+    ]
   },
   "commitlint": {
     "extends": [
