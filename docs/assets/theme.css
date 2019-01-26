@@ -1,0 +1,6 @@
+:root {
+  --base-font-family: 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
+  --theme-color: #00B3AC;
+  --link-color: var(--theme-color);
+  --code-inline-color: inherit;
+}
