@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js models/**/*.js utils/**/*.js",
-    "test": "npm run prettier:check && npm run lint && jest --runInBand",
+    "test": "npm run lint && jest --runInBand",
     "commit": "git-cz",
     "preversion": "npm test && npm run docs:build",
     "release": "git add . && standard-version -a",
+    "prettier:fix": "prettier --write index.js \"models/**/*.js\" \"utils/**/*.js\"",
     "prettier:check": "prettier --list-different index.js \"models/**/*.js\" \"utils/**/*.js\"",
     "docs:build": "node ./scripts/generateDocs.js",
     "docs:serve": "docsify serve ./docs"

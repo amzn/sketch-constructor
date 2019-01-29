@@ -12,6 +12,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "fs-extra": "^7.0.1",
+    "sketch-constructor": "^0.1.0",
     "style-dictionary": "^2.6.0"
   }
 }
