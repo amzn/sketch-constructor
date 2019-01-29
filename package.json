@@ -27,11 +27,6 @@
       "git add"
     ]
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
   "jest": {
     "verbose": false,
     "testPathIgnorePatterns": [
