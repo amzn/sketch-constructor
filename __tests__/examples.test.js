@@ -11,21 +11,19 @@
  * and limitations under the License.
  */
 
-const {clearOutput} = require('./__helpers');
 const path = require('path');
 const fs = require('fs');
-const childProcess = require("child_process");
-
+const childProcess = require('child_process');
+const { clearOutput } = require('./__helpers');
 
 describe('Examples', () => {
   beforeEach(() => {
     clearOutput();
   });
 
-  fs.readdirSync(path.join(process.cwd(), "__examples__")).forEach(dir => {
+  fs.readdirSync(path.join(process.cwd(), '__examples__')).forEach(dir => {
     it(dir, () => {
-      childProcess.execSync(`cd __examples__/${dir} && npm test`);
+      childProcess.execSync(`cd __examples__/${dir} && npm i && npm test`);
     });
   });
-
 });

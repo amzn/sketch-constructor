@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm build",
+    "test": "npm run build",
     "build": "node index.js",
-    "start": "npm build && open dist/output.sketch"
+    "start": "npm run build && open dist/output.sketch"
   },
   "author": "",
   "license": "Apache-2.0",

@@ -4,9 +4,9 @@
   "description": "",
   "main": "config.js",
   "scripts": {
-    "test": "npm build",
+    "test": "npm run build",
     "build": "style-dictionary build --config ./config.js",
-    "start": "npm build && open dist/style-dictionary.sketch"
+    "start": "npm run build && open dist/style-dictionary.sketch"
   },
   "author": "",
   "license": "Apache-2.0",
