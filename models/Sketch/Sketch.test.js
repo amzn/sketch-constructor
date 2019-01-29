@@ -11,7 +11,10 @@
  * and limitations under the License.
  */
 
+const fs = require('fs-extra');
 const { Sketch, SharedStyle, Page, Artboard } = require('../index');
+
+fs.ensureDirSync(`${process.cwd()}/__tests__/__output`);
 
 describe('Sketch', () => {
   it('should set pages', () => {
