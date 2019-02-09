@@ -60,7 +60,7 @@ class Style {
         borders: (args.borders || []).map(border => new Border(border)),
         fills: (args.fills || []).map(fill => new Fill(fill)),
         shadows: (args.shadows || []).map(shadow => new Shadow(shadow)),
-        textStyle: new TextStyle(args.textStyle),
+        textStyle: args.textStyle ? new TextStyle(args.textStyle) : undefined,
       });
     }
   }
