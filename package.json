@@ -1,8 +1,16 @@
 {
   "name": "sketch-constructor",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "description": "Read/write/manipulate Sketch files in Node without Sketch plugins!",
   "main": "index.js",
+  "files": [
+    "models",
+    "utils",
+    "index.js",
+    "LICENSE",
+    "README.md",
+    "NOTICE"
+  ],
   "scripts": {
     "lint": "eslint index.js models/**/*.js utils/**/*.js",
     "test": "npm run lint && jest --runInBand",
@@ -12,7 +20,8 @@
     "prettier:fix": "prettier --write index.js \"models/**/*.js\" \"utils/**/*.js\"",
     "prettier:check": "prettier --list-different index.js \"models/**/*.js\" \"utils/**/*.js\"",
     "docs:build": "node ./scripts/generateDocs.js",
-    "docs:serve": "docsify serve ./docs"
+    "docs:serve": "docsify serve ./docs",
+    "semantic-release": "semantic-release"
   },
   "husky": {
     "hooks": {
@@ -35,7 +44,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/amzn/sketch-constructor.git"
+    "url": "https://github.com/amzn/sketch-constructor.git"
   },
   "keywords": [
     "sketch",
@@ -74,7 +83,8 @@
     "lint-staged": "^8.1.0",
     "minami": "^1.2.3",
     "prettier": "^1.16.1",
-    "standard-version": "^4.4.0"
+    "standard-version": "^4.4.0",
+    "semantic-release": "^15.13.3"
   },
   "config": {
     "commitizen": {

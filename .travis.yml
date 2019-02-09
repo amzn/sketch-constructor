@@ -1,3 +1,14 @@
 language: node_js
 node_js:
   - "8"
+
+jobs:
+  include:
+    - stage: npm release
+      node_js: "8"
+      script: echo "Deploying to npm ..."
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release
