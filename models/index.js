@@ -19,6 +19,7 @@ module.exports = {
   Color: require('./Color'),
   CurvePoint: require('./CurvePoint'),
   Document: require('./Document'),
+  ExportFormat: require('./ExportFormat'),
   ExportOptions: require('./ExportOptions'),
   Fill: require('./Fill'),
   Meta: require('./Meta'),
