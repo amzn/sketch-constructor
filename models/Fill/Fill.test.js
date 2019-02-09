@@ -19,4 +19,11 @@ describe('Fill', () => {
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
+
+  it('should work from user generated', () => {
+    const fill = new Fill({
+      color: '#fff',
+    });
+    expect(true).toBeTruthy();
+  });
 });

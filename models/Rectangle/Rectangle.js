@@ -54,7 +54,7 @@ class Rectangle extends Layer {
           width: args.width,
           height: args.height,
         }),
-        style: Style.LayerStyle(args.style),
+        style: new Style(args.style),
         name: args.name || id,
       });
     }

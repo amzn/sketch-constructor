@@ -45,7 +45,7 @@ class Fill {
         noiseIntensity: args.noiseIntensity || 0,
         patternFillType: args.patternFillType || 0,
         patternTileScale: args.patternTileScale || 1,
-        gradient: args.gradient ? new Gradient(args.gradient) : null,
+        gradient: args.gradient ? new Gradient(args.gradient) : undefined,
       });
     }
     return this;
