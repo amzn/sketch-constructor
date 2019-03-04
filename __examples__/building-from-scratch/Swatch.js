@@ -11,43 +11,42 @@
  * and limitations under the License.
  */
 
-const { Group, Text, ShapeGroup } = require('sketch-constructor');
+const { Group, Text, Rectangle } = require('sketch-constructor');
 
 class Swatch extends Group {
   constructor(args) {
     super({ frame: args.frame });
-    const swatchColor = ShapeGroup.Rectangle({
+    const swatchColor = new Rectangle({
       width: 200,
       height: 100,
       x: 0,
       y: 0,
       name: args.value,
       style: {
-        fills: [{
-          color: args.value
-        }]
-      }
+        fills: [
+          {
+            color: args.value,
+          },
+        ],
+      },
     });
 
     const swatchLabel = new Text({
       string: args.label,
       name: args.label,
       fontSize: 24,
-      color: "#ccc",
+      color: '#ccc',
       frame: {
         width: 200,
         height: 50,
         x: 0,
         y: 120,
-      }
+      },
     });
 
     Object.assign(this, {
-      layers: [
-        swatchColor,
-        swatchLabel
-      ],
-      name: args.label
+      layers: [swatchColor, swatchLabel],
+      name: args.label,
     });
   }
 }
