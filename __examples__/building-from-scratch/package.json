@@ -10,7 +10,7 @@
   },
   "author": "",
   "license": "Apache-2.0",
-  "devDependencies": {
+  "dependencies": {
     "fs-extra": "^7.0.1",
     "sketch-constructor": "^0.1.0"
   }
