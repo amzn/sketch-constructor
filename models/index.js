@@ -22,6 +22,7 @@ module.exports = {
   ExportFormat: require('./ExportFormat'),
   ExportOptions: require('./ExportOptions'),
   Fill: require('./Fill'),
+  Gradient: require('./Gradient'),
   Meta: require('./Meta'),
   Page: require('./Page'),
   Rect: require('./Rect'),
