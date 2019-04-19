@@ -16,6 +16,7 @@ module.exports = {
   Artboard: require('./Artboard'),
   Group: require('./Group'),
   Border: require('./Border'),
+  BorderOptions: require('./BorderOptions'),
   Color: require('./Color'),
   CurvePoint: require('./CurvePoint'),
   Document: require('./Document'),
