@@ -30,7 +30,7 @@ class BorderOptions {
       Object.assign(this, BorderOptions.Model, {
         dashPattern: args.dashPattern,
         lineCapStyle: BorderOptions.LineCapStyle[args.lineCapStyle || 'butt'],
-        lineJoinStyle: BorderOptions.LineJoinStyle[args.lineCapStyle || 'miter'],
+        lineJoinStyle: BorderOptions.LineJoinStyle[args.lineJoinStyle || 'miter'],
       });
     }
   }
