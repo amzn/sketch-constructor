@@ -31,6 +31,7 @@ class BorderOptions {
         dashPattern: args.dashPattern,
         lineCapStyle: BorderOptions.LineCapStyle[args.lineCapStyle || 'butt'],
         lineJoinStyle: BorderOptions.LineJoinStyle[args.lineJoinStyle || 'miter'],
+        isEnabled: args.isEnabled !== false,
       });
     }
   }
@@ -62,7 +63,7 @@ BorderOptions.LineJoinStyle = {
  */
 BorderOptions.Model = {
   _class: 'borderOptions',
-  isEnabled: false,
+  isEnabled: true,
   dashPattern: [],
   lineCapStyle: 1,
   lineJoinStyle: 1,
