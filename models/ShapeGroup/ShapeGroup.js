@@ -14,6 +14,7 @@
 const uuid = require('uuid-v4');
 const Layer = require('../Layer');
 const Rectangle = require('../Rectangle');
+const Oval = require('../Oval');
 const Rect = require('../Rect');
 const Style = require('../Style');
 
@@ -45,6 +46,28 @@ class ShapeGroup extends Layer {
       },
       layers: [
         new Rectangle({
+          x: 0,
+          y: 0,
+          width: args.width,
+          height: args.height,
+        }),
+      ],
+    });
+  }
+
+  static Oval(args) {
+    return new this({
+      name: args.name,
+      id: args.id,
+      style: args.style,
+      frame: {
+        x: args.x,
+        y: args.y,
+        width: args.width,
+        height: args.height,
+      },
+      layers: [
+        new Oval({
           x: 0,
           y: 0,
           width: args.width,
