@@ -25,6 +25,7 @@ module.exports = {
   Fill: require('./Fill'),
   Gradient: require('./Gradient'),
   Meta: require('./Meta'),
+  Oval: require('./Oval'),
   Page: require('./Page'),
   Rect: require('./Rect'),
   Rectangle: require('./Rectangle'),
