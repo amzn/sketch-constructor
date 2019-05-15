@@ -28,7 +28,7 @@ const strToClass = {
  */
 function layerToClass(layer) {
   if (strToClass[layer._class]) {
-    return new strToClass[layer._class](layer);
+    return new strToClass[layer._class](null, layer);
   }
   return layer;
 }

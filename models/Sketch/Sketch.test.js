@@ -35,6 +35,12 @@ describe('Sketch', () => {
       });
     });
 
+    it('should have the same do_objectID', () =>
+      Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`).then(sketch => {
+        const artboard = sketch.getPage('Page 1').getArtboard('Artboard');
+        expect(artboard.do_objectID).toBe('5863D14C-8C6E-4C73-801F-A5BF691CF415');
+      }));
+
     it('should build', () =>
       Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`)
         .then(sketch => sketch.build(`${process.cwd()}/__tests__/__output/test2.sketch`))
