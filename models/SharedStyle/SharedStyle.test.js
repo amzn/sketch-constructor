@@ -26,4 +26,18 @@ describe('SharedStyle', () => {
     });
     expect(sharedStyle.name).toEqual('foo');
   });
+
+  describe('LayerStyle', () => {
+    it('should work', () => {
+      const layerStyle = SharedStyle.LayerStyle({
+        name: 'test',
+        fills: [
+          {
+            color: '#ff0000',
+          },
+        ],
+      });
+      expect(layerStyle.value.fills[0].color.red).toEqual(1);
+    });
+  });
 });

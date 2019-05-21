@@ -14,9 +14,6 @@
 const uuid = require('uuid-v4');
 const TextStyle = require('../TextStyle');
 const Style = require('../Style');
-const Fill = require('../Fill');
-const Border = require('../Border');
-const Shadow = require('../Shadow');
 
 class SharedStyle {
   static LayerStyle(args) {
@@ -24,9 +21,9 @@ class SharedStyle {
     return new SharedStyle({
       name: args.name,
       id,
-      fills: (args.fills || []).map(fill => new Fill(fill)),
-      borders: (args.borders || []).map(border => new Border(border)),
-      shadows: (args.shadows || []).map(shadow => new Shadow(shadow)),
+      fills: args.fills,
+      borders: args.borders,
+      shadows: args.shadows,
     });
   }
 
