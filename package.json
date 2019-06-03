@@ -3,6 +3,7 @@
   "version": "0.0.0-development",
   "description": "Read/write/manipulate Sketch files in Node without Sketch plugins!",
   "main": "index.js",
+  "types": "index.d.ts",
   "files": [
     "models",
     "utils",
@@ -83,8 +84,9 @@
     "lint-staged": "^8.1.0",
     "minami": "^1.2.3",
     "prettier": "^1.16.1",
+    "semantic-release": "^15.13.3",
     "standard-version": "^4.4.0",
-    "semantic-release": "^15.13.3"
+    "typescript": "^3.5.1"
   },
   "config": {
     "commitizen": {
