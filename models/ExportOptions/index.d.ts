@@ -8,3 +8,5 @@ declare class ExportOptions {
   shouldTrim: boolean;
   constructor(args?: any, json?: any);
 }
+
+export = ExportOptions;

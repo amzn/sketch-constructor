@@ -7,3 +7,5 @@ declare class Rect {
   y: number;
   constructor(args?: any, json?: any);
 }
+
+export = Rect;

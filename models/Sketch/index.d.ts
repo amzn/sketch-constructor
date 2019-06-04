@@ -1,10 +1,9 @@
-import fs from 'fs-extra';
+import fs from 'fs';
 import JSZip from 'jszip';
 import Meta from '../Meta';
 import User from '../User';
 import Document from '../Document';
 import Page from '../Page';
-import Artboard from '../Artboard';
 import SharedStyle from '../SharedStyle';
 
 declare class Sketch {
@@ -36,7 +35,7 @@ declare class Sketch {
 
   addArtboard(pageID: string, artboard: any): void;
 
-  build(output: fs.PathLike | number): Promise<fs.PathLike |  number>;
+  build(output: fs.PathLike | number): Promise<fs.PathLike | number>;
 }
 
 export = Sketch;

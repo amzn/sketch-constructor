@@ -1,7 +1,4 @@
-import uuid from 'uuid-v4';
 import Artboard from '../Artboard';
-import Rect from '../Rect';
-import Style from '../Style';
 import Group from '../Group';
 
 declare class Page extends Group {

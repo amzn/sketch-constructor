@@ -1,5 +1,5 @@
 import Color from '../Color';
-import { textAlignmentMap, verticalAlignmentMap } from '../../utils/maps';
+// import { textAlignmentMap, verticalAlignmentMap } from '../../utils/maps';
 
 declare class StringAttribute {
   _class: 'stringAttribute';

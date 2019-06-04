@@ -1,10 +1,7 @@
-import uuid from 'uuid-v4';
 import Layer from '../Layer';
-import Rect from '../Rect';
-import Style from '../Style';
 
 declare class Group extends Layer {
-  _class: 'group';
+  _class: string;
   layerListExpandedType: number;
   resizingConstraint: number;
   hasClickThrough: boolean;

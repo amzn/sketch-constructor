@@ -1,4 +1,3 @@
-import uuid from 'uuid-v4';
 import TextStyle from '../TextStyle';
 import Fill from '../Fill';
 import Border from '../Border';

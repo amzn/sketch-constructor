@@ -1,6 +1,3 @@
-import ExportOptions from '../ExportOptions';
-import Rect from '../Rect';
-import Style from '../Style';
 import Color from '../Color';
 import Group from '../Group';
 import RulerData from '../RulerData';

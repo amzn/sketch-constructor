@@ -1,4 +1,3 @@
-import uuid from 'uuid-v4';
 import Color from '../Color';
 import Page from '../Page';
 import SharedStyle from '../SharedStyle';

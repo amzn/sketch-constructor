@@ -1,5 +1,3 @@
-import uuid from 'uuid-v4';
-import TextStyle from '../TextStyle';
 import Style from '../Style';
 
 declare class SharedStyle {

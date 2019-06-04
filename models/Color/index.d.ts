@@ -9,9 +9,9 @@ declare class Color {
 
   constructor(args?: any, json?: any);
 
-  set(tinyColor: TinyColor): Color;
+  set(tinyColor: TinyColor.Instance): Color;
 
-  _getTinyColor(): TinyColor;
+  _getTinyColor(): TinyColor.Instance;
 }
 
 export = Color;

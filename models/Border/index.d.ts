@@ -1,5 +1,4 @@
 import Color from '../Color';
-import Fill from '../Fill';
 
 declare class Border {
   static Position: {

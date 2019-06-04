@@ -16,7 +16,7 @@ declare const maps: {
 };
 declare const stackLayers: (layers: Layer[], gutter?: number) => Layer[];
 
-export = {
+export {
   layerToClass,
   maps,
   stackLayers,
