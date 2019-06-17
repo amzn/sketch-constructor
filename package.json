@@ -8,6 +8,7 @@
     "models",
     "utils",
     "index.js",
+    "index.d.ts",
     "LICENSE",
     "README.md",
     "NOTICE"
