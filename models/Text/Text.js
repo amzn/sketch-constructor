@@ -67,8 +67,7 @@ class Text extends Layer {
         userInfo: {},
 
         style:
-          args.style ||
-          Style.TextStyle({
+          Style.TextStyle(args.style || {
             fontName: args.fontName,
             fontSize: args.fontSize,
             alignment: args.alignment,
