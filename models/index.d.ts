@@ -20,6 +20,8 @@ import ShapeGroup from './ShapeGroup';
 import SharedStyle from './SharedStyle';
 import Sketch from './Sketch';
 import Style from './Style';
+import SymbolInstance from './SymbolInstance';
+import SymbolMaster from './SymbolMaster';
 import Text from './Text';
 import TextStyle from './TextStyle';
 import User from './User';
@@ -47,6 +49,8 @@ export {
   SharedStyle,
   Sketch,
   Style,
+  SymbolInstance,
+  SymbolMaster,
   Text,
   TextStyle,
   User,

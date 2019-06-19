@@ -35,6 +35,8 @@ module.exports = {
   SharedStyle: require('./SharedStyle'),
   Sketch: require('./Sketch'),
   Style: require('./Style'),
+  SymbolInstance: require('./SymbolInstance'),
+  SymbolMaster: require('./SymbolMaster'),
   Text: require('./Text'),
   TextStyle: require('./TextStyle'),
   User: require('./User'),
