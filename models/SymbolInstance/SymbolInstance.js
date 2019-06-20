@@ -11,11 +11,14 @@
  * and limitations under the License.
  */
 
+const uuid = require('uuid-v4');
 const Layer = require('../Layer');
+const ExportOptions = require('../ExportOptions');
+const Rect = require('../Rect');
+const Style = require('../Style');
 
 /**
- * This class is incomplete
- * @todo add OverrideValue class
+ * This class is WIP
  */
 class SymbolInstance extends Layer {
   /**
@@ -26,15 +29,27 @@ class SymbolInstance extends Layer {
   constructor(args = {}, json) {
     super(args, json);
     if (!json) {
-      Object.assign(this, SymbolInstance.Model, args);
+      const id = args.id || uuid().toUpperCase();
+      Object.assign(this, SymbolInstance.Model, {
+        do_objectID: id,
+        symbolID: args.symbolID,
+        exportOptions: new ExportOptions(args.exportOptions),
+        frame: new Rect(args.frame || {}),
+        name: args.name || id,
+        style: new Style(args.style),
+      });
     }
   }
 }
 
 /**
- *
+ * The underlying JSON object structure in a Sketch document.
+ * @mixes Layer.Model
+ * @property {string} symbolID
+ * @property {overrideValue[]} overrideValues
  */
 SymbolInstance.Model = Object.assign({}, Layer.Model, {
+  _class: 'symbolInstance',
   symbolID: '',
   overrideValues: [],
 });

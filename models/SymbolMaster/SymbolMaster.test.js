@@ -12,11 +12,55 @@
  */
 
 const SymbolMaster = require('./index');
-
-const json = {};
+const Text = require('../Text');
+const json = require('./__SymbolMaster.json');
 
 describe('SymbolMaster', () => {
-  it('should work from raw JSON', () => {
-    expect(true).toBeTruthy();
+  it('should be constructed from JSON', () => {
+    const symbolMaster = new SymbolMaster(null, json);
+    expect(JSON.stringify(symbolMaster)).toEqual(JSON.stringify(json));
+  });
+
+  it('should be constructed programatically', () => {
+    const symbolMaster = new SymbolMaster({
+      name: 'test',
+    });
+    expect(symbolMaster.name).toEqual('test');
+  });
+
+  it('should add overrideProperties', () => {
+    const symbolMaster = new SymbolMaster({
+      name: 'test',
+    });
+
+    const layer = new Text({
+      string: 'testing',
+      name: 'text layer',
+    });
+
+    symbolMaster.addLayer(layer, true);
+    expect(symbolMaster.overrideProperties[0].overrideName).toEqual(`${layer.do_objectID}_stringValue`);
+  });
+
+  it('should be able to create symbol instances', () => {
+    const symbolMaster = new SymbolMaster({
+      name: 'test',
+    });
+
+    const layer = new Text({
+      string: 'testing',
+      name: 'text layer',
+    });
+
+    symbolMaster.addLayer(layer, true);
+    const symbolInstance = symbolMaster.createInstance({
+      frame: {
+        width: 100,
+        height: 100,
+      },
+    });
+
+    expect(symbolInstance.symbolID).toEqual(symbolMaster.symbolID);
+    expect(symbolInstance.overrideValues[0].overrideName).toEqual(symbolMaster.overrideProperties[0].overrideName);
   });
 });

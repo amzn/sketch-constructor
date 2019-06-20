@@ -1,0 +1,185 @@
+{
+  "_class": "symbolMaster",
+  "do_objectID": "39EDE5C2-939A-4D13-A2A9-7861C585FB82",
+  "booleanOperation": -1,
+  "exportOptions": {
+      "_class": "exportOptions",
+      "exportFormats": [],
+      "includedLayerIds": [],
+      "layerOptions": 0,
+      "shouldTrim": false
+  },
+  "frame": {
+      "_class": "rect",
+      "constrainProportions": false,
+      "height": 200,
+      "width": 273,
+      "x": 202,
+      "y": 164
+  },
+  "isFixedToViewport": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "symbol name",
+  "nameIsFixed": true,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": true,
+  "clippingMaskMode": 0,
+  "hasClippingMask": false,
+  "style": {
+      "_class": "style",
+      "endMarkerType": 0,
+      "miterLimit": 10,
+      "startMarkerType": 0,
+      "windingRule": 1
+  },
+  "groupLayout": {
+      "_class": "MSImmutableFreeformGroupLayout"
+  },
+  "hasClickThrough": false,
+  "layers": [
+      {
+          "_class": "text",
+          "do_objectID": "F11D1CAA-BB10-4F9A-B918-6739E5EA8C84",
+          "booleanOperation": -1,
+          "exportOptions": {
+              "_class": "exportOptions",
+              "exportFormats": [],
+              "includedLayerIds": [],
+              "layerOptions": 0,
+              "shouldTrim": false
+          },
+          "frame": {
+              "_class": "rect",
+              "constrainProportions": false,
+              "height": 60,
+              "width": 127,
+              "x": 64,
+              "y": 70
+          },
+          "isFixedToViewport": false,
+          "isFlippedHorizontal": false,
+          "isFlippedVertical": false,
+          "isLocked": false,
+          "isVisible": true,
+          "layerListExpandedType": 0,
+          "name": "Hello",
+          "nameIsFixed": false,
+          "resizingConstraint": 47,
+          "resizingType": 0,
+          "rotation": 0,
+          "shouldBreakMaskChain": false,
+          "clippingMaskMode": 0,
+          "hasClippingMask": false,
+          "style": {
+              "_class": "style",
+              "endMarkerType": 0,
+              "miterLimit": 10,
+              "startMarkerType": 0,
+              "textStyle": {
+                  "_class": "textStyle",
+                  "encodedAttributes": {
+                      "MSAttributedStringColorAttribute": {
+                          "_class": "color",
+                          "alpha": 1,
+                          "blue": 0.5686274509803921,
+                          "green": 0.5490196078431373,
+                          "red": 0.5254901960784314
+                      },
+                      "textStyleVerticalAlignmentKey": 0,
+                      "MSAttributedStringFontAttribute": {
+                          "_class": "fontDescriptor",
+                          "attributes": {
+                              "name": "AmazonEmber-Bold",
+                              "size": 50
+                          }
+                      },
+                      "paragraphStyle": {
+                          "_class": "paragraphStyle",
+                          "alignment": 2
+                      },
+                      "kerning": 0
+                  },
+                  "verticalAlignment": 0
+              },
+              "windingRule": 1
+          },
+          "attributedString": {
+              "_class": "attributedString",
+              "string": "Hello",
+              "attributes": [
+                  {
+                      "_class": "stringAttribute",
+                      "location": 0,
+                      "length": 5,
+                      "attributes": {
+                          "MSAttributedStringFontAttribute": {
+                              "_class": "fontDescriptor",
+                              "attributes": {
+                                  "name": "AmazonEmber-Bold",
+                                  "size": 50
+                              }
+                          },
+                          "MSAttributedStringColorAttribute": {
+                              "_class": "color",
+                              "alpha": 1,
+                              "blue": 0.5686274509803921,
+                              "green": 0.5490196078431373,
+                              "red": 0.5254901960784314
+                          },
+                          "kerning": 0,
+                          "textStyleVerticalAlignmentKey": 0,
+                          "paragraphStyle": {
+                              "_class": "paragraphStyle",
+                              "alignment": 2
+                          }
+                      }
+                  }
+              ]
+          },
+          "automaticallyDrawOnUnderlyingPath": false,
+          "dontSynchroniseWithSymbol": false,
+          "glyphBounds": "{{4, 12}, {120, 38}}",
+          "lineSpacingBehaviour": 2,
+          "textBehaviour": 0
+      }
+  ],
+  "backgroundColor": {
+      "_class": "color",
+      "alpha": 1,
+      "blue": 1,
+      "green": 1,
+      "red": 1
+  },
+  "hasBackgroundColor": false,
+  "horizontalRulerData": {
+      "_class": "rulerData",
+      "base": 0,
+      "guides": []
+  },
+  "includeBackgroundColorInExport": true,
+  "includeInCloudUpload": true,
+  "isFlowHome": false,
+  "resizesContent": false,
+  "verticalRulerData": {
+      "_class": "rulerData",
+      "base": 0,
+      "guides": []
+  },
+  "includeBackgroundColorInInstance": true,
+  "symbolID": "A821C15C-A35C-4070-83F6-4493107ABEEA",
+  "changeIdentifier": 8,
+  "overrideProperties": [
+      {
+          "_class": "MSImmutableOverrideProperty",
+          "canOverride": true,
+          "overrideName": "F11D1CAA-BB10-4F9A-B918-6739E5EA8C84_stringValue"
+      }
+  ],
+  "allowsOverrides": true
+}

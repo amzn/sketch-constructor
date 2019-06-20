@@ -1,0 +1,59 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "04E1BC4A-66C7-4856-BA87-E1515F3BDD07",
+  "booleanOperation": -1,
+  "exportOptions": {
+      "_class": "exportOptions",
+      "exportFormats": [],
+      "includedLayerIds": [],
+      "layerOptions": 0,
+      "shouldTrim": false
+  },
+  "frame": {
+      "_class": "rect",
+      "constrainProportions": false,
+      "height": 159,
+      "width": 238,
+      "x": 111,
+      "y": 186
+  },
+  "isFixedToViewport": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "test",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "clippingMaskMode": 0,
+  "hasClippingMask": false,
+  "style": {
+      "_class": "style",
+      "endMarkerType": 0,
+      "miterLimit": 10,
+      "startMarkerType": 0,
+      "windingRule": 1
+  },
+  "horizontalSpacing": 0,
+  "overrideValues": [
+      {
+          "_class": "overrideValue",
+          "do_objectID": "3CC4547C-83FE-4A42-A951-D523C23BBCE4",
+          "overrideName": "95C47E30-81C7-4F67-9794-BD70BC41DCC4_stringValue",
+          "value": "i can see it"
+      },
+      {
+          "_class": "overrideValue",
+          "do_objectID": "44D63CA4-C8FF-4E2C-AA15-758356B50355",
+          "overrideName": "107CD932-1F40-4FEE-92CF-F8E2DBA1B3E0_stringValue",
+          "value": "in your eyes"
+      }
+  ],
+  "scale": 1,
+  "symbolID": "4B69D0C7-ADC1-41FD-B718-0FDB54E17620",
+  "verticalSpacing": 0
+}
