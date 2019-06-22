@@ -42,7 +42,7 @@ class Group extends Layer {
         layers: args.layers || [],
       });
     }
-    this = newIds(this);
+
     return this;
   }
 }
@@ -56,18 +56,5 @@ Group.Model = Object.assign({}, Layer.Model, {
   resizingConstraint: 63,
   hasClickThrough: false,
 });
-
-let newIds = obj => {
-  Object.keys(obj).forEach(key => {
-    if (key === 'do_objectID') {
-      obj[key] = uuidv1().toUpperCase();
-      return obj;
-    }
-    if (typeof obj[key] === 'object') {
-      newIds(obj[key]);
-    }
-  });
-  return obj;
-};
 
 module.exports = Group;
