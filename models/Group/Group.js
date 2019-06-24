@@ -42,8 +42,8 @@ class Group extends Layer {
         layers: args.layers || [],
       });
     }
-    this = newIds(this);
-    return this;
+    let updated_obj = newId(this);
+    return updated_obj;
   }
 }
 
@@ -60,7 +60,7 @@ Group.Model = Object.assign({}, Layer.Model, {
 let newIds = obj => {
   Object.keys(obj).forEach(key => {
     if (key === 'do_objectID') {
-      obj[key] = uuidv1().toUpperCase();
+      obj[key] = uuid().toUpperCase();
       return obj;
     }
     if (typeof obj[key] === 'object') {
