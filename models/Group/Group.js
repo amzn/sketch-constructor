@@ -32,18 +32,20 @@ class Group extends Layer {
    */
   constructor(args = {}, json) {
     super(args, json);
+    let return_obj = this;
     if (!json) {
       const id = args.id || uuid().toUpperCase();
-      Object.assign(this, Group.Model, {
+      Object.assign(return_obj, Group.Model, {
         do_objectID: id,
         name: args.name || id,
         frame: new Rect(args.frame),
         style: new Style(args.style),
         layers: args.layers || [],
       });
+      return_obj = createSublayerIds(this);
     }
-    let updated_obj = newId(this);
-    return updated_obj;
+
+    return return_obj;
   }
 }
 
@@ -57,17 +59,18 @@ Group.Model = Object.assign({}, Layer.Model, {
   hasClickThrough: false,
 });
 
-let newIds = obj => {
+let createSublayerIds = obj => {
   Object.keys(obj).forEach(key => {
     if (key === 'do_objectID') {
       obj[key] = uuid().toUpperCase();
       return obj;
     }
     if (typeof obj[key] === 'object') {
-      newIds(obj[key]);
+      createSublayerIds(obj[key]);
     }
   });
   return obj;
 };
+
 
 module.exports = Group;
