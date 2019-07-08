@@ -1,0 +1,17 @@
+{
+  "name": "symbols",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run build",
+    "build": "node index.js",
+    "start": "npm run build && cp dist/output.sketch dist/output.zip && open dist/output.zip && open dist/output.sketch"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "sketch-constructor": "^1.2.0"
+  }
+}

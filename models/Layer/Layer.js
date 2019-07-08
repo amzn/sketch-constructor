@@ -26,10 +26,9 @@ class Layer {
     // go over the child layers and try to map them to
     // classes.
     if (json) {
+      Object.assign(this, json);
       if (json.layers) {
-        Object.assign(this, json, {
-          layers: json.layers.map(require('../../utils/layerToClass')),
-        });
+        this.layers = json.layers.map(require('../../utils/layerToClass'));
       }
     }
   }
