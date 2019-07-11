@@ -87,4 +87,16 @@ describe('TextStyle', () => {
     expect(textStyle.encodedAttributes.paragraphStyle.maximumLineHeight).toEqual(10.3);
     expect(textStyle.getLineHeight()).toEqual(10.3);
   });
+
+  it('should not contain kerning if not set', () => {
+    const textStyle = new TextStyle();
+    expect(textStyle.getKerning()).toBeUndefined();
+  });
+
+  it('should contain kerning if set', () => {
+    const textStyle = new TextStyle({
+      kerning: -2.3,
+    });
+    expect(textStyle.getKerning()).toEqual(-2.3);
+  });
 });

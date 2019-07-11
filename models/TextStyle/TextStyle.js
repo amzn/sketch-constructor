@@ -56,6 +56,9 @@ class TextStyle {
         this.encodedAttributes.paragraphStyle.minimumLineHeight = args.lineHeight;
         this.encodedAttributes.paragraphStyle.maximumLineHeight = args.lineHeight;
       }
+      if (args.kerning) {
+        this.encodedAttributes.kerning = args.kerning;
+      }
     }
   }
 
@@ -73,6 +76,10 @@ class TextStyle {
 
   getLineHeight() {
     return this.encodedAttributes.paragraphStyle.minimumLineHeight;
+  }
+
+  getKerning() {
+    return this.encodedAttributes.kerning;
   }
 }
 
@@ -98,6 +105,7 @@ TextStyle.Model = {
     },
   },
   verticalAlignment: 0,
+  kerning: 0,
 };
 
 module.exports = TextStyle;
