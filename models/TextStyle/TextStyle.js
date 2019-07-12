@@ -52,6 +52,13 @@ class TextStyle {
           },
         },
       });
+      if (args.lineHeight) {
+        this.encodedAttributes.paragraphStyle.minimumLineHeight = args.lineHeight;
+        this.encodedAttributes.paragraphStyle.maximumLineHeight = args.lineHeight;
+      }
+      if (args.kerning) {
+        this.encodedAttributes.kerning = args.kerning;
+      }
     }
   }
 
@@ -65,6 +72,14 @@ class TextStyle {
 
   getFontName() {
     return this.encodedAttributes.MSAttributedStringFontAttribute.attributes.name;
+  }
+
+  getLineHeight() {
+    return this.encodedAttributes.paragraphStyle.minimumLineHeight;
+  }
+
+  getKerning() {
+    return this.encodedAttributes.kerning;
   }
 }
 
@@ -85,9 +100,12 @@ TextStyle.Model = {
     paragraphStyle: {
       _class: 'paragraphStyle',
       alignment: 0,
+      minimumLineHeight: 43,
+      maximumLineHeight: 43,
     },
   },
   verticalAlignment: 0,
+  kerning: 0,
 };
 
 module.exports = TextStyle;
