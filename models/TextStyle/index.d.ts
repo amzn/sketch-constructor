@@ -15,9 +15,12 @@ declare class TextStyle {
     textStyleVerticalAlignmentKey: number;
     underlineStyle: number;
     strikethroughStyle: number;
+    kerning: number;
     paragraphStyle: {
       _class: 'paragraphStyle';
       alignment: number;
+      minimumLineHeight: number;
+      maximumLineHeight: number;
     };
   };
   verticalAlignment: number;
@@ -29,6 +32,10 @@ declare class TextStyle {
   getFontSize(): number;
 
   getFontName(): string;
+
+  getLineHeight(): number;
+
+  getKerning(): number;
 }
 
 export = TextStyle;
