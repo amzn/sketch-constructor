@@ -32,6 +32,7 @@ module.exports = {
   RulerData: require('./RulerData'),
   Shadow: require('./Shadow'),
   ShapeGroup: require('./ShapeGroup'),
+  ShapePath: require('./ShapePath'),
   SharedStyle: require('./SharedStyle'),
   Sketch: require('./Sketch'),
   Style: require('./Style'),

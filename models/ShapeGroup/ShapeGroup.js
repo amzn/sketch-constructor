@@ -14,6 +14,7 @@
 const uuid = require('uuid-v4');
 const Layer = require('../Layer');
 const Rectangle = require('../Rectangle');
+const ShapePath = require('../ShapePath');
 const Oval = require('../Oval');
 const Rect = require('../Rect');
 const Style = require('../Style');
@@ -72,6 +73,29 @@ class ShapeGroup extends Layer {
           y: 0,
           width: args.width,
           height: args.height,
+        }),
+      ],
+    });
+  }
+
+  static ShapePath(args) {
+    return new this({
+      name: args.name,
+      id: args.id,
+      style: args.style,
+      frame: {
+        x: args.x,
+        y: args.y,
+        width: args.width,
+        height: args.height,
+      },
+      layers: [
+        new ShapePath({
+          x: 0,
+          y: 0,
+          width: args.width,
+          height: args.height,
+          points: args.points,
         }),
       ],
     });
