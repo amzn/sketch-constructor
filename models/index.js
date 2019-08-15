@@ -14,6 +14,7 @@
 module.exports = {
   // Base: require('./Base'),
   Artboard: require('./Artboard'),
+  AttributedString: require('./AttributedString'),
   Group: require('./Group'),
   Border: require('./Border'),
   BorderOptions: require('./BorderOptions'),
@@ -35,6 +36,7 @@ module.exports = {
   ShapePath: require('./ShapePath'),
   SharedStyle: require('./SharedStyle'),
   Sketch: require('./Sketch'),
+  StringAttribute: require('./StringAttribute'),
   Style: require('./Style'),
   SymbolInstance: require('./SymbolInstance'),
   SymbolMaster: require('./SymbolMaster'),
