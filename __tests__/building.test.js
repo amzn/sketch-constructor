@@ -8,7 +8,7 @@ describe('Building from scratch', () => {
 
   it('should write a valid file', async () => {
     await (async () => {
-      let sketch = new Sketch();
+      const sketch = new Sketch();
       const page = new Page({
         name: 'My Page'
       });
@@ -30,6 +30,14 @@ describe('Building from scratch', () => {
       const path = `${process.cwd()}/__tests__/__output/output2.sketch`;
       const outputPath = await sketch.build(path);
       expect(fileExists(outputPath)).toBeTruthy();
+
+      const { meta } = sketch;
+      expect(Object.keys(meta.pagesAndArtboards || {}).length).toEqual(1);
+      const metaPage = Object.values(meta.pagesAndArtboards)[0];
+      expect(metaPage.name).toEqual('My Page');
+      expect(Object.keys(metaPage.artboards).length).toEqual(1);
+      const metaArtboard = Object.values(metaPage.artboards)[0];
+      expect(metaArtboard.name).toEqual('My Artboard');
     })();
 
     // another sketch should have correct meta
