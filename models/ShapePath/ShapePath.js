@@ -11,6 +11,7 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
 const uuid = require('uuid-v4');
 const Layer = require('../Layer');
 const Rect = require('../Rect');
@@ -36,7 +37,7 @@ class ShapePath extends Layer {
     super(args, json);
     if (!json) {
       const id = args.id || uuid().toUpperCase();
-      Object.assign(this, ShapePath.Model, {
+      Object.assign(this, deepcopy(ShapePath.Model), {
         points: args.points || [],
         do_objectID: id,
         frame: new Rect({

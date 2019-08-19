@@ -11,6 +11,7 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
 const uuid = require('uuid-v4');
 const Layer = require('../Layer');
 const CurvePoint = require('../CurvePoint');
@@ -38,7 +39,7 @@ class Rectangle extends Layer {
     super(args, json);
     if (!json) {
       const id = args.id || uuid().toUpperCase();
-      Object.assign(this, Rectangle.Model, {
+      Object.assign(this, deepcopy(Rectangle.Model), {
         points: points.map(
           point =>
             new CurvePoint({

@@ -11,6 +11,7 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
 const uuid = require('uuid-v4');
 const Layer = require('../Layer');
 const ExportOptions = require('../ExportOptions');
@@ -30,7 +31,7 @@ class SymbolInstance extends Layer {
     super(args, json);
     if (!json) {
       const id = args.id || uuid().toUpperCase();
-      Object.assign(this, SymbolInstance.Model, {
+      Object.assign(this, deepcopy(SymbolInstance.Model), {
         do_objectID: id,
         symbolID: args.symbolID,
         exportOptions: new ExportOptions(args.exportOptions),

@@ -11,6 +11,7 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
 const uuid = require('uuid-v4');
 const Layer = require('../Layer');
 const Rect = require('../Rect');
@@ -34,7 +35,7 @@ class Group extends Layer {
     super(args, json);
     if (!json) {
       const id = args.id || uuid().toUpperCase();
-      Object.assign(this, Group.Model, {
+      Object.assign(this, deepcopy(Group.Model), {
         do_objectID: id,
         name: args.name || id,
         frame: new Rect(args.frame),

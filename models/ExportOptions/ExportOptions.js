@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
+
 /**
  * Options for exporting an artboard
  */
@@ -24,7 +26,7 @@ class ExportOptions {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, ExportOptions.Model, args);
+      Object.assign(this, deepcopy(ExportOptions.Model), args);
     }
     return this;
   }

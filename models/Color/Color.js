@@ -16,6 +16,7 @@
  * @see {@link https://www.npmjs.com/package/tinycolor2}
  */
 const TinyColor = require('tinycolor2');
+const deepcopy = require('deepcopy');
 
 /**
  * Color class
@@ -32,7 +33,7 @@ class Color {
       Object.assign(this, json);
     } else {
       const color = TinyColor(args || '#000').toRgb();
-      Object.assign(this, Color.Model, {
+      Object.assign(this, deepcopy(Color.Model), {
         alpha: color.a,
         blue: color.b / 255,
         green: color.g / 255,

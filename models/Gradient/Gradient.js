@@ -11,6 +11,7 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
 const Color = require('../Color');
 
 /**
@@ -26,7 +27,7 @@ class Gradient {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, Gradient.Model, {});
+      Object.assign(this, deepcopy(Gradient.Model), {});
     }
   }
 }

@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
+
 /**
  * This is an internal class, you shouldn't be directly dealing with this class. It outputs the meta.json file in the top level directory of a Sketch file.
  */
@@ -24,7 +26,7 @@ class Meta {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, Meta.Model, args);
+      Object.assign(this, deepcopy(Meta.Model), args);
     }
   }
 

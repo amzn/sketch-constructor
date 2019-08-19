@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
+
 /**
  *
  */
@@ -24,7 +26,7 @@ class ExportFormat {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, ExportFormat.Model, args);
+      Object.assign(this, deepcopy(ExportFormat.Model), args);
     }
     return this;
   }

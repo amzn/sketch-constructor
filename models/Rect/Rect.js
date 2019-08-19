@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
+
 /**
  * A Rect is a lower-level class used to define the frame of a layer. Don't use this
  * if you mean to use a Rectangle instead!
@@ -25,7 +27,7 @@ class Rect {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, Rect.Model, args);
+      Object.assign(this, deepcopy(Rect.Model), args);
     }
   }
 }

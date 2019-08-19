@@ -11,6 +11,7 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
 const uuid = require('uuid-v4');
 const Layer = require('../Layer');
 const Rectangle = require('../Rectangle');
@@ -24,7 +25,7 @@ class ShapeGroup extends Layer {
     super(args, json);
     if (!json) {
       const id = args.id || uuid().toUpperCase();
-      Object.assign(this, ShapeGroup.Model, {
+      Object.assign(this, deepcopy(ShapeGroup.Model), {
         do_objectID: id,
         name: args.name || id,
         style: args.style ? Style.LayerStyle(args.style) : null,

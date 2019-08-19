@@ -11,6 +11,7 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
 const uuid = require('uuid-v4');
 const TextStyle = require('../TextStyle');
 const Fill = require('../Fill');
@@ -55,7 +56,7 @@ class Style {
       if (this.shadows) this.shadows = this.shadows.map(shadow => new Shadow(null, shadow));
     } else {
       const id = args.id || uuid().toUpperCase();
-      Object.assign(this, Style.Model, {
+      Object.assign(this, deepcopy(Style.Model), {
         do_objectID: id,
         borders: (args.borders || []).map(border => new Border(border)),
         fills: (args.fills || []).map(fill => new Fill(fill)),

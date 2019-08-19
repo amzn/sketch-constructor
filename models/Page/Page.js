@@ -11,6 +11,7 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
 const uuid = require('uuid-v4');
 const Rect = require('../Rect');
 const Style = require('../Style');
@@ -30,7 +31,7 @@ class Page extends Group {
     super(args, json);
     if (!json) {
       const id = uuid().toUpperCase();
-      Object.assign(this, Page.Model, {
+      Object.assign(this, deepcopy(Page.Model), {
         do_objectID: id,
         name: args.name || id,
         frame: new Rect(args.frame),

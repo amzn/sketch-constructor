@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
+
 /**
  * Border options
  */
@@ -27,7 +29,7 @@ class BorderOptions {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, BorderOptions.Model, {
+      Object.assign(this, deepcopy(BorderOptions.Model), {
         dashPattern: args.dashPattern,
         lineCapStyle: BorderOptions.LineCapStyle[args.lineCapStyle || 'butt'],
         lineJoinStyle: BorderOptions.LineJoinStyle[args.lineJoinStyle || 'miter'],

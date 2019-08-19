@@ -11,29 +11,25 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
 const uuid = require('uuid-v4');
 const Layer = require('../Layer');
 const CurvePoint = require('../CurvePoint');
 const Rect = require('../Rect');
 const Style = require('../Style');
 
-const points = [
-    '{0.5, 1}',
-    '{1, 0.5}',
-    '{0.5, 0}',
-    '{0, 0.5}'
-];
+const points = ['{0.5, 1}', '{1, 0.5}', '{0.5, 0}', '{0, 0.5}'];
 const pointsFrom = [
-    '{0.77614237490000004, 1}',
-    '{1, 0.22385762510000001}',
-    '{0.22385762510000001, 0}',
-    '{0, 0.77614237490000004}'
+  '{0.77614237490000004, 1}',
+  '{1, 0.22385762510000001}',
+  '{0.22385762510000001, 0}',
+  '{0, 0.77614237490000004}',
 ];
 const pointsTo = [
-    '{0.22385762510000001, 1}',
-    '{1, 0.77614237490000004}',
-    '{0.77614237490000004, 0}',
-    '{0, 0.22385762510000001}'
+  '{0.22385762510000001, 1}',
+  '{1, 0.77614237490000004}',
+  '{0.77614237490000004, 0}',
+  '{0, 0.22385762510000001}',
 ];
 
 /**
@@ -55,7 +51,7 @@ class Oval extends Layer {
     super(args, json);
     if (!json) {
       const id = args.id || uuid().toUpperCase();
-      Object.assign(this, Oval.Model, {
+      Object.assign(this, deepcopy(Oval.Model), {
         points: points.map(
           (point, index) =>
             new CurvePoint({

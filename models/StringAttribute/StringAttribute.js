@@ -11,6 +11,7 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
 const Color = require('../Color');
 const { textAlignmentMap, verticalAlignmentMap } = require('../../utils/maps');
 
@@ -19,7 +20,7 @@ class StringAttribute {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, StringAttribute.Model, {
+      Object.assign(this, deepcopy(StringAttribute.Model), {
         location: args.location || 0,
         length: args.length || 0,
         attributes: {

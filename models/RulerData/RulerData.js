@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
+
 /**
  *
  */
@@ -24,7 +26,7 @@ class RulerData {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, RulerData.Model, args);
+      Object.assign(this, deepcopy(RulerData.Model), args);
     }
   }
 }

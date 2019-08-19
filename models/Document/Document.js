@@ -12,6 +12,7 @@
  */
 
 const uuid = require('uuid-v4');
+const deepcopy = require('deepcopy');
 const SharedStyle = require('../SharedStyle');
 
 /**
@@ -34,7 +35,7 @@ class Document {
     } else {
       const id = args.id || uuid().toUpperCase();
 
-      Object.assign(this, Document.Model, {
+      Object.assign(this, deepcopy(Document.Model), {
         id,
       });
     }

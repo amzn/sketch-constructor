@@ -11,6 +11,7 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
 const uuid = require('uuid-v4');
 const Artboard = require('../Artboard');
 const ExportOptions = require('../ExportOptions');
@@ -32,7 +33,7 @@ class SymbolMaster extends Artboard {
       const id = args.id || uuid().toUpperCase();
       const symbolID = args.symbolID || uuid().toUpperCase();
 
-      Object.assign(this, SymbolMaster.Model, {
+      Object.assign(this, deepcopy(SymbolMaster.Model), {
         do_objectID: id,
         symbolID,
         exportOptions: new ExportOptions(args.exportOptions),

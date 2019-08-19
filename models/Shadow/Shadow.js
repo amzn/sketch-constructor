@@ -11,6 +11,7 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
 const Color = require('../Color');
 
 class Shadow {
@@ -18,7 +19,7 @@ class Shadow {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, Shadow.Model, args, {
+      Object.assign(this, deepcopy(Shadow.Model), args, {
         color: new Color(args.color),
       });
     }

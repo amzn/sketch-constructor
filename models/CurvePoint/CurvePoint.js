@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
+
 /**
  * CurvePoints are used to create Shapes
  */
@@ -24,7 +26,7 @@ class CurvePoint {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, CurvePoint.Model, args);
+      Object.assign(this, deepcopy(CurvePoint.Model), args);
     }
   }
 }

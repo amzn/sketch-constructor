@@ -11,6 +11,7 @@
  * and limitations under the License.
  */
 
+const deepcopy = require('deepcopy');
 const uuid = require('uuid-v4');
 const ExportOptions = require('../ExportOptions');
 const Rect = require('../Rect');
@@ -40,7 +41,7 @@ class Artboard extends Group {
     super(args, json);
     if (!json) {
       const id = args.id || uuid().toUpperCase();
-      Object.assign(this, Artboard.Model, {
+      Object.assign(this, deepcopy(Artboard.Model), {
         do_objectID: id,
         exportOptions: new ExportOptions(args.exportOptions),
         frame: new Rect(args.frame || {}),
