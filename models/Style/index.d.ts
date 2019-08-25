@@ -2,6 +2,7 @@ import TextStyle from '../TextStyle';
 import Fill from '../Fill';
 import Border from '../Border';
 import Shadow from '../Shadow';
+import GraphicsContextSettings from '../GraphicsContextSettings';
 
 declare class Style {
   static MarkerType: {
@@ -50,11 +51,7 @@ declare class Style {
   fills: Fill[];
   shadows: Shadow[];
   textStyle: TextStyle;
-  contextSettings: {
-    _class: 'graphicsContextSettings';
-    blendMode: number;
-    opacity: number;
-  };
+  contextSettings: GraphicsContextSettings;
 
   constructor(args?: any, json?: any);
 }

@@ -1,15 +1,12 @@
 import Color from '../Color';
+import GraphicsContextSettings from '../GraphicsContextSettings';
 
 declare class Shadow {
   _class: 'shadow';
   isEnabled: boolean;
   blurRadius: number;
   color: Color;
-  contextSettings: {
-    _class: 'graphicsContextSettings';
-    blendMode: number;
-    opacity: number;
-  };
+  contextSettings: GraphicsContextSettings;
   offsetX: number;
   offsetY: number;
   spread: number;
