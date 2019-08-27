@@ -50,7 +50,7 @@ class Bitmap extends Layer {
 /**
  * @mixes Layer.Model
  */
-Bitmap.Model = Object.assign({}, Bitmap.Model, {
+Bitmap.Model = Object.assign({}, Layer.Model, {
   _class: 'bitmap',
   fillReplacesImage: false,
   hasClippingMask: false,
