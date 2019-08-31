@@ -19,6 +19,7 @@ const Document = require('../Document');
 const Page = require('../Page');
 const Artboard = require('../Artboard');
 const SharedStyle = require('../SharedStyle');
+const { STORAGE_DIR, STORAGE_IMG_DIR } = require('../../utils/paths');
 
 class Sketch {
   static fromFile(path) {
@@ -123,10 +124,14 @@ class Sketch {
       .file('meta.json', JSON.stringify(this.meta))
       .file('user.json', JSON.stringify(this.user))
       .file('document.json', JSON.stringify(this.document));
-
     this.zip.folder('pages');
     this.zip.folder('previews');
-
+    if (fs.existsSync(STORAGE_IMG_DIR)) {
+      fs.readdirSync(STORAGE_IMG_DIR).forEach(file => {
+        this.zip.folder('images').file(file, fs.readFile(`${STORAGE_IMG_DIR}/${file}`));
+      });
+    }
+    fs.removeSync(STORAGE_DIR);
     this.pages.forEach(page => {
       this.zip.file(`pages/${page.do_objectID}.json`, JSON.stringify(page));
     });

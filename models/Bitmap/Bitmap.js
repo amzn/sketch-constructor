@@ -12,20 +12,55 @@
  */
 
 const uuid = require('uuid-v4');
+const fs = require('fs-extra');
+const md5File = require('md5-file');
 const Layer = require('../Layer');
 const Rect = require('../Rect');
 const Style = require('../Style');
+const { STORAGE_DIR, STORAGE_IMG_DIR } = require('../../utils/paths');
 
 /**
  * A bitmap layer is used for images
+ * Currently supported file types: PNG
  * @extends Layer
  *
  */
 class Bitmap extends Layer {
   /**
+   * @mixes Layer.Model
+   * @property {boolean} fillReplacesImage
+   * @property {boolean} hasClippingMask
+   * @property {integer} intendedDPI
+   * @property {integer} layerListExpandedType
+   * @property {integer} resizingConstraint
+   * @property {integer} resizingType
+   * @property {float} rotation
+   * @property {boolean} shouldBreakMaskChain
+   * @property {Object} image
+   */
+  static get Model() {
+    return Object.assign({}, Layer.Model, {
+      _class: 'bitmap',
+      fillReplacesImage: false,
+      hasClippingMask: false,
+      intendedDPI: 72,
+      layerListExpandedType: 0,
+      resizingConstraint: 63,
+      resizingType: 0,
+      rotation: 0,
+      shouldBreakMaskChain: false,
+      image: {
+        _class: 'MSJSONFileReference',
+        _ref_class: 'MSImageData',
+        _ref: '',
+      },
+    });
+  }
+
+  /**
    *
    * @param {Object} args
-   * @param {String} args.image The path of the image
+   * @param {String} args.filePath Local path of the image in PNG format
    * @param {Object} args.frame Sent to {@link Rect}
    * @param {Object} args.style Sent to {@link Style}
    * @param {Bitmap.Model} json
@@ -41,30 +76,14 @@ class Bitmap extends Layer {
         style: new Style(args.style),
         layers: args.layers || [],
       });
+      const fileHash = md5File.sync(args.filePath);
+      this.image._ref = `images/${fileHash}.png`;
+      fs.ensureDirSync(STORAGE_IMG_DIR);
+      fs.copyFileSync(args.filePath, `${STORAGE_DIR}/${this.image._ref}`);
     }
 
     return this;
   }
 }
-
-/**
- * @mixes Layer.Model
- */
-Bitmap.Model = Object.assign({}, Layer.Model, {
-  _class: 'bitmap',
-  fillReplacesImage: false,
-  hasClippingMask: false,
-  intendedDPI: 72,
-  layerListExpandedType: 0,
-  resizingConstraint: 63,
-  resizingType: 0,
-  rotation: 0,
-  shouldBreakMaskChain: false,
-  image: {
-    _class: 'MSJSONFileReference',
-    _ref_class: 'MSImageData',
-    _ref: '',
-  },
-});
 
 module.exports = Bitmap;

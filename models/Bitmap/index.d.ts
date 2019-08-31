@@ -15,9 +15,7 @@
 export interface BitmapLayer {
   _class?: 'bitmapLayer'
   booleanOperation?: number
-  clippingMask: {
-    [k: string]: any
-  }
+  clippingMask: Record<string, any>
   clippingMaskMode?: number
   do_objectID?: string
   exportOptions?: {
@@ -34,7 +32,7 @@ export interface BitmapLayer {
   image?: {
     [k: string]: any
   }
-  imageSHA?: {
+  imageHash?: {
     [k: string]: any
   }
   /**
