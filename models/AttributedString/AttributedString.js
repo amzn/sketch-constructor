@@ -18,6 +18,18 @@ const StringAttribute = require('../StringAttribute');
  */
 class AttributedString {
   /**
+   * @property {String} string
+   * @property {StringAttribute[]} attributes
+   */
+  static get Model() {
+    return {
+      _class: 'attributedString',
+      string: '',
+      attributes: [],
+    };
+  }
+
+  /**
    *
    * @param {Object} args
    * @param {String} args.string
@@ -43,15 +55,5 @@ class AttributedString {
     }
   }
 }
-
-/**
- * @property {String} string
- * @property {StringAttribute[]} attributes
- */
-AttributedString.Model = {
-  _class: 'attributedString',
-  string: '',
-  attributes: [],
-};
 
 module.exports = AttributedString;

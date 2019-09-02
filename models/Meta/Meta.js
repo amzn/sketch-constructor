@@ -16,6 +16,39 @@
  */
 class Meta {
   /**
+   * @property {String} commit
+   * @property {Object} pagesAndArtboards
+   * @property {integer} version
+   * @property {Array} fonts
+   * @property {integer} compatibilityVersion
+   * @property {String} app
+   */
+  static get Model() {
+    return {
+      commit: 'ebc3e0ead0906f5810891944454a71b877934b56',
+      pagesAndArtboards: {},
+      version: 112,
+      fonts: [],
+      compatibilityVersion: 99,
+      app: 'com.bohemiancoding.sketch3',
+      autosaved: 0,
+      variant: 'NONAPPSTORE',
+      created: {
+        commit: 'ebc3e0ead0906f5810891944454a71b877934b56',
+        appVersion: '52.5',
+        build: 67469,
+        app: 'com.bohemiancoding.sketch3',
+        compatibilityVersion: 99,
+        version: 112,
+        variant: 'NONAPPSTORE',
+      },
+      saveHistory: ['NONAPPSTORE.67469'],
+      appVersion: '52.5',
+      build: 67469,
+    };
+  }
+
+  /**
    *
    * @param {Meta.Model} args
    * @param {Meta.Model} json
@@ -44,36 +77,5 @@ class Meta {
     };
   }
 }
-
-/**
- * @property {String} commit
- * @property {Object} pagesAndArtboards
- * @property {integer} version
- * @property {Array} fonts
- * @property {integer} compatibilityVersion
- * @property {String} app
- */
-Meta.Model = {
-  commit: 'ebc3e0ead0906f5810891944454a71b877934b56',
-  pagesAndArtboards: {},
-  version: 112,
-  fonts: [],
-  compatibilityVersion: 99,
-  app: 'com.bohemiancoding.sketch3',
-  autosaved: 0,
-  variant: 'NONAPPSTORE',
-  created: {
-    commit: 'ebc3e0ead0906f5810891944454a71b877934b56',
-    appVersion: '52.5',
-    build: 67469,
-    app: 'com.bohemiancoding.sketch3',
-    compatibilityVersion: 99,
-    version: 112,
-    variant: 'NONAPPSTORE',
-  },
-  saveHistory: ['NONAPPSTORE.67469'],
-  appVersion: '52.5',
-  build: 67469,
-};
 
 module.exports = Meta;

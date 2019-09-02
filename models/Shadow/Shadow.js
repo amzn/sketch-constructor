@@ -14,6 +14,23 @@
 const Color = require('../Color');
 
 class Shadow {
+  static get Model() {
+    return {
+      _class: 'shadow',
+      isEnabled: true,
+      blurRadius: 4,
+      color: Color.Model,
+      contextSettings: {
+        _class: 'graphicsContextSettings',
+        blendMode: 0,
+        opacity: 1,
+      },
+      offsetX: 0,
+      offsetY: 2,
+      spread: 0,
+    };
+  }
+
   constructor(args, json) {
     if (json) {
       Object.assign(this, json);
@@ -24,20 +41,5 @@ class Shadow {
     }
   }
 }
-
-Shadow.Model = {
-  _class: 'shadow',
-  isEnabled: true,
-  blurRadius: 4,
-  color: Color.Model,
-  contextSettings: {
-    _class: 'graphicsContextSettings',
-    blendMode: 0,
-    opacity: 1,
-  },
-  offsetX: 0,
-  offsetY: 2,
-  spread: 0,
-};
 
 module.exports = Shadow;

@@ -21,6 +21,42 @@ const Style = require('../Style');
  * This is an abstract class and should not be directly instantiated.
  */
 class Layer {
+  /**
+   * @property {String} do_objectID
+   * @property {integer} booleanOperation
+   * @property {ExportOptions.Model} exportOptions
+   * @property {Rect.Model} frame
+   * @property {boolean} isFixedToViewport
+   * @property {boolean} isFlippedHorizontal
+   * @property {boolean} isFlippedVertical
+   * @property {boolean} isLocked
+   * @property {boolean} isVisible
+   * @property {String} name
+   * @property {boolean} nameIsFixed
+   */
+  static get Model() {
+    return {
+      _class: '',
+      do_objectID: '',
+      booleanOperation: -1,
+      exportOptions: ExportOptions.Model,
+      frame: Rect.Model,
+      isFixedToViewport: false,
+      isFlippedHorizontal: false,
+      isFlippedVertical: false,
+      isLocked: false,
+      isVisible: true,
+      layerListExpandedType: 0,
+      name: '',
+      nameIsFixed: false,
+      resizingConstraint: 47,
+      resizingType: 0,
+      rotation: 0,
+      shouldBreakMaskChain: false,
+      style: Style.Model,
+    };
+  }
+
   constructor(args, json) {
     // If we are building a layer from raw JSON
     // go over the child layers and try to map them to
@@ -67,39 +103,5 @@ class Layer {
     return this.do_objectID;
   }
 }
-
-/**
- * @property {String} do_objectID
- * @property {integer} booleanOperation
- * @property {ExportOptions.Model} exportOptions
- * @property {Rect.Model} frame
- * @property {boolean} isFixedToViewport
- * @property {boolean} isFlippedHorizontal
- * @property {boolean} isFlippedVertical
- * @property {boolean} isLocked
- * @property {boolean} isVisible
- * @property {String} name
- * @property {boolean} nameIsFixed
- */
-Layer.Model = {
-  _class: '',
-  do_objectID: '',
-  booleanOperation: -1,
-  exportOptions: ExportOptions.Model,
-  frame: Rect.Model,
-  isFixedToViewport: false,
-  isFlippedHorizontal: false,
-  isFlippedVertical: false,
-  isLocked: false,
-  isVisible: true,
-  layerListExpandedType: 0,
-  name: '',
-  nameIsFixed: false,
-  resizingConstraint: 47,
-  resizingType: 0,
-  rotation: 0,
-  shouldBreakMaskChain: false,
-  style: Style.Model,
-};
 
 module.exports = Layer;

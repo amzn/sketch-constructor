@@ -22,6 +22,20 @@ const Style = require('../Style');
  */
 class SymbolInstance extends Layer {
   /**
+   * The underlying JSON object structure in a Sketch document.
+   * @mixes Layer.Model
+   * @property {string} symbolID
+   * @property {overrideValue[]} overrideValues
+   */
+  static get Model() {
+    return Object.assign({}, Layer.Model, {
+      _class: 'symbolInstance',
+      symbolID: '',
+      overrideValues: [],
+    });
+  }
+
+  /**
    *
    * @param {Object} args
    * @param {SymbolInstance.Model} json
@@ -41,17 +55,5 @@ class SymbolInstance extends Layer {
     }
   }
 }
-
-/**
- * The underlying JSON object structure in a Sketch document.
- * @mixes Layer.Model
- * @property {string} symbolID
- * @property {overrideValue[]} overrideValues
- */
-SymbolInstance.Model = Object.assign({}, Layer.Model, {
-  _class: 'symbolInstance',
-  symbolID: '',
-  overrideValues: [],
-});
 
 module.exports = SymbolInstance;

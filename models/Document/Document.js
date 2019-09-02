@@ -18,6 +18,41 @@ const SharedStyle = require('../SharedStyle');
  * A Document is a sketch file
  */
 class Document {
+  static get Model() {
+    return {
+      _class: 'document',
+      do_objectID: '',
+      assets: {
+        _class: 'assetCollection',
+        colors: [],
+        gradients: [],
+        imageCollection: {
+          _class: 'imageCollection',
+          images: {},
+        },
+        images: [],
+      },
+      colorSpace: 0,
+      currentPageIndex: 1,
+      foreignLayerStyles: [],
+      foreignSymbols: [],
+      foreignTextStyles: [],
+      layerStyles: {
+        _class: 'sharedStyleContainer',
+        objects: [],
+      },
+      layerSymbols: {
+        _class: 'symbolContainer',
+        objects: [],
+      },
+      layerTextStyles: {
+        _class: 'sharedTextStyleContainer',
+        objects: [],
+      },
+      pages: [],
+    };
+  }
+
   /**
    *
    * @param {Object} args
@@ -98,38 +133,5 @@ class Document {
     return this;
   }
 }
-
-Document.Model = {
-  _class: 'document',
-  do_objectID: '',
-  assets: {
-    _class: 'assetCollection',
-    colors: [],
-    gradients: [],
-    imageCollection: {
-      _class: 'imageCollection',
-      images: {},
-    },
-    images: [],
-  },
-  colorSpace: 0,
-  currentPageIndex: 1,
-  foreignLayerStyles: [],
-  foreignSymbols: [],
-  foreignTextStyles: [],
-  layerStyles: {
-    _class: 'sharedStyleContainer',
-    objects: [],
-  },
-  layerSymbols: {
-    _class: 'symbolContainer',
-    objects: [],
-  },
-  layerTextStyles: {
-    _class: 'sharedTextStyleContainer',
-    objects: [],
-  },
-  pages: [],
-};
 
 module.exports = Document;

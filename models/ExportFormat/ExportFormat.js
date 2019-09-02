@@ -15,6 +15,18 @@
  *
  */
 class ExportFormat {
+  static get Model() {
+    return {
+      _class: 'exportFormat',
+      absoluteSize: 0,
+      fileFormat: 'png',
+      name: '',
+      namingScheme: 0,
+      scale: 1,
+      visibleScaleType: 0,
+    };
+  }
+
   /**
    *
    * @param {Object} args
@@ -29,15 +41,5 @@ class ExportFormat {
     return this;
   }
 }
-
-ExportFormat.Model = {
-  _class: 'exportFormat',
-  absoluteSize: 0,
-  fileFormat: 'png',
-  name: '',
-  namingScheme: 0,
-  scale: 1,
-  visibleScaleType: 0,
-};
 
 module.exports = ExportFormat;

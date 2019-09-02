@@ -23,6 +23,22 @@ const TinyColor = require('tinycolor2');
  */
 class Color {
   /**
+   * @property {float} alpha 0-1
+   * @property {float} blue 0-1
+   * @property {float} green 0-1
+   * @property {float} red 0-1
+   */
+  static get Model() {
+    return {
+      _class: 'color',
+      alpha: 1,
+      blue: 0,
+      green: 0,
+      red: 0,
+    };
+  }
+
+  /**
    *
    * @param {String|Object} args This is passed to tinycolor 2. As long as tinycolor2 can understand this argument, the color will work.
    * @param {Color.Model} json
@@ -84,19 +100,5 @@ class Color {
     });
   }
 }
-
-/**
- * @property {float} alpha 0-1
- * @property {float} blue 0-1
- * @property {float} green 0-1
- * @property {float} red 0-1
- */
-Color.Model = {
-  _class: 'color',
-  alpha: 1,
-  blue: 0,
-  green: 0,
-  red: 0,
-};
 
 module.exports = Color;

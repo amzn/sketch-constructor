@@ -20,6 +20,16 @@ const Rect = require('../Rect');
 const Style = require('../Style');
 
 class ShapeGroup extends Layer {
+  static get Model() {
+    return Object.assign({}, Layer.Model, {
+      _class: 'shapeGroup',
+      layerListExpandedType: 1,
+      clippingMaskMode: 0,
+      hasClippingMask: false,
+      windingRule: 1,
+    });
+  }
+
   constructor(args, json) {
     super(args, json);
     if (!json) {
@@ -101,13 +111,5 @@ class ShapeGroup extends Layer {
     });
   }
 }
-
-ShapeGroup.Model = Object.assign({}, Layer.Model, {
-  _class: 'shapeGroup',
-  layerListExpandedType: 1,
-  clippingMaskMode: 0,
-  hasClippingMask: false,
-  windingRule: 1,
-});
 
 module.exports = ShapeGroup;

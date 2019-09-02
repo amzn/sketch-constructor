@@ -19,6 +19,33 @@ const { textAlignmentMap, verticalAlignmentMap } = require('../../utils/maps');
  * A TextStyle is applied to a Text layer.
  */
 class TextStyle {
+  static get Model() {
+    return {
+      _class: 'textStyle',
+      encodedAttributes: {
+        MSAttributedStringFontAttribute: {
+          _class: 'fontDescriptor',
+          attributes: {
+            name: 'Helvetica',
+            size: 36,
+          },
+        },
+        MSAttributedStringColorAttribute: Color.Model,
+        textStyleVerticalAlignmentKey: 0,
+        underlineStyle: 0,
+        strikethroughStyle: 0,
+        paragraphStyle: {
+          _class: 'paragraphStyle',
+          alignment: 0,
+          minimumLineHeight: 43,
+          maximumLineHeight: 43,
+        },
+      },
+      verticalAlignment: 0,
+      kerning: 0,
+    };
+  }
+
   /**
    *
    * @param {Object} [args] - Configuration when creating a TextStyle programmatically.
@@ -82,30 +109,5 @@ class TextStyle {
     return this.encodedAttributes.kerning;
   }
 }
-
-TextStyle.Model = {
-  _class: 'textStyle',
-  encodedAttributes: {
-    MSAttributedStringFontAttribute: {
-      _class: 'fontDescriptor',
-      attributes: {
-        name: 'Helvetica',
-        size: 36,
-      },
-    },
-    MSAttributedStringColorAttribute: Color.Model,
-    textStyleVerticalAlignmentKey: 0,
-    underlineStyle: 0,
-    strikethroughStyle: 0,
-    paragraphStyle: {
-      _class: 'paragraphStyle',
-      alignment: 0,
-      minimumLineHeight: 43,
-      maximumLineHeight: 43,
-    },
-  },
-  verticalAlignment: 0,
-  kerning: 0,
-};
 
 module.exports = TextStyle;

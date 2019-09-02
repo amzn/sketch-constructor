@@ -17,6 +17,25 @@
  */
 class Rect {
   /**
+   * Underlying JSON object structure in a Sketch document
+   * @property {boolean} constrainProportions
+   * @property {integer} height
+   * @property {integer} width
+   * @property {integer} x
+   * @property {integer} y
+   */
+  static get Model() {
+    return {
+      _class: 'rect',
+      constrainProportions: false,
+      height: 100,
+      width: 100,
+      x: 0,
+      y: 0,
+    };
+  }
+
+  /**
    *
    * @param {Rect.Model} args
    * @param {Rect.Model} json
@@ -29,22 +48,5 @@ class Rect {
     }
   }
 }
-
-/**
- * Underlying JSON object structure in a Sketch document
- * @property {boolean} constrainProportions
- * @property {integer} height
- * @property {integer} width
- * @property {integer} x
- * @property {integer} y
- */
-Rect.Model = {
-  _class: 'rect',
-  constrainProportions: false,
-  height: 100,
-  width: 100,
-  x: 0,
-  y: 0,
-};
 
 module.exports = Rect;

@@ -26,6 +26,24 @@ const MSImmutableOverrideProperty = {
   overrideName: '',
 };
 class SymbolMaster extends Artboard {
+  /**
+   * The underlying JSON object structure in a Sketch document.
+   * @mixes Artboard.Model
+   * @property {string} symbolID
+   * @property {int} changeIdentifier
+   * @property {MSImmutableOverrideProperty[]} overrideProperties
+   * @property {boolean} allowsOverrides
+   */
+  static get Model() {
+    return Object.assign(Artboard.Model, {
+      _class: 'symbolMaster',
+      symbolID: '',
+      changeIdentifier: 1,
+      overrideProperties: [],
+      allowsOverrides: true,
+    });
+  }
+
   constructor(args, json) {
     super(args, json);
     if (!json) {
@@ -80,21 +98,5 @@ class SymbolMaster extends Artboard {
     return symbolInstance;
   }
 }
-
-/**
- * The underlying JSON object structure in a Sketch document.
- * @mixes Artboard.Model
- * @property {string} symbolID
- * @property {int} changeIdentifier
- * @property {MSImmutableOverrideProperty[]} overrideProperties
- * @property {boolean} allowsOverrides
- */
-SymbolMaster.Model = Object.assign(Artboard.Model, {
-  _class: 'symbolMaster',
-  symbolID: '',
-  changeIdentifier: 1,
-  overrideProperties: [],
-  allowsOverrides: true,
-});
 
 module.exports = SymbolMaster;

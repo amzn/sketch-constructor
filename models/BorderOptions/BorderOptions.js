@@ -16,6 +16,22 @@
  */
 class BorderOptions {
   /**
+   * @property {boolean} isEnabled
+   * @property {integer[]} dashPattern
+   * @property {BorderOptions.LineCapStyle} lineCapStyle
+   * @property {BorderOptions.LineJoinStyle} lineJoinStyle
+   */
+  static get Model() {
+    return {
+      _class: 'borderOptions',
+      isEnabled: true,
+      dashPattern: [],
+      lineCapStyle: 1,
+      lineJoinStyle: 1,
+    };
+  }
+
+  /**
    *
    * @param {Object} [args]
    * @param {integer[]} args.dashPattern
@@ -53,20 +69,6 @@ BorderOptions.LineJoinStyle = {
   miter: 0,
   round: 1,
   bevel: 2,
-};
-
-/**
- * @property {boolean} isEnabled
- * @property {integer[]} dashPattern
- * @property {BorderOptions.LineCapStyle} lineCapStyle
- * @property {BorderOptions.LineJoinStyle} lineJoinStyle
- */
-BorderOptions.Model = {
-  _class: 'borderOptions',
-  isEnabled: true,
-  dashPattern: [],
-  lineCapStyle: 1,
-  lineJoinStyle: 1,
 };
 
 module.exports = BorderOptions;

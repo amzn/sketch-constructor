@@ -21,6 +21,15 @@ const Group = require('../Group');
  */
 class Page extends Group {
   /**
+   * @mixes Group.Model
+   */
+  static get Model() {
+    return Object.assign({}, Group.Model, {
+      _class: 'page',
+    });
+  }
+
+  /**
    *
    * @param {Object} args
    * @param {Object} args.style {@link Style}
@@ -76,12 +85,5 @@ class Page extends Group {
     return this;
   }
 }
-
-/**
- * @mixes Group.Model
- */
-Page.Model = Object.assign({}, Group.Model, {
-  _class: 'page',
-});
 
 module.exports = Page;

@@ -19,6 +19,29 @@ const Gradient = require('../Gradient');
  */
 class Fill {
   /**
+   * @property {boolean} isEnabled
+   * @property {Color.Model} color
+   * @property {Fill.FillType} fillType
+   * @property {integer} noiseIndex
+   * @property {integer} noiseIntensity
+   * @property {integer} patternFillType
+   * @property {integer} patternTileScale
+   */
+  static get Model() {
+    return {
+      _class: 'fill',
+      isEnabled: false,
+      color: Color.Model,
+      fillType: 0,
+      noiseIndex: 0,
+      noiseIntensity: 0,
+      patternFillType: 0,
+      patternTileScale: 1,
+      gradient: Gradient.Model,
+    };
+  }
+
+  /**
    *
    * @param {Object} args
    * @param {String|Object} args.color Passed to {@link Color} constructor
@@ -60,27 +83,6 @@ Fill.FillType = {
   Gradient: 1, // A gradient fill/border.
   Pattern: 4, // A pattern fill/border.
   Noise: 5, // A noise fill/border.
-};
-
-/**
- * @property {boolean} isEnabled
- * @property {Color.Model} color
- * @property {integer} fillType
- * @property {integer} noiseIndex
- * @property {integer} noiseIntensity
- * @property {integer} patternFillType
- * @property {integer} patternTileScale
- */
-Fill.Model = {
-  _class: 'fill',
-  isEnabled: false,
-  color: Color.Model,
-  fillType: 0,
-  noiseIndex: 0,
-  noiseIntensity: 0,
-  patternFillType: 0,
-  patternTileScale: 1,
-  gradient: Gradient.Model,
 };
 
 module.exports = Fill;
