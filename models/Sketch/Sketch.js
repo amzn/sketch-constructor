@@ -50,7 +50,7 @@ class Sketch {
     Object.assign(this, {
       meta: new Meta(args.meta),
       document: new Document(args.document),
-      user: new User(args.use),
+      user: new User(args.user),
       pages: [],
       zip: new JSZip(),
     });
