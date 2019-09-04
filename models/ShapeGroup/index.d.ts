@@ -5,6 +5,8 @@ declare class ShapeGroup extends Layer {
 
   static Oval(args: any): ShapeGroup;
 
+  static ShapePath(args: any): ShapeGroup;
+
   _class: 'shapeGroup';
   layerListExpandedType: number;
   clippingMaskMode: number;
@@ -13,3 +15,5 @@ declare class ShapeGroup extends Layer {
 
   constructor(args?: any, json?: any);
 }
+
+export = ShapeGroup;
