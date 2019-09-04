@@ -17,6 +17,7 @@ import Rectangle from './Rectangle';
 import RulerData from './RulerData';
 import Shadow from './Shadow';
 import ShapeGroup from './ShapeGroup';
+import ShapePath from './ShapePath';
 import SharedStyle from './SharedStyle';
 import Sketch from './Sketch';
 import Style from './Style';
@@ -46,6 +47,7 @@ export {
   RulerData,
   Shadow,
   ShapeGroup,
+  ShapePath,
   SharedStyle,
   Sketch,
   Style,

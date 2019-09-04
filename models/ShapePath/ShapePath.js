@@ -57,7 +57,7 @@ class ShapePath extends Layer {
  * @property {boolean} edited
  * @property {boolean} isClosed
  * @property {integer} pointRadiusBehaviour
- * @property {String[]} points
+ * @property {Array.<CurvePoint>} points
  */
 ShapePath.Model = Object.assign({}, Layer.Model, {
   _class: 'shapePath',
