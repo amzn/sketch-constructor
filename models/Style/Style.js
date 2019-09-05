@@ -16,6 +16,7 @@ const TextStyle = require('../TextStyle');
 const Fill = require('../Fill');
 const Border = require('../Border');
 const Shadow = require('../Shadow');
+const GraphicsContextSettings = require('../GraphicsContextSettings');
 
 /**
  *
@@ -42,11 +43,7 @@ class Style {
       fills: [],
       shadows: [],
       textStyle: {},
-      contextSettings: {
-        _class: 'graphicsContextSettings',
-        blendMode: Style.BlendMode.Normal,
-        opacity: 1,
-      },
+      contextSettings: GraphicsContextSettings.Model,
     };
   }
 

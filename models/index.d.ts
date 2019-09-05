@@ -8,6 +8,7 @@ import Document from './Document';
 import ExportFormat from './ExportFormat';
 import ExportOptions from './ExportOptions';
 import Fill from './Fill';
+import GraphicsContextSettings from './GraphicsContextSettings';
 import Gradient from './Gradient';
 import Meta from './Meta';
 import Oval from './Oval';
@@ -38,6 +39,7 @@ export {
   ExportFormat,
   ExportOptions,
   Fill,
+  GraphicsContextSettings,
   Gradient,
   Meta,
   Oval,

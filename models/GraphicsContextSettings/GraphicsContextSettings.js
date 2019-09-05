@@ -11,32 +11,35 @@
  * and limitations under the License.
  */
 
-const Color = require('../Color');
-const GraphicsContextSettings = require('../GraphicsContextSettings');
-
-class Shadow {
+/**
+ * Options for exporting an artboard
+ */
+class GraphicsContextSettings {
+  /**
+   * @property {integer} blendMode
+   * @property {float} opacity
+   */
   static get Model() {
     return {
-      _class: 'shadow',
-      isEnabled: true,
-      blurRadius: 4,
-      color: Color.Model,
-      contextSettings: GraphicsContextSettings.Model,
-      offsetX: 0,
-      offsetY: 2,
-      spread: 0,
+      _class: 'graphicsContextSettings',
+      blendMode: 0,
+      opacity: 1,
     };
   }
 
-  constructor(args, json) {
+  /**
+   *
+   * @param {GraphicsContextSettings.Model} args
+   * @param {GraphicsContextSettings.Model} json
+   */
+  constructor(args = {}, json) {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, Shadow.Model, args, {
-        color: new Color(args.color),
-      });
+      Object.assign(this, GraphicsContextSettings.Model, args);
     }
+    return this;
   }
 }
 
-module.exports = Shadow;
+module.exports = GraphicsContextSettings;
