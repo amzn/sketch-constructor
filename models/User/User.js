@@ -16,6 +16,18 @@
  */
 class User {
   /**
+   * @property {Object} document
+   * @property {String} document.pageListHeight
+   */
+  static get Model() {
+    return {
+      document: {
+        pageListHeight: '200',
+      },
+    };
+  }
+
+  /**
    *
    * @param {Object} args
    * @param {String} [args.pageListHeight]
@@ -53,15 +65,5 @@ class User {
     return this;
   }
 }
-
-/**
- * @property {Object} document
- * @property {String} document.pageListHeight
- */
-User.Model = {
-  document: {
-    pageListHeight: '200',
-  },
-};
 
 module.exports = User;

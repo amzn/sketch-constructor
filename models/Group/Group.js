@@ -23,6 +23,18 @@ const Style = require('../Style');
  */
 class Group extends Layer {
   /**
+   * @mixes Layer.Model
+   */
+  static get Model() {
+    return Object.assign({}, Layer.Model, {
+      _class: 'group',
+      layerListExpandedType: 2,
+      resizingConstraint: 63,
+      hasClickThrough: false,
+    });
+  }
+
+  /**
    *
    * @param {Object} args
    * @param {Object} args.frame Sent to {@link Rect}
@@ -46,15 +58,5 @@ class Group extends Layer {
     return this;
   }
 }
-
-/**
- * @mixes Layer.Model
- */
-Group.Model = Object.assign({}, Layer.Model, {
-  _class: 'group',
-  layerListExpandedType: 2,
-  resizingConstraint: 63,
-  hasClickThrough: false,
-});
 
 module.exports = Group;

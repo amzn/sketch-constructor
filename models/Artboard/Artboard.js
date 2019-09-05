@@ -25,6 +25,34 @@ const RulerData = require('../RulerData');
  */
 class Artboard extends Group {
   /**
+   * The underlying JSON object structure in a Sketch document.
+   * @mixes Group.Model
+   * @property {boolean} shouldBreakMaskChain
+   * @property {RulerData.Model} horizontalRulerData
+   * @property {RulerData.Model} verticalRulerData
+   * @property {boolean} includeBackgroundColorInExport
+   * @property {boolean} includeInCloudUpload
+   * @property {boolean} isFlowHome
+   * @property {boolean} resizesContent
+   * @property {boolean} hasClickThrough
+   * @property {Color.Model} backgroundColor
+   */
+  static get Model() {
+    return Object.assign({}, Group.Model, {
+      _class: 'artboard',
+      shouldBreakMaskChain: true,
+      backgroundColor: {},
+      hasBackgroundColor: false,
+      horizontalRulerData: RulerData.Model,
+      verticalRulerData: RulerData.Model,
+      includeBackgroundColorInExport: true,
+      includeInCloudUpload: true,
+      isFlowHome: false,
+      resizesContent: false,
+    });
+  }
+
+  /**
    *
    * @param {Object} args Use this when creating an artboard programmatically
    * @param {String} [args.backgroundColor] Passed to {@link Color} constructor
@@ -55,31 +83,5 @@ class Artboard extends Group {
     return this;
   }
 }
-
-/**
- * The underlying JSON object structure in a Sketch document.
- * @mixes Group.Model
- * @property {boolean} shouldBreakMaskChain
- * @property {RulerData.Model} horizontalRulerData
- * @property {RulerData.Model} verticalRulerData
- * @property {boolean} includeBackgroundColorInExport
- * @property {boolean} includeInCloudUpload
- * @property {boolean} isFlowHome
- * @property {boolean} resizesContent
- * @property {boolean} hasClickThrough
- * @property {Color.Model} backgroundColor
- */
-Artboard.Model = Object.assign({}, Group.Model, {
-  _class: 'artboard',
-  shouldBreakMaskChain: true,
-  backgroundColor: {},
-  hasBackgroundColor: false,
-  horizontalRulerData: RulerData.Model,
-  verticalRulerData: RulerData.Model,
-  includeBackgroundColorInExport: true,
-  includeInCloudUpload: true,
-  isFlowHome: false,
-  resizesContent: false,
-});
 
 module.exports = Artboard;

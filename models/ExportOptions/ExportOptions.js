@@ -16,6 +16,22 @@
  */
 class ExportOptions {
   /**
+   * @property {Array} exportFormats
+   * @property {String[]} includedLayerIds
+   * @property {integer} layerOptions
+   * @property {boolean} shouldTrim
+   */
+  static get Model() {
+    return {
+      _class: 'exportOptions',
+      exportFormats: [],
+      includedLayerIds: [],
+      layerOptions: 0,
+      shouldTrim: false,
+    };
+  }
+
+  /**
    *
    * @param {ExportOptions.Model} args
    * @param {ExportOptions.Model} json
@@ -29,19 +45,5 @@ class ExportOptions {
     return this;
   }
 }
-
-/**
- * @property {Array} exportFormats
- * @property {String[]} includedLayerIds
- * @property {integer} layerOptions
- * @property {boolean} shouldTrim
- */
-ExportOptions.Model = {
-  _class: 'exportOptions',
-  exportFormats: [],
-  includedLayerIds: [],
-  layerOptions: 0,
-  shouldTrim: false,
-};
 
 module.exports = ExportOptions;

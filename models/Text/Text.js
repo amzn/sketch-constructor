@@ -27,6 +27,25 @@ const AttributedString = require('../AttributedString');
  */
 class Text extends Layer {
   /**
+   * The underlying object structure this class consists of in Sketch JSON
+   * @constant
+   * @type {Object}
+   * @mixes Layer.Model
+   * @property {boolean} automaticallyDrawOnUnderlyingPath
+   * @property {boolean} dontSynchroniseWithSymbol
+   */
+  static get Model() {
+    return Object.assign({}, Layer.Model, {
+      automaticallyDrawOnUnderlyingPath: false,
+      dontSynchroniseWithSymbol: false,
+      attributedString: AttributedString.Model,
+      glyphBounds: '{{5, 15}, {122, 55}}',
+      lineSpacingBehaviour: 2,
+      textBehaviour: 2,
+    });
+  }
+
+  /**
    *
    * @param {Object} [args]
    * @param {Object} [args.frame] Passed to {@link Rect}
@@ -66,14 +85,15 @@ class Text extends Layer {
         shouldBreakMaskChain: false,
         userInfo: {},
 
-        style:
-          Style.TextStyle(args.style || {
+        style: Style.TextStyle(
+          args.style || {
             fontName: args.fontName,
             fontSize: args.fontSize,
             alignment: args.alignment,
             verticalAlignment: args.verticalAlignment,
             color: args.color,
-          }),
+          }
+        ),
 
         attributedString:
           args.attributedString ||
@@ -89,22 +109,5 @@ class Text extends Layer {
     }
   }
 }
-
-/**
- * The underlying object structure this class consists of in Sketch JSON
- * @constant
- * @type {Object}
- * @mixes Layer.Model
- * @property {boolean} automaticallyDrawOnUnderlyingPath
- * @property {boolean} dontSynchroniseWithSymbol
- */
-Text.Model = Object.assign({}, Layer.Model, {
-  automaticallyDrawOnUnderlyingPath: false,
-  dontSynchroniseWithSymbol: false,
-  attributedString: AttributedString.Model,
-  glyphBounds: '{{5, 15}, {122, 55}}',
-  lineSpacingBehaviour: 2,
-  textBehaviour: 2,
-});
 
 module.exports = Text;

@@ -15,6 +15,32 @@ const Color = require('../Color');
 const { textAlignmentMap, verticalAlignmentMap } = require('../../utils/maps');
 
 class StringAttribute {
+  static get Model() {
+    return {
+      _class: 'stringAttribute',
+      location: 0,
+      length: 1,
+      attributes: {
+        MSAttributedStringTextTransformAttribute: 1,
+        MSAttributedStringFontAttribute: {
+          _class: 'fontDescriptor',
+          attributes: {
+            name: 'Helvetica',
+            size: 36,
+          },
+        },
+        MSAttributedStringColorAttribute: Color.Model,
+        textStyleVerticalAlignmentKey: 0,
+        underlineStyle: 0,
+        strikethroughStyle: 0,
+        paragraphStyle: {
+          _class: 'paragraphStyle',
+          alignment: 0,
+        },
+      },
+    };
+  }
+
   constructor(args, json) {
     if (json) {
       Object.assign(this, json);
@@ -41,29 +67,5 @@ class StringAttribute {
     }
   }
 }
-
-StringAttribute.Model = {
-  _class: 'stringAttribute',
-  location: 0,
-  length: 1,
-  attributes: {
-    MSAttributedStringTextTransformAttribute: 1,
-    MSAttributedStringFontAttribute: {
-      _class: 'fontDescriptor',
-      attributes: {
-        name: 'Helvetica',
-        size: 36,
-      },
-    },
-    MSAttributedStringColorAttribute: Color.Model,
-    textStyleVerticalAlignmentKey: 0,
-    underlineStyle: 0,
-    strikethroughStyle: 0,
-    paragraphStyle: {
-      _class: 'paragraphStyle',
-      alignment: 0,
-    },
-  },
-};
 
 module.exports = StringAttribute;

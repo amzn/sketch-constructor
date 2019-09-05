@@ -24,6 +24,27 @@ const points = ['{0, 0}', '{1, 0}', '{1, 1}', '{0, 1}'];
  */
 class Rectangle extends Layer {
   /**
+   * @mixes Layer.Model
+   * @property {boolean} edited
+   * @property {boolean} isClosed
+   * @property {integer} pointRadiusBehaviour
+   * @property {String[]} points
+   * @property {integer} fixedRadius
+   * @property {boolean} hasConvertedToNewRoundCorners
+   */
+  static get Model() {
+    return Object.assign({}, Layer.Model, {
+      _class: 'rectangle',
+      edited: false,
+      isClosed: true,
+      pointRadiusBehaviour: 1,
+      points: [],
+      fixedRadius: 0,
+      hasConvertedToNewRoundCorners: true,
+    });
+  }
+
+  /**
    *
    * @param {Object} args
    * @param {String} args.name
@@ -60,24 +81,5 @@ class Rectangle extends Layer {
     }
   }
 }
-
-/**
- * @mixes Layer.Model
- * @property {boolean} edited
- * @property {boolean} isClosed
- * @property {integer} pointRadiusBehaviour
- * @property {String[]} points
- * @property {integer} fixedRadius
- * @property {boolean} hasConvertedToNewRoundCorners
- */
-Rectangle.Model = Object.assign({}, Layer.Model, {
-  _class: 'rectangle',
-  edited: false,
-  isClosed: true,
-  pointRadiusBehaviour: 1,
-  points: [],
-  fixedRadius: 0,
-  hasConvertedToNewRoundCorners: true,
-});
 
 module.exports = Rectangle;

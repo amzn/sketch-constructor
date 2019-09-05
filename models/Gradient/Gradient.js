@@ -17,6 +17,17 @@ const Color = require('../Color');
  * Gradient
  */
 class Gradient {
+  static get Model() {
+    return {
+      _class: 'gradient',
+      elipseLength: 0,
+      from: '{0.5, 0}',
+      to: '{0.5, 1}',
+      gradientType: 1,
+      stops: [],
+    };
+  }
+
   /**
    *
    * @param {Object} args
@@ -41,18 +52,6 @@ Gradient.GradientType = {
   Linear: 0,
   Radial: 1,
   Angular: 2,
-};
-
-/**
- *
- */
-Gradient.Model = {
-  _class: 'gradient',
-  elipseLength: 0,
-  from: '{0.5, 0}',
-  to: '{0.5, 1}',
-  gradientType: 1,
-  stops: [],
 };
 
 module.exports = Gradient;

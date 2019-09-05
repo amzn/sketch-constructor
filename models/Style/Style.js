@@ -21,6 +21,35 @@ const Shadow = require('../Shadow');
  *
  */
 class Style {
+  /**
+   * @property {Style.MarkerType} startMarkerType
+   * @property {Style.MarkerType} endMarkerType
+   * @property {Border.Model[]} border
+   * @property {Fill.Model[]} fills
+   * @property {Shadow.Model[]} shadows
+   * @property {TextStyle.Model} textStyle
+   * @property {Object} contextSettings
+   */
+  static get Model() {
+    return {
+      _class: 'style',
+      do_objectID: '',
+      startMarkerType: 0,
+      endMarkerType: 0,
+      miterLimit: 10,
+      windingRule: 0,
+      borders: [],
+      fills: [],
+      shadows: [],
+      textStyle: {},
+      contextSettings: {
+        _class: 'graphicsContextSettings',
+        blendMode: Style.BlendMode.Normal,
+        opacity: 1,
+      },
+    };
+  }
+
   static LayerStyle(args = {}) {
     const id = args.id || uuid().toUpperCase();
     return new Style({
@@ -105,33 +134,6 @@ Style.BlendMode = {
   Saturation: 13,
   Color: 14,
   Luminosity: 15,
-};
-
-/**
- * @property {Style.MarkerType} startMarkerType
- * @property {Style.MarkerType} endMarkerType
- * @property {Border.Model[]} border
- * @property {Fill.Model[]} fills
- * @property {Shadow.Model[]} shadows
- * @property {TextStyle.Model} textStyle
- * @property {Object} contextSettings
- */
-Style.Model = {
-  _class: 'style',
-  do_objectID: '',
-  startMarkerType: 0,
-  endMarkerType: 0,
-  miterLimit: 10,
-  windingRule: 0,
-  borders: [],
-  fills: [],
-  shadows: [],
-  textStyle: {},
-  contextSettings: {
-    _class: 'graphicsContextSettings',
-    blendMode: Style.BlendMode.Normal,
-    opacity: 1,
-  },
 };
 
 module.exports = Style;

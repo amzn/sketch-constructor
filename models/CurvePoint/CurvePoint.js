@@ -16,6 +16,28 @@
  */
 class CurvePoint {
   /**
+   * @property {integer} cornerRadius
+   * @property {String} curveFrom "{0,0}"
+   * @property {String} curveTo "{0,0}"
+   * @property {String} point "{0,0}"
+   * @property {integer} curveMode
+   * @property {boolean} hasCurveFrom
+   * @property {boolean} hasCurveTo
+   */
+  static get Model() {
+    return {
+      _class: 'curvePoint',
+      cornerRadius: 0,
+      curveFrom: '{0, 0}',
+      curveMode: 1,
+      curveTo: '{0, 0}',
+      hasCurveFrom: false,
+      hasCurveTo: false,
+      point: '{0, 0}',
+    };
+  }
+
+  /**
    *
    * @param {CurvePoint.Model} args
    * @param {CurvePoint.Model} json
@@ -28,25 +50,5 @@ class CurvePoint {
     }
   }
 }
-
-/**
- * @property {integer} cornerRadius
- * @property {String} curveFrom "{0,0}"
- * @property {String} curveTo "{0,0}"
- * @property {String} point "{0,0}"
- * @property {integer} curveMode
- * @property {boolean} hasCurveFrom
- * @property {boolean} hasCurveTo
- */
-CurvePoint.Model = {
-  _class: 'curvePoint',
-  cornerRadius: 0,
-  curveFrom: '{0, 0}',
-  curveMode: 1,
-  curveTo: '{0, 0}',
-  hasCurveFrom: false,
-  hasCurveTo: false,
-  point: '{0, 0}',
-};
 
 module.exports = CurvePoint;

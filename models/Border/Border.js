@@ -19,6 +19,24 @@ const Fill = require('../Fill');
  */
 class Border {
   /**
+   * @property {boolean} isEnabled
+   * @property {Color.Model} color
+   * @property {Fill.FillType} fillType
+   * @property {Border.position} position
+   * @property {integer} thickness
+   */
+  static get Model() {
+    return {
+      _class: 'border',
+      isEnabled: false,
+      color: Color.Model,
+      fillType: 0,
+      position: 0,
+      thickness: 0,
+    };
+  }
+
+  /**
    *
    * @param {Object} args
    * @param {Object|String} args.color Sent to {@link Color}
@@ -46,29 +64,12 @@ class Border {
 }
 
 /**
- *
  * @enum {integer}
  */
 Border.Position = {
   Inside: 1,
   Center: 0,
   Outside: 2,
-};
-
-/**
- * @property {boolean} isEnabled
- * @property {Color.Model} color
- * @property {Fill.FillType} fillType
- * @property {Border.position} position
- * @property {integer} thickness
- */
-Border.Model = {
-  _class: 'border',
-  isEnabled: false,
-  color: Color.Model,
-  fillType: 0,
-  position: 0,
-  thickness: 0,
 };
 
 module.exports = Border;

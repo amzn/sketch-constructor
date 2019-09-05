@@ -21,6 +21,23 @@ const Style = require('../Style');
  */
 class ShapePath extends Layer {
   /**
+   * @mixes Layer.Model
+   * @property {boolean} edited
+   * @property {boolean} isClosed
+   * @property {integer} pointRadiusBehaviour
+   * @property {String[]} points
+   */
+  static get Model() {
+    return Object.assign({}, Layer.Model, {
+      _class: 'shapePath',
+      edited: true,
+      isClosed: false,
+      pointRadiusBehaviour: 1,
+      points: [],
+    });
+  }
+
+  /**
    *
    * @param {Object} args
    * @param {String} args.name
@@ -51,20 +68,5 @@ class ShapePath extends Layer {
     }
   }
 }
-
-/**
- * @mixes Layer.Model
- * @property {boolean} edited
- * @property {boolean} isClosed
- * @property {integer} pointRadiusBehaviour
- * @property {Array.<CurvePoint>} points
- */
-ShapePath.Model = Object.assign({}, Layer.Model, {
-  _class: 'shapePath',
-  edited: true,
-  isClosed: false,
-  pointRadiusBehaviour: 1,
-  points: [],
-});
 
 module.exports = ShapePath;

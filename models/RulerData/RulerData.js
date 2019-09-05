@@ -16,6 +16,18 @@
  */
 class RulerData {
   /**
+   * @property {integer} base
+   * @property {Array} guides
+   */
+  static get Model() {
+    return {
+      _class: 'rulerData',
+      base: 0,
+      guides: [],
+    };
+  }
+
+  /**
    *
    * @param {RulerData.Model} args
    * @param {RulerData.Model} json
@@ -28,15 +40,5 @@ class RulerData {
     }
   }
 }
-
-/**
- * @property {integer} base
- * @property {Array} guides
- */
-RulerData.Model = {
-  _class: 'rulerData',
-  base: 0,
-  guides: [],
-};
 
 module.exports = RulerData;
