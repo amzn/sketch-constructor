@@ -29,7 +29,7 @@ class Style {
    * @property {Fill.Model[]} fills
    * @property {Shadow.Model[]} shadows
    * @property {TextStyle.Model} textStyle
-   * @property {Object} contextSettings
+   * @property {GraphicsContextSettings.Model} contextSettings
    */
   static get Model() {
     return {
