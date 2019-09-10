@@ -1,5 +1,6 @@
 import Artboard from './Artboard';
 import Group from './Group';
+import Bitmap from './Bitmap';
 import Border from './Border';
 import BorderOptions from './BorderOptions';
 import Color from './Color';
@@ -31,6 +32,7 @@ import User from './User';
 export {
   Artboard,
   Group,
+  Bitmap,
   Border,
   BorderOptions,
   Color,

@@ -11,9 +11,4 @@
  * and limitations under the License.
  */
 
-module.exports = {
-  layerToClass: require('./layerToClass'),
-  stackLayers: require('./stackLayers'),
-  maps: require('./maps'),
-  paths: require('./paths'),
-};
+module.exports = require('./Bitmap');

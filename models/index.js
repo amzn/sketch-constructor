@@ -16,6 +16,7 @@ module.exports = {
   Artboard: require('./Artboard'),
   AttributedString: require('./AttributedString'),
   Group: require('./Group'),
+  Bitmap: require('./Bitmap'),
   Border: require('./Border'),
   BorderOptions: require('./BorderOptions'),
   Color: require('./Color'),

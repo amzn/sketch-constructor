@@ -11,9 +11,16 @@
  * and limitations under the License.
  */
 
-module.exports = {
-  layerToClass: require('./layerToClass'),
-  stackLayers: require('./stackLayers'),
-  maps: require('./maps'),
-  paths: require('./paths'),
-};
+const Fill = require('./index');
+
+const json = {};
+
+describe('Fill', () => {
+  it('should work from raw JSON', () => {
+    expect(true).toBeTruthy();
+  });
+
+  it('should work from user generated', () => {
+    expect(true).toBeTruthy();
+  });
+});

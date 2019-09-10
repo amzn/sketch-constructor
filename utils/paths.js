@@ -11,9 +11,17 @@
  * and limitations under the License.
  */
 
+/**
+ * Path to the temporary local image folder
+ */
+const STORAGE_IMG_DIR = '.sketch-constructor/images';
+
+/**
+ * Path to the temporary sketch constructor folder
+ */
+const STORAGE_DIR = '.sketch-constructor';
+
 module.exports = {
-  layerToClass: require('./layerToClass'),
-  stackLayers: require('./stackLayers'),
-  maps: require('./maps'),
-  paths: require('./paths'),
+  STORAGE_DIR,
+  STORAGE_IMG_DIR,
 };
