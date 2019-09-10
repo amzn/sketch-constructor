@@ -1,4 +1,5 @@
 import Artboard from './Artboard';
+import AttributedString from './AttributedString';
 import Group from './Group';
 import Bitmap from './Bitmap';
 import Border from './Border';
@@ -22,6 +23,7 @@ import ShapeGroup from './ShapeGroup';
 import ShapePath from './ShapePath';
 import SharedStyle from './SharedStyle';
 import Sketch from './Sketch';
+import StringAttribute from './StringAttribute';
 import Style from './Style';
 import SymbolInstance from './SymbolInstance';
 import SymbolMaster from './SymbolMaster';
@@ -31,6 +33,7 @@ import User from './User';
 
 export {
   Artboard,
+  AttributedString,
   Group,
   Bitmap,
   Border,
@@ -54,6 +57,7 @@ export {
   ShapePath,
   SharedStyle,
   Sketch,
+  StringAttribute,
   Style,
   SymbolInstance,
   SymbolMaster,
