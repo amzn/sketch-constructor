@@ -60,7 +60,8 @@ class Bitmap extends Layer {
   /**
    *
    * @param {Object} args
-   * @param {String} args.filePath Local path of the image in PNG format
+   * @param {String} args.filePath Local path of the image
+   * @param {String} args.fileExt Extension of the image
    * @param {Object} args.frame Sent to {@link Rect}
    * @param {Object} args.style Sent to {@link Style}
    * @param {Bitmap.Model} json
@@ -77,7 +78,8 @@ class Bitmap extends Layer {
         layers: args.layers || [],
       });
       const fileHash = md5File.sync(args.filePath);
-      this.image._ref = `images/${fileHash}.png`;
+      const fileExt = args.fileExt || 'png';
+      this.image._ref = `images/${fileHash}.${fileExt}`;
       fs.ensureDirSync(STORAGE_IMG_DIR);
       fs.copyFileSync(args.filePath, `${STORAGE_DIR}/${this.image._ref}`);
     }
