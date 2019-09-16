@@ -1,18 +1,20 @@
 import Color from '../Color';
 import Gradient from '../Gradient';
 
+declare const enum FillType {
+  Color = 0,
+  Gradient = 1,
+  Pattern = 4,
+  Noise = 5,
+}
+
 declare class Fill {
-  static FillType: {
-    Color: 0,
-    Gradient: 1,
-    Pattrern: 4,
-    Noise: 5,
-  };
+  static FillType: typeof FillType;
 
   _class: 'fill';
   isEnabled: boolean;
   color: Color;
-  fillType: 0 | 1 | 4 | 5;
+  fillType: FillType;
   noiseIndex: number;
   noiseIntensity: number;
   patternFillType: number;
