@@ -100,4 +100,13 @@ describe('Sketch', () => {
           expect(output).toEqual(`${process.cwd()}/__tests__/__output/test4.sketch`);
         }));
   });
+
+  describe('from extracted file', () => {
+    it('should work', () => {
+      Sketch.fromExtractedFile(`${process.cwd()}/__tests__/__sketch-files/test-sketch`).then(sketch => {
+        expect(sketch).toBeDefined();
+        expect(sketch.getPages().length).toBe(2);
+      });
+    });
+  });
 });
