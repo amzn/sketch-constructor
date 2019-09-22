@@ -58,6 +58,8 @@ class StringAttribute {
           },
           MSAttributedStringColorAttribute: new Color(args.color),
           textStyleVerticalAlignmentKey: verticalAlignmentMap[args.verticalAlignment || 'top'],
+          underlineStyle: args.underline ? 1 : 0,
+          strikethroughStyle: args.strikethrough ? 1 : 0,
           paragraphStyle: {
             _class: 'paragraphStyle',
             alignment: textAlignmentMap[args.alignment || 'left'],
