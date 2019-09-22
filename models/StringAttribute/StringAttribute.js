@@ -60,6 +60,7 @@ class StringAttribute {
           textStyleVerticalAlignmentKey: verticalAlignmentMap[args.verticalAlignment || 'top'],
           underlineStyle: args.underline ? 1 : 0,
           strikethroughStyle: args.strikethrough ? 1 : 0,
+          kerning: args.kerning || undefined,
           paragraphStyle: {
             _class: 'paragraphStyle',
             alignment: textAlignmentMap[args.alignment || 'left'],
