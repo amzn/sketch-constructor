@@ -70,7 +70,7 @@ class Document {
       const id = args.id || uuid().toUpperCase();
 
       Object.assign(this, Document.Model, {
-        id,
+        do_objectID: id,
       });
     }
     return this;
