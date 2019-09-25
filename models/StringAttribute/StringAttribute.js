@@ -12,7 +12,7 @@
  */
 
 const Color = require('../Color');
-const { textAlignmentMap, verticalAlignmentMap } = require('../../utils/maps');
+const { textAlignmentMap, verticalAlignmentMap, textTransformMap } = require('../../utils/maps');
 
 class StringAttribute {
   static get Model() {
@@ -56,6 +56,7 @@ class StringAttribute {
               size: args.fontSize || 16,
             },
           },
+          MSAttributedStringTextTransformAttribute: textTransformMap[args.textTransform || 'none'],
           MSAttributedStringColorAttribute: new Color(args.color),
           textStyleVerticalAlignmentKey: verticalAlignmentMap[args.verticalAlignment || 'top'],
           underlineStyle: args.underline ? 1 : 0,
