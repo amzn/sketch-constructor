@@ -16,6 +16,7 @@ const Rect = require('../Rect');
 const Layer = require('../Layer');
 const Style = require('../Style');
 const AttributedString = require('../AttributedString');
+const { textBehaviourMap } = require('../../utils/maps');
 
 /**
  * Text Layer Class
@@ -84,6 +85,7 @@ class Text extends Layer {
         rotation: 0,
         shouldBreakMaskChain: false,
         userInfo: {},
+        textBehaviour: textBehaviourMap[args.textBehaviour || 'auto'],
 
         style: Style.TextStyle(
           args.style || {
