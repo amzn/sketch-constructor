@@ -65,6 +65,8 @@ class StringAttribute {
           paragraphStyle: {
             _class: 'paragraphStyle',
             alignment: textAlignmentMap[args.alignment || 'left'],
+            ...(args.lineHeight && { maximumLineHeight: args.lineHeight }),
+            ...(args.lineHeight && { minimumLineHeight: args.lineHeight }),
           },
         },
       });
