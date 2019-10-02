@@ -23,6 +23,28 @@ const textAlignmentMap = {
   justify: 3,
 };
 
+/**
+ * Maps text text behaviour integer enums to human-readable strings
+ * @example
+ * textBehaviourMap.auto // => 0
+ */
+const textBehaviourMap = {
+  auto: 0,
+  fixedWithOverlow: 1,
+  fixed: 2,
+};
+
+/**
+ * Maps text transform integer enums to human-readable strings
+ * @example
+ * textTransformMap.uppercase // => 1
+ */
+const textTransformMap = {
+  none: 0,
+  uppercase: 1,
+  lowercase: 2,
+};
+
 Object.keys(textAlignmentMap).forEach(key => {
   textAlignmentMap[textAlignmentMap[key]] = key;
 });
@@ -45,4 +67,6 @@ Object.keys(verticalAlignmentMap).forEach(key => {
 module.exports = {
   textAlignmentMap,
   verticalAlignmentMap,
+  textTransformMap,
+  textBehaviourMap,
 };
