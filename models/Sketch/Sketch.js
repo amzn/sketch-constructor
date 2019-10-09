@@ -12,6 +12,8 @@
  */
 
 const fs = require('fs-extra');
+const path = require('path');
+const { promisify } = require('util');
 const JSZip = require('jszip');
 const Meta = require('../Meta');
 const User = require('../User');
@@ -21,11 +23,13 @@ const Artboard = require('../Artboard');
 const SharedStyle = require('../SharedStyle');
 const { STORAGE_DIR, STORAGE_IMG_DIR } = require('../../utils/paths');
 
+const readFileAsync = promisify(fs.readFile);
+
 class Sketch {
-  static fromFile(path) {
+  static fromFile(filePath) {
     const sketch = new Sketch();
 
-    return JSZip.loadAsync(fs.readFileSync(path)).then(zip =>
+    return JSZip.loadAsync(fs.readFileSync(filePath)).then(zip =>
       Promise.all([
         zip.file('document.json').async('string'),
         zip.file('meta.json').async('string'),
@@ -45,6 +49,30 @@ class Sketch {
           return sketch;
         })
     );
+  }
+
+  static fromExtractedFile(filePath) {
+    const sketch = new Sketch();
+    return Promise.all([
+      readFileAsync(path.resolve(filePath, 'document.json'), 'utf8'),
+      readFileAsync(path.resolve(filePath, 'meta.json'), 'utf8'),
+      readFileAsync(path.resolve(filePath, 'user.json'), 'utf8'),
+    ])
+      .then(args => {
+        sketch.document = new Document(null, JSON.parse(args[0]));
+        sketch.meta = new Meta(null, JSON.parse(args[1]));
+        sketch.user = new User(null, JSON.parse(args[2]));
+
+        return Promise.all(
+          Object.keys(sketch.meta.pagesAndArtboards).map(pageID =>
+            readFileAsync(path.resolve(filePath, `pages/${pageID}.json`))
+          )
+        );
+      })
+      .then(args => {
+        sketch.pages = args.map(str => new Page(null, JSON.parse(str)));
+        return sketch;
+      });
   }
 
   constructor(args = {}) {

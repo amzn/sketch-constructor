@@ -9,6 +9,8 @@ import SharedStyle from '../SharedStyle';
 declare class Sketch {
   static fromFile(path: string): Promise<Sketch>;
 
+  static fromExtractedFile(path: string): Promise<Sketch>;
+
   document: Document;
   meta: Meta;
   user: User;
