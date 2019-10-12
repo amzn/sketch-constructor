@@ -1,1 +1,1 @@
-module.exports = Object.assign({}, require('./models'), require('./utils'));
+module.exports = { ...require('./models'), ...require('./utils') };
