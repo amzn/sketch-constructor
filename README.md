@@ -57,6 +57,9 @@ newSketch.addPage({
   name: 'My Page'
 });
 
+// Add preview image
+Sketch.addPreview('/path/to/preview.png');
+
 // Creates the sketch file
 newSketch.build('newSketch.sketch');
 ```
