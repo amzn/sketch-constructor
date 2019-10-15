@@ -11,12 +11,70 @@
  * and limitations under the License.
  */
 
-const Layer = require('./index');
-
-const json = {};
+const Group = require('../Group');
+const Text = require('../Text');
 
 describe('Layer', () => {
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
+  });
+
+  it('getLayers should get all children layers', () => {
+    const group = new Group({
+      name: 'group',
+    });
+    const text1 = new Text({
+      name: 'text1',
+    });
+    const text2 = new Text({
+      name: 'text2',
+    });
+
+    group.addLayer(text1);
+    group.addLayer(text2);
+
+    const layers = group.getLayers().map(l => l.name);
+
+    expect(layers.sort()).toEqual(['text1', 'text2'].sort());
+  });
+
+  it('getLayers should only get direct children layers', () => {
+    const outerGroup = new Group({
+      name: 'outer group',
+    });
+
+    const innerGroup = new Group({
+      name: 'inner group',
+    });
+    const text = new Text({
+      name: 'text',
+    });
+
+    innerGroup.addLayer(text);
+    outerGroup.addLayer(innerGroup);
+
+    const layers = outerGroup.getLayers().map(l => l.name);
+
+    expect(layers.sort()).toEqual(['inner group'].sort());
+  });
+
+  it('getAllLayers should get all children layers', () => {
+    const outerGroup = new Group({
+      name: 'outer group',
+    });
+
+    const innerGroup = new Group({
+      name: 'inner group',
+    });
+    const text = new Text({
+      name: 'text',
+    });
+
+    innerGroup.addLayer(text);
+    outerGroup.addLayer(innerGroup);
+
+    const layers = outerGroup.getAllLayers().map(l => l.name);
+
+    expect(layers.sort()).toEqual(['inner group', 'text'].sort());
   });
 });

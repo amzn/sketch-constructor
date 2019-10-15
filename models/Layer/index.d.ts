@@ -34,6 +34,8 @@ declare class Layer {
 
   getLayers(predicate?: string | RegExp): Layer[];
 
+  getAllLayers(predicate?: string | RegExp): Layer[];
+
   getID(): string;
 }
 
