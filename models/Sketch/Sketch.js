@@ -21,7 +21,7 @@ const Document = require('../Document');
 const Page = require('../Page');
 const Artboard = require('../Artboard');
 const SharedStyle = require('../SharedStyle');
-const { STORAGE_DIR, STORAGE_IMG_DIR } = require('../../utils/paths');
+const { STORAGE_DIR, STORAGE_IMG_DIR, STORAGE_PREVIEW_DIR, STORAGE_PREVIEW_FILE } = require('../../utils/paths');
 
 const readFileAsync = promisify(fs.readFile);
 
@@ -73,6 +73,16 @@ class Sketch {
         sketch.pages = args.map(str => new Page(null, JSON.parse(str)));
         return sketch;
       });
+  }
+
+  static addPreview(preview) {
+    if (!fs.existsSync(preview)) {
+        console.warn('Error occurred while adding preview image, please check the file path');
+        return;
+    }
+
+    fs.ensureDirSync(STORAGE_PREVIEW_DIR);
+    fs.copyFileSync(preview, STORAGE_PREVIEW_FILE);
   }
 
   constructor(args = {}) {
@@ -154,6 +164,10 @@ class Sketch {
       .file('document.json', JSON.stringify(this.document));
     this.zip.folder('pages');
     this.zip.folder('previews');
+
+    if (fs.existsSync(STORAGE_PREVIEW_FILE))
+      this.zip.folder('previews').file('preview.png', fs.readFile(STORAGE_PREVIEW_FILE));
+
     if (fs.existsSync(STORAGE_IMG_DIR)) {
       fs.readdirSync(STORAGE_IMG_DIR).forEach(file => {
         this.zip.folder('images').file(file, fs.readFile(`${STORAGE_IMG_DIR}/${file}`));

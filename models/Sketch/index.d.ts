@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs  from 'fs';
 import JSZip from 'jszip';
 import Meta from '../Meta';
 import User from '../User';
@@ -7,9 +7,11 @@ import Page from '../Page';
 import SharedStyle from '../SharedStyle';
 
 declare class Sketch {
-  static fromFile(path: string): Promise<Sketch>;
+  static fromFile(path: fs.PathLike): Promise<Sketch>;
 
-  static fromExtractedFile(path: string): Promise<Sketch>;
+  static fromExtractedFile(path: fs.PathLike): Promise<Sketch>;
+
+  static addPreview(preview: fs.PathLike): void;
 
   document: Document;
   meta: Meta;

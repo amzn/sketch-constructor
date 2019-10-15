@@ -21,7 +21,19 @@ const STORAGE_IMG_DIR = '.sketch-constructor/images';
  */
 const STORAGE_DIR = '.sketch-constructor';
 
+/**
+ * Path to directory with preview file
+ */
+const STORAGE_PREVIEW_DIR = `${STORAGE_DIR}/previews`;
+
+/**
+ * Path to preview file
+ */
+const STORAGE_PREVIEW_FILE = `${STORAGE_PREVIEW_DIR}/preview.png`;
+
 module.exports = {
   STORAGE_DIR,
   STORAGE_IMG_DIR,
+  STORAGE_PREVIEW_DIR,
+  STORAGE_PREVIEW_FILE,
 };
