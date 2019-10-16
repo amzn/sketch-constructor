@@ -109,8 +109,9 @@ class Layer {
       if (current === null || current === undefined) {
         return list;
       }
-      if (current.layers) {
-        current.layers.forEach(layer => {
+      const childLayers = current.getLayers();
+      if (childLayers !== undefined) {
+        childLayers.forEach(layer => {
           list.push(layer);
           getRecursiveLayers(layer, list);
         });
@@ -123,6 +124,7 @@ class Layer {
     if (predicate) {
       return allLayers.filter(predicate);
     }
+
     return allLayers;
   }
 

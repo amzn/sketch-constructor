@@ -81,8 +81,61 @@ class SymbolMaster extends Artboard {
     super.addLayer(layer);
   }
 
+  /**
+   * Update existing SymbolInstance
+   * Nested Symbols are not currently supported
+   * @property {symbolInstance} SymbolInstance
+   * @property {Object} args - overrides
+   * @property {string} args[].name - name of the override being set
+   * @property {string|Object} [args[].value] - the value set, for Layer Styles pass in object or do_objectID
+   * @property {string|Object} [args[].style] - for textStyles only, pass in TextStyle object or do_objectID
+   */
+  updateInstance(symbolInstance, args) {
+    args.forEach(arg => {
+      const overrideLayer = this.getAllLayers().find(l => l.name === arg.name);
+
+      if (overrideLayer !== undefined) {
+        const overrideName = overrideLayer.do_objectID;
+
+        symbolInstance.overrideValues
+          .filter(prop => prop.overrideName.split('_')[0] === overrideName)
+          .forEach(prop => {
+            if (prop.overrideName.includes('_stringValue')) {
+              prop.value = arg.value;
+            }
+            if (prop.overrideName.includes('_layerStyle')) {
+              prop.value = arg.value instanceof Object ? arg.value.do_objectID : arg.value;
+            }
+            if (arg.extStyle && prop.overrideName.includes('_textStyle')) {
+              prop.value = arg.style instanceof Object ? arg.style.do_objectID : arg.style.do_objectID;
+            }
+          });
+      }
+    });
+  }
+
+  /**
+   * Creates a new SymbolInstance with overrides
+   * Nested Symbols are not currently supported
+   * @property {SymbolMaster} symbolMaster
+   * @property {Object} [args]
+   * @property {Object[]} [args.overrideValues] - overrides
+   * @property {string} [args.overrideValues[].name] - name of the override being set
+   * @property {string|Object} [args.overrideValues[].value] - the value set, for Layer Styles pass in object or do_objectID
+   * @property {string|Object} [args.overrideValues[].style] - for textStyles only, pass in TextStyle object or do_objectID
+   * @returns {SymbolInstance}
+   */
   createInstance(args) {
-    const symbolInstance = new SymbolInstance({ ...args, symbolID: this.symbolID });
+    const symbolInstance = new SymbolInstance(
+      {
+          ...args,
+          symbolID: this.symbolID,
+          frame: new Rect(this.frame || {}),
+          name: args.name || '',
+          style: new Style(this.style),
+          allowsOverrides: this.allowsOverrides,
+      }
+    );
 
     symbolInstance.overrideValues = this.overrideProperties.map(prop => ({
       _class: 'overrideValue',
@@ -90,6 +143,10 @@ class SymbolMaster extends Artboard {
       overrideName: prop.overrideName,
       value: '',
     }));
+
+    if (args && args.overrideValues) {
+      this.updateInstance(symbolInstance, args.overrideValues);
+    }
 
     return symbolInstance;
   }
