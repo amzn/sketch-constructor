@@ -117,7 +117,6 @@ class SymbolMaster extends Artboard {
   /**
    * Creates a new SymbolInstance with overrides
    * Nested Symbols are not currently supported
-   * @property {SymbolMaster} symbolMaster
    * @property {Object} [args]
    * @property {Object[]} [args.overrideValues] - overrides
    * @property {string} [args.overrideValues[].name] - name of the override being set
