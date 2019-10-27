@@ -64,6 +64,11 @@ Sketch.addPreview('/path/to/preview.png');
 newSketch.build('newSketch.sketch');
 ```
 
+### Temporary files
+
+This library by defaults uses `.sketch-constructor` directory for placing temporary files like Bitmap images or preview.
+We provide APIs to change default temporary directory by providing `STORAGE_DIR` environment variable.
+
 ### Read/manipulate an existing Sketch file
 Getting data from or manipulating an existing Sketch file.
 

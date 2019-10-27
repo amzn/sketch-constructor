@@ -12,14 +12,14 @@
  */
 
 /**
- * Path to the temporary local image folder
- */
-const STORAGE_IMG_DIR = '.sketch-constructor/images';
-
-/**
  * Path to the temporary sketch constructor folder
  */
-const STORAGE_DIR = '.sketch-constructor';
+const STORAGE_DIR = process.env.STORAGE_DIR || '.sketch-constructor';
+
+/**
+ * Path to the temporary local image folder
+ */
+const STORAGE_IMG_DIR = `${STORAGE_DIR}/images`;
 
 /**
  * Path to directory with preview file
