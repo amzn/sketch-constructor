@@ -36,14 +36,15 @@ class Text extends Layer {
    * @property {boolean} dontSynchroniseWithSymbol
    */
   static get Model() {
-    return Object.assign({}, Layer.Model, {
+    return {
+      ...Layer.Model,
       automaticallyDrawOnUnderlyingPath: false,
       dontSynchroniseWithSymbol: false,
       attributedString: AttributedString.Model,
       glyphBounds: '{{5, 15}, {122, 55}}',
       lineSpacingBehaviour: 2,
       textBehaviour: 2,
-    });
+    };
   }
 
   /**

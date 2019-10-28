@@ -21,13 +21,14 @@ const Style = require('../Style');
 
 class ShapeGroup extends Layer {
   static get Model() {
-    return Object.assign({}, Layer.Model, {
+    return {
+      ...Layer.Model,
       _class: 'shapeGroup',
       layerListExpandedType: 1,
       clippingMaskMode: 0,
       hasClippingMask: false,
       windingRule: 1,
-    });
+    };
   }
 
   constructor(args, json) {

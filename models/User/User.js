@@ -54,14 +54,11 @@ class User {
    * @returns {this}
    */
   addPage(pageID, opts = {}) {
-    this[pageID] = Object.assign(
-      {},
-      {
-        scrollOrigin: '{100, 100}',
-        zoomValue: 1,
-      },
-      opts
-    );
+    this[pageID] = {
+      scrollOrigin: '{100, 100}',
+      zoomValue: 1,
+      ...opts,
+    };
     return this;
   }
 }

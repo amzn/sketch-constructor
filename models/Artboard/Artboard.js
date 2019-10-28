@@ -38,7 +38,8 @@ class Artboard extends Group {
    * @property {Color.Model} backgroundColor
    */
   static get Model() {
-    return Object.assign({}, Group.Model, {
+    return {
+      ...Group.Model,
       _class: 'artboard',
       shouldBreakMaskChain: true,
       backgroundColor: {},
@@ -49,7 +50,7 @@ class Artboard extends Group {
       includeInCloudUpload: true,
       isFlowHome: false,
       resizesContent: false,
-    });
+    };
   }
 
   /**

@@ -43,14 +43,7 @@ class AttributedString {
       Object.assign(this, {
         _class: 'attributedString',
         string: args.string || '',
-        attributes: args.attributes || [
-          new StringAttribute(
-            Object.assign({}, args, {
-              location: 0,
-              length: args.string.length,
-            })
-          ),
-        ],
+        attributes: args.attributes || [new StringAttribute({ ...args, location: 0, length: args.string.length })],
       });
     }
   }

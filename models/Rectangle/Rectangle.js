@@ -33,7 +33,8 @@ class Rectangle extends Layer {
    * @property {boolean} hasConvertedToNewRoundCorners
    */
   static get Model() {
-    return Object.assign({}, Layer.Model, {
+    return {
+      ...Layer.Model,
       _class: 'rectangle',
       edited: false,
       isClosed: true,
@@ -41,7 +42,7 @@ class Rectangle extends Layer {
       points: [],
       fixedRadius: 0,
       hasConvertedToNewRoundCorners: true,
-    });
+    };
   }
 
   /**

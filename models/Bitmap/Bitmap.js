@@ -39,7 +39,8 @@ class Bitmap extends Layer {
    * @property {Object} image
    */
   static get Model() {
-    return Object.assign({}, Layer.Model, {
+    return {
+      ...Layer.Model,
       _class: 'bitmap',
       fillReplacesImage: false,
       hasClippingMask: false,
@@ -54,7 +55,7 @@ class Bitmap extends Layer {
         _ref_class: 'MSImageData',
         _ref: '',
       },
-    });
+    };
   }
 
   /**

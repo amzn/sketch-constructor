@@ -82,11 +82,7 @@ class SymbolMaster extends Artboard {
   }
 
   createInstance(args) {
-    const symbolInstance = new SymbolInstance(
-      Object.assign({}, args, {
-        symbolID: this.symbolID,
-      })
-    );
+    const symbolInstance = new SymbolInstance({ ...args, symbolID: this.symbolID });
 
     symbolInstance.overrideValues = this.overrideProperties.map(prop => ({
       _class: 'overrideValue',

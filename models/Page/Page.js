@@ -24,9 +24,7 @@ class Page extends Group {
    * @mixes Group.Model
    */
   static get Model() {
-    return Object.assign({}, Group.Model, {
-      _class: 'page',
-    });
+    return { ...Group.Model, _class: 'page' };
   }
 
   /**

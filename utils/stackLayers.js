@@ -23,7 +23,7 @@ const Rect = require('../models/Rect');
 function stackLayers(layers, gutter = 0) {
   return layers.reduce((prev, curr) => {
     const y = prev.reduce((ret, item) => ret + item.frame.height + gutter, 0);
-    curr.frame = new Rect(Object.assign({}, curr.frame, { y }));
+    curr.frame = new Rect({ ...curr.frame, y });
     return prev.concat(curr);
   }, []);
 }

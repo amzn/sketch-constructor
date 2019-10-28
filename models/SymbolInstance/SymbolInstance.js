@@ -28,11 +28,7 @@ class SymbolInstance extends Layer {
    * @property {overrideValue[]} overrideValues
    */
   static get Model() {
-    return Object.assign({}, Layer.Model, {
-      _class: 'symbolInstance',
-      symbolID: '',
-      overrideValues: [],
-    });
+    return { ...Layer.Model, _class: 'symbolInstance', symbolID: '', overrideValues: [] };
   }
 
   /**

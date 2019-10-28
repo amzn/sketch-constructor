@@ -26,12 +26,13 @@ class Group extends Layer {
    * @mixes Layer.Model
    */
   static get Model() {
-    return Object.assign({}, Layer.Model, {
+    return {
+      ...Layer.Model,
       _class: 'group',
       layerListExpandedType: 2,
       resizingConstraint: 63,
       hasClickThrough: false,
-    });
+    };
   }
 
   /**

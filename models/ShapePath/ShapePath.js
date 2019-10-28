@@ -28,13 +28,7 @@ class ShapePath extends Layer {
    * @property {String[]} points
    */
   static get Model() {
-    return Object.assign({}, Layer.Model, {
-      _class: 'shapePath',
-      edited: true,
-      isClosed: false,
-      pointRadiusBehaviour: 1,
-      points: [],
-    });
+    return { ...Layer.Model, _class: 'shapePath', edited: true, isClosed: false, pointRadiusBehaviour: 1, points: [] };
   }
 
   /**
