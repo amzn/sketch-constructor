@@ -64,9 +64,39 @@ Object.keys(verticalAlignmentMap).forEach(key => {
   verticalAlignmentMap[verticalAlignmentMap[key]] = key;
 });
 
+/**
+ * Maps blend modes int enums to human-readable strings
+ * @example
+ * blendModeMap.multiply // => 2
+ */
+const blendModeMap = {
+  normal: 0,
+  darken: 1,
+  multiply: 2,
+  colorBurn: 3,
+  lighten: 4,
+  screen: 5,
+  colorDodge: 6,
+  overlay: 7,
+  softLight: 8,
+  hardLight: 9,
+  difference: 10,
+  exclusion: 11,
+  hue: 12,
+  saturation: 13,
+  luminosity: 14,
+  plusDarker: 15,
+  plusLighter: 16,
+};
+
+Object.keys(blendModeMap).forEach(key => {
+  blendModeMap[blendModeMap[key]] = key;
+});
+
 module.exports = {
   textAlignmentMap,
   verticalAlignmentMap,
   textTransformMap,
   textBehaviourMap,
+  blendModeMap,
 };
