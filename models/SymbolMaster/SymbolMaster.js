@@ -104,12 +104,11 @@ class SymbolMaster extends Artboard {
     };
 
     getOverrideNames(layer, []).forEach(name => {
-      this.overrideProperties.push(
-        Object.assign({}, MSImmutableOverrideProperty, {
-          canOverride,
-          overrideName: name,
-        })
-      );
+      this.overrideProperties.push({
+        ...MSImmutableOverrideProperty,
+        canOverride,
+        overrideName: name,
+      });
     });
 
     super.addLayer(layer);
