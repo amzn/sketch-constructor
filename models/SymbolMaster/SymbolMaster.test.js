@@ -15,6 +15,7 @@ const SymbolMaster = require('./index');
 const Text = require('../Text');
 const Rectangle = require('../Rectangle');
 const SharedStyle = require('../SharedStyle');
+const TextStyle = require('../TextStyle');
 const Group = require('../Group');
 
 const json = require('./__SymbolMaster.json');
@@ -31,7 +32,9 @@ describe('SymbolMaster', () => {
     });
     expect(symbolMaster.name).toEqual('test');
   });
+});
 
+describe('addLayer', () => {
   it('should add overrideProperties', () => {
     const symbolMaster = new SymbolMaster({
       name: 'test',
@@ -46,7 +49,103 @@ describe('SymbolMaster', () => {
     expect(symbolMaster.overrideProperties[0].overrideName).toEqual(`${layer.do_objectID}_stringValue`);
   });
 
-  it('should be able to create symbol instances', () => {
+  it('should create an override for each child layer', () => {
+    const symbolMaster = new SymbolMaster({
+      name: 'symbol',
+    });
+
+    const group = new Group({
+      name: 'group',
+    });
+
+    const text = new Text({
+      string: 'text1',
+    });
+
+    const text2 = new Text({
+      string: 'text2',
+    });
+
+    group.addLayer(text);
+    group.addLayer(text2);
+    symbolMaster.addLayer(group);
+
+    expect(symbolMaster.overrideProperties[0].overrideName).toEqual(`${text.do_objectID}_stringValue`);
+    expect(symbolMaster.overrideProperties[1].overrideName).toEqual(`${text2.do_objectID}_stringValue`);
+  });
+
+  it('should add override for text string and textStyle', () => {
+    const symbolMaster = new SymbolMaster({
+      name: 'symbol',
+    });
+
+    const blue = new SharedStyle({
+      textStyle: {
+        _class: 'textStyle',
+        encodedAttributes: {
+          MSAttributedStringColorAttribute: {
+            _class: 'color',
+            alpha: 1,
+            blue: 1,
+            green: 0,
+            red: 0,
+          },
+        },
+      },
+    });
+
+    const text = new Text({
+      string: 'text',
+    });
+
+    text.setSharedStyle(blue);
+    symbolMaster.addLayer(text);
+
+    expect(symbolMaster.overrideProperties[0].overrideName).toEqual(`${text.do_objectID}_stringValue`);
+    expect(symbolMaster.overrideProperties[1].overrideName).toEqual(`${text.do_objectID}_textStyle`);
+  });
+
+  it('should add override for layerStyle', () => {
+    const white = new SharedStyle({
+      name: 'white',
+      fills: [
+        {
+          color: '#fff',
+        },
+      ],
+    });
+
+    const symbolMaster = new SymbolMaster({
+      name: 'symbol',
+    });
+
+    const layer = new Rectangle({
+      width: 200,
+      height: 100,
+      x: 0,
+      y: 0,
+      name: 'rectangle',
+    });
+
+    layer.setSharedStyle(white);
+    symbolMaster.addLayer(layer);
+
+    expect(symbolMaster.overrideProperties[0].overrideName).toEqual(`${layer.do_objectID}_layerStyle`);
+  });
+});
+
+describe('createInstance', () => {
+  it('should be able to create a symbol instance', () => {
+    const symbolMaster = new SymbolMaster({
+      name: 'symbol',
+    });
+
+    const symbolInstance = symbolMaster.createInstance();
+
+    expect(symbolInstance.symbolID).toEqual(symbolMaster.symbolID);
+  });
+
+  it('should be able to create a symbol instance with overrideValues', () => {
     const symbolMaster = new SymbolMaster({
       name: 'test',
     });
@@ -57,33 +156,9 @@ describe('SymbolMaster', () => {
     });
 
     symbolMaster.addLayer(layer, true);
-    const symbolInstance = symbolMaster.createInstance({
-      frame: {
-        width: 100,
-        height: 100,
-      },
-    });
+    const symbolInstance = symbolMaster.createInstance();
 
     expect(symbolInstance.symbolID).toEqual(symbolMaster.symbolID);
-    expect(symbolInstance.overrideValues[0].overrideName).toEqual(symbolMaster.overrideProperties[0].overrideName);
-  });
-
-  it('should be able to create a symbol instance', () => {
-    const symbolMaster = new SymbolMaster({
-      name: 'symbol',
-    });
-
-    const layer = new Text({
-      name: 'text',
-    });
-
-    const instanceName = 'test instance';
-
-    symbolMaster.addLayer(layer, true);
-    const symbolInstance = symbolMaster.createInstance({ name: instanceName });
-
-    expect(symbolInstance.symbolID).toEqual(symbolMaster.symbolID);
-    expect(symbolInstance.name).toEqual(instanceName);
     expect(symbolInstance.overrideValues[0].overrideName).toEqual(symbolMaster.overrideProperties[0].overrideName);
   });
 
@@ -140,16 +215,10 @@ describe('SymbolMaster', () => {
       x: 0,
       y: 0,
       name: 'rectangle',
-      style: beforeStyle,
     });
 
+    layer.setSharedStyle(beforeStyle);
     symbolMaster.addLayer(layer, true);
-
-    // symbolMaster.addLayer currenty sets the overrideName incorrectly - temp fix
-    symbolMaster.overrideProperties[0].overrideName = symbolMaster.overrideProperties[0].overrideName.replace(
-      'stringValue',
-      'layerStyle'
-    );
 
     const symbolInstance = symbolMaster.createInstance({
       overrideValues: [
@@ -183,9 +252,6 @@ describe('SymbolMaster', () => {
 
     symbolMaster.addLayer(group, true);
 
-    // symbolMaster.addLayer currenty sets the overrideProperties incorrectly - temp fix
-    symbolMaster.overrideProperties[0].overrideName = `${text.do_objectID}_stringValue`;
-
     const symbolInstance = symbolMaster.createInstance({
       overrideValues: [
         {
@@ -198,8 +264,10 @@ describe('SymbolMaster', () => {
     expect(symbolInstance.overrideValues[0].overrideName).toEqual(symbolMaster.overrideProperties[0].overrideName);
     expect(symbolInstance.overrideValues[0].value).toEqual(overrideText);
   });
+});
 
-  it('should be able to update simple text Symbol Instance override', () => {
+describe('updateInstance', () => {
+  it('should be able to update text Symbol Instance override', () => {
     const symbolMaster = new SymbolMaster({
       name: 'symbol',
     });
@@ -215,8 +283,6 @@ describe('SymbolMaster', () => {
     const symbolInstance = symbolMaster.createInstance({ name: 'instance' });
 
     symbolMaster.updateInstance(symbolInstance, [{ name: 'text', value: overrideText }]);
-
-    console.log(`result: ${symbolInstance.overrideValues[0].value}`);
 
     expect(symbolInstance.overrideValues[0].value).toEqual(overrideText);
   });
@@ -250,16 +316,10 @@ describe('SymbolMaster', () => {
       x: 0,
       y: 0,
       name: 'rectangle',
-      style: beforeStyle,
     });
 
+    layer.setSharedStyle(beforeStyle);
     symbolMaster.addLayer(layer, true);
-
-    // symbolMaster.addLayer currenty sets the overrideName incorrectly - temp fix
-    symbolMaster.overrideProperties[0].overrideName = symbolMaster.overrideProperties[0].overrideName.replace(
-      'stringValue',
-      'layerStyle'
-    );
 
     const symbolInstance = symbolMaster.createInstance({
       name: 'instance',
@@ -290,13 +350,9 @@ describe('SymbolMaster', () => {
 
     symbolMaster.addLayer(group, true);
 
-    // symbolMaster.addLayer currenty sets the overrideProperties incorrectly - temp fix
-    symbolMaster.overrideProperties[0].overrideName = `${text.do_objectID}_stringValue`;
-
     const symbolInstance = symbolMaster.createInstance({
       name: 'instance',
     });
-
     symbolMaster.updateInstance(symbolInstance, [{ name: 'text', value: overrideText }]);
 
     expect(symbolInstance.overrideValues[0].overrideName).toEqual(symbolMaster.overrideProperties[0].overrideName);

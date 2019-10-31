@@ -18,8 +18,10 @@ describe('Layer', () => {
   it('should work from raw JSON', () => {
     expect(true).toBeTruthy();
   });
+});
 
-  it('getLayers should get all children layers', () => {
+describe('getLayers', () => {
+  it('should get all children layers', () => {
     const group = new Group({
       name: 'group',
     });
@@ -38,7 +40,7 @@ describe('Layer', () => {
     expect(layers.sort()).toEqual(['text1', 'text2'].sort());
   });
 
-  it('getLayers should only get direct children layers', () => {
+  it('should only get direct children layers', () => {
     const outerGroup = new Group({
       name: 'outer group',
     });
@@ -57,8 +59,10 @@ describe('Layer', () => {
 
     expect(layers.sort()).toEqual(['inner group'].sort());
   });
+});
 
-  it('getAllLayers should get all children layers', () => {
+describe('getAllLayers', () => {
+  it('should get all children layers', () => {
     const outerGroup = new Group({
       name: 'outer group',
     });

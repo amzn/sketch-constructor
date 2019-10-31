@@ -72,12 +72,46 @@ class SymbolMaster extends Artboard {
   }
 
   addLayer(layer, canOverride) {
-    this.overrideProperties.push(
-      Object.assign(MSImmutableOverrideProperty, {
-        canOverride,
-        overrideName: `${layer.do_objectID}_stringValue`,
-      })
-    );
+    const getOverrideNames = (prop, overrideNames) => {
+      switch (prop._class) {
+        case 'symbolInstance':
+          overrideNames.push(`${prop.do_objectID}_symbolID`);
+          break;
+        case 'text':
+          overrideNames.push(`${prop.do_objectID}_stringValue`);
+          if (prop.sharedStyleID !== null && prop.sharedStyleID !== undefined) {
+            overrideNames.push(`${prop.do_objectID}_textStyle`);
+          }
+          break;
+        case 'rectangle':
+        case 'star':
+        case 'triangle':
+        case 'polygon':
+        case 'shapePath':
+          if (prop.sharedStyleID !== null && prop.sharedStyleID !== undefined) {
+            overrideNames.push(`${prop.do_objectID}_layerStyle`);
+          }
+          break;
+        case 'group':
+          prop.layers.forEach(l => {
+            getOverrideNames(l, overrideNames);
+          });
+          break;
+        default:
+          break;
+      }
+      return overrideNames;
+    };
+
+    getOverrideNames(layer, []).forEach(name => {
+      this.overrideProperties.push(
+        Object.assign({}, MSImmutableOverrideProperty, {
+          canOverride,
+          overrideName: name,
+        })
+      );
+    });
+
     super.addLayer(layer);
   }
 
@@ -124,17 +158,15 @@ class SymbolMaster extends Artboard {
    * @property {string|Object} [args.overrideValues[].style] - for textStyles only, pass in TextStyle object or do_objectID
    * @returns {SymbolInstance}
    */
-  createInstance(args) {
-    const symbolInstance = new SymbolInstance(
-      {
-          ...args,
-          symbolID: this.symbolID,
-          frame: new Rect(this.frame || {}),
-          name: args.name || '',
-          style: new Style(this.style),
-          allowsOverrides: this.allowsOverrides,
-      }
-    );
+  createInstance(args = {}) {
+    const symbolInstance = new SymbolInstance({
+      ...args,
+      symbolID: this.symbolID,
+      frame: new Rect(this.frame || {}),
+      name: args.name || '',
+      style: new Style(this.style),
+      allowsOverrides: this.allowsOverrides,
+    });
 
     symbolInstance.overrideValues = this.overrideProperties.map(prop => ({
       _class: 'overrideValue',
