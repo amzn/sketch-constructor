@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 
+const { blendModeMap } = require('../../utils/maps');
+
 /**
  * Options for exporting an artboard
  */
@@ -36,7 +38,9 @@ class GraphicsContextSettings {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, GraphicsContextSettings.Model, args);
+      Object.assign(this, GraphicsContextSettings.Model, args, {
+        blendMode: blendModeMap[args.blendMode || 'normal'],
+      });
     }
     return this;
   }
