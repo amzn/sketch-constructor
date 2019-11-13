@@ -72,17 +72,100 @@ class SymbolMaster extends Artboard {
   }
 
   addLayer(layer, canOverride) {
-    this.overrideProperties.push(
-      Object.assign(MSImmutableOverrideProperty, {
+    const getOverrideNames = (prop, overrideNames) => {
+      switch (prop._class) {
+        case 'symbolInstance':
+          overrideNames.push(`${prop.do_objectID}_symbolID`);
+          break;
+        case 'text':
+          overrideNames.push(`${prop.do_objectID}_stringValue`);
+          if (prop.sharedStyleID !== null && prop.sharedStyleID !== undefined) {
+            overrideNames.push(`${prop.do_objectID}_textStyle`);
+          }
+          break;
+        case 'rectangle':
+        case 'star':
+        case 'triangle':
+        case 'polygon':
+        case 'shapePath':
+          if (prop.sharedStyleID !== null && prop.sharedStyleID !== undefined) {
+            overrideNames.push(`${prop.do_objectID}_layerStyle`);
+          }
+          break;
+        case 'group':
+          prop.layers.forEach(l => {
+            getOverrideNames(l, overrideNames);
+          });
+          break;
+        default:
+          break;
+      }
+      return overrideNames;
+    };
+
+    getOverrideNames(layer, []).forEach(name => {
+      this.overrideProperties.push({
+        ...MSImmutableOverrideProperty,
         canOverride,
-        overrideName: `${layer.do_objectID}_stringValue`,
-      })
-    );
+        overrideName: name,
+      });
+    });
+
     super.addLayer(layer);
   }
 
-  createInstance(args) {
-    const symbolInstance = new SymbolInstance({ ...args, symbolID: this.symbolID });
+  /**
+   * Update existing SymbolInstance
+   * Nested Symbols are not currently supported
+   * @property {symbolInstance} SymbolInstance
+   * @property {Object} args - overrides
+   * @property {string} args[].name - name of the override being set
+   * @property {string|Object} [args[].value] - the value set, for Layer Styles pass in object or do_objectID
+   * @property {string|Object} [args[].style] - for textStyles only, pass in TextStyle object or do_objectID
+   */
+  updateInstance(symbolInstance, args) {
+    args.forEach(arg => {
+      const overrideLayer = this.getAllLayers().find(l => l.name === arg.name);
+
+      if (overrideLayer !== undefined) {
+        const overrideName = overrideLayer.do_objectID;
+
+        symbolInstance.overrideValues
+          .filter(prop => prop.overrideName.split('_')[0] === overrideName)
+          .forEach(prop => {
+            if (prop.overrideName.includes('_stringValue')) {
+              prop.value = arg.value;
+            }
+            if (prop.overrideName.includes('_layerStyle')) {
+              prop.value = arg.value instanceof Object ? arg.value.do_objectID : arg.value;
+            }
+            if (arg.extStyle && prop.overrideName.includes('_textStyle')) {
+              prop.value = arg.style instanceof Object ? arg.style.do_objectID : arg.style.do_objectID;
+            }
+          });
+      }
+    });
+  }
+
+  /**
+   * Creates a new SymbolInstance with overrides
+   * Nested Symbols are not currently supported
+   * @property {Object} [args]
+   * @property {Object[]} [args.overrideValues] - overrides
+   * @property {string} [args.overrideValues[].name] - name of the override being set
+   * @property {string|Object} [args.overrideValues[].value] - the value set, for Layer Styles pass in object or do_objectID
+   * @property {string|Object} [args.overrideValues[].style] - for textStyles only, pass in TextStyle object or do_objectID
+   * @returns {SymbolInstance}
+   */
+  createInstance(args = {}) {
+    const symbolInstance = new SymbolInstance({
+      ...args,
+      symbolID: this.symbolID,
+      frame: new Rect(this.frame || {}),
+      name: args.name || '',
+      style: new Style(this.style),
+      allowsOverrides: this.allowsOverrides,
+    });
 
     symbolInstance.overrideValues = this.overrideProperties.map(prop => ({
       _class: 'overrideValue',
@@ -90,6 +173,10 @@ class SymbolMaster extends Artboard {
       overrideName: prop.overrideName,
       value: '',
     }));
+
+    if (args && args.overrideValues) {
+      this.updateInstance(symbolInstance, args.overrideValues);
+    }
 
     return symbolInstance;
   }

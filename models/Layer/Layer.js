@@ -99,6 +99,35 @@ class Layer {
     return this.layers;
   }
 
+  /**
+   * Get all child, grandchild, etc layers, and optionally filter them by a predicate function.
+   * @param {function} [predicate] - Filter function if you want to only return certain layers
+   * @returns {Layer[]} An array of all layers. Will return all direct children, grandchildren, etc.
+   */
+  getAllLayers(predicate) {
+    function getRecursiveLayers(current, list) {
+      if (current === null || current === undefined) {
+        return list;
+      }
+      const childLayers = current.getLayers();
+      if (childLayers !== undefined) {
+        childLayers.forEach(layer => {
+          list.push(layer);
+          getRecursiveLayers(layer, list);
+        });
+      }
+      return list;
+    }
+
+    const allLayers = getRecursiveLayers(this, []);
+
+    if (predicate) {
+      return allLayers.filter(predicate);
+    }
+
+    return allLayers;
+  }
+
   getID() {
     return this.do_objectID;
   }
