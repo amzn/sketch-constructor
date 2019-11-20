@@ -4,7 +4,6 @@ import RulerData from '../RulerData';
 
 declare class Artboard extends Group {
   _class: 'artboard';
-  shouldBreakMaskChain: boolean;
   backgroundColor: Color;
   hasBackgroundColor: boolean;
   horizontalRulerData: RulerData;

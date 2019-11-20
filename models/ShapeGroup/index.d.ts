@@ -8,7 +8,6 @@ declare class ShapeGroup extends Layer {
   static ShapePath(args: any): ShapeGroup;
 
   _class: 'shapeGroup';
-  layerListExpandedType: number;
   clippingMaskMode: number;
   hasClippingMask: boolean;
   windingRule: number;
