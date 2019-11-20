@@ -12,7 +12,8 @@
  */
 
 const Color = require('../Color');
-const { textAlignmentMap, verticalAlignmentMap, textTransformMap } = require('../../utils/maps');
+const ParagraphStyle = require('../ParagraphStyle');
+const { verticalAlignmentMap, textTransformMap } = require('../../utils/maps');
 
 class StringAttribute {
   static get Model() {
@@ -33,10 +34,7 @@ class StringAttribute {
         textStyleVerticalAlignmentKey: 0,
         underlineStyle: 0,
         strikethroughStyle: 0,
-        paragraphStyle: {
-          _class: 'paragraphStyle',
-          alignment: 0,
-        },
+        paragraphStyle: ParagraphStyle.Model,
       },
     };
   }
@@ -62,12 +60,7 @@ class StringAttribute {
           underlineStyle: args.underline ? 1 : 0,
           strikethroughStyle: args.strikethrough ? 1 : 0,
           kerning: args.kerning || undefined,
-          paragraphStyle: {
-            _class: 'paragraphStyle',
-            alignment: textAlignmentMap[args.alignment || 'left'],
-            ...(args.lineHeight && { maximumLineHeight: args.lineHeight }),
-            ...(args.lineHeight && { minimumLineHeight: args.lineHeight }),
-          },
+          paragraphStyle: new ParagraphStyle(args),
         },
       });
     }

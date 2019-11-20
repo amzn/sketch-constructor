@@ -1,4 +1,5 @@
 import Color from '../Color';
+import ParagraphStyle = require('../ParagraphStyle');
 // import { textAlignmentMap, verticalAlignmentMap } from '../../utils/maps';
 
 declare class TextStyle {
@@ -16,12 +17,7 @@ declare class TextStyle {
     underlineStyle: number;
     strikethroughStyle: number;
     kerning: number;
-    paragraphStyle: {
-      _class: 'paragraphStyle';
-      alignment: number;
-      minimumLineHeight: number;
-      maximumLineHeight: number;
-    };
+    paragraphStyle: ParagraphStyle;
   };
   verticalAlignment: number;
 

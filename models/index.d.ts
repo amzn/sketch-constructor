@@ -16,6 +16,7 @@ import _Layer from './Layer';
 import Meta from './Meta';
 import Oval from './Oval';
 import Page from './Page';
+import ParagraphStyle from './ParagraphStyle';
 import Rect from './Rect';
 import Rectangle from './Rectangle';
 import RulerData from './RulerData';
@@ -54,6 +55,7 @@ export {
   Meta,
   Oval,
   Page,
+  ParagraphStyle,
   Rect,
   Rectangle,
   RulerData,

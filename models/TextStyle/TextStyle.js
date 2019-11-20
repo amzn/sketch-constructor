@@ -12,7 +12,8 @@
  */
 
 const Color = require('../Color');
-const { textAlignmentMap, verticalAlignmentMap } = require('../../utils/maps');
+const ParagraphStyle = require('../ParagraphStyle');
+const { verticalAlignmentMap } = require('../../utils/maps');
 
 /**
  * TextStyle
@@ -34,12 +35,7 @@ class TextStyle {
         textStyleVerticalAlignmentKey: 0,
         underlineStyle: 0,
         strikethroughStyle: 0,
-        paragraphStyle: {
-          _class: 'paragraphStyle',
-          alignment: 0,
-          minimumLineHeight: 43,
-          maximumLineHeight: 43,
-        },
+        paragraphStyle: ParagraphStyle.Model,
       },
       verticalAlignment: 0,
       kerning: 0,
@@ -73,10 +69,7 @@ class TextStyle {
           },
           MSAttributedStringColorAttribute: new Color(args.color),
           textStyleVerticalAlignmentKey: 2,
-          paragraphStyle: {
-            _class: 'paragraphStyle',
-            alignment: textAlignmentMap[args.alignment || 'left'],
-          },
+          paragraphStyle: new ParagraphStyle(args),
         },
       });
       if (args.lineHeight) {
