@@ -20,11 +20,14 @@ const Color = require('../Color');
 const RulerData = require('../RulerData');
 const SymbolInstance = require('../SymbolInstance');
 
+let changeIdentifier = 1;
+
 const MSImmutableOverrideProperty = {
   _class: 'MSImmutableOverrideProperty',
   canOverride: true,
   overrideName: '',
 };
+
 class SymbolMaster extends Artboard {
   /**
    * The underlying JSON object structure in a Sketch document.
@@ -38,7 +41,7 @@ class SymbolMaster extends Artboard {
     return Object.assign(Artboard.Model, {
       _class: 'symbolMaster',
       symbolID: '',
-      changeIdentifier: 1,
+      changeIdentifier,
       overrideProperties: [],
       allowsOverrides: true,
     });
@@ -66,7 +69,7 @@ class SymbolMaster extends Artboard {
 
       // I don't know exactly what changeIdentifier does, but it appears to be
       // a unique int.
-      SymbolMaster.Model.changeIdentifier += 1;
+      changeIdentifier += 1;
     }
     return this;
   }
