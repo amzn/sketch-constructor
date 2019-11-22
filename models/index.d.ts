@@ -12,6 +12,7 @@ import ExportOptions from './ExportOptions';
 import Fill from './Fill';
 import GraphicsContextSettings from './GraphicsContextSettings';
 import Gradient from './Gradient';
+import _Layer from './Layer';
 import Meta from './Meta';
 import Oval from './Oval';
 import Page from './Page';
@@ -31,6 +32,9 @@ import Text from './Text';
 import TextStyle from './TextStyle';
 import User from './User';
 
+// export type only
+type Layer = _Layer;
+
 export {
   Artboard,
   AttributedString,
@@ -46,6 +50,7 @@ export {
   Fill,
   GraphicsContextSettings,
   Gradient,
+  Layer,
   Meta,
   Oval,
   Page,
