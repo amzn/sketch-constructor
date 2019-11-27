@@ -78,7 +78,7 @@
     "@types/fs-extra": "^8.0.0",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.0.2",
-    "docsify-cli": "^4.3.0",
+    "docsify-cli": "^4.4.0",
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.4.0",
