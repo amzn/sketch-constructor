@@ -13,7 +13,6 @@
 
 const fs = require('fs-extra');
 const path = require('path');
-const { promisify } = require('util');
 const JSZip = require('jszip');
 const Meta = require('../Meta');
 const User = require('../User');
@@ -22,8 +21,6 @@ const Page = require('../Page');
 const Artboard = require('../Artboard');
 const SharedStyle = require('../SharedStyle');
 const { STORAGE_DIR, STORAGE_IMG_DIR, STORAGE_PREVIEW_DIR, STORAGE_PREVIEW_FILE } = require('../../utils/paths');
-
-const readFileAsync = promisify(fs.readFile);
 
 class Sketch {
   static fromFile(filePath) {
@@ -35,10 +32,10 @@ class Sketch {
         zip.file('meta.json').async('string'),
         zip.file('user.json').async('string'),
       ])
-        .then(args => {
-          sketch.document = new Document(null, JSON.parse(args[0]));
-          sketch.meta = new Meta(null, JSON.parse(args[1]));
-          sketch.user = new User(null, JSON.parse(args[2]));
+        .then(([document, meta, user]) => {
+          sketch.document = new Document(null, JSON.parse(document));
+          sketch.meta = new Meta(null, JSON.parse(meta));
+          sketch.user = new User(null, JSON.parse(user));
 
           return Promise.all(
             Object.keys(sketch.meta.pagesAndArtboards).map(pageID => zip.file(`pages/${pageID}.json`).async('string'))
@@ -54,31 +51,31 @@ class Sketch {
   static fromExtractedFile(filePath) {
     const sketch = new Sketch();
     return Promise.all([
-      readFileAsync(path.resolve(filePath, 'document.json'), 'utf8'),
-      readFileAsync(path.resolve(filePath, 'meta.json'), 'utf8'),
-      readFileAsync(path.resolve(filePath, 'user.json'), 'utf8'),
+      fs.readJSON(path.resolve(filePath, 'document.json'), { encoding: 'utf8' }),
+      fs.readJSON(path.resolve(filePath, 'meta.json'), { encoding: 'utf8' }),
+      fs.readJSON(path.resolve(filePath, 'user.json'), { encoding: 'utf8' }),
     ])
-      .then(args => {
-        sketch.document = new Document(null, JSON.parse(args[0]));
-        sketch.meta = new Meta(null, JSON.parse(args[1]));
-        sketch.user = new User(null, JSON.parse(args[2]));
+      .then(([document, meta, user]) => {
+        sketch.document = new Document(null, document);
+        sketch.meta = new Meta(null, meta);
+        sketch.user = new User(null, user);
 
         return Promise.all(
           Object.keys(sketch.meta.pagesAndArtboards).map(pageID =>
-            readFileAsync(path.resolve(filePath, `pages/${pageID}.json`))
+            fs.readJSON(path.resolve(filePath, `pages/${pageID}.json`), { encoding: 'utf8' })
           )
         );
       })
       .then(args => {
-        sketch.pages = args.map(str => new Page(null, JSON.parse(str)));
+        sketch.pages = args.map(str => new Page(null, str));
         return sketch;
       });
   }
 
   static addPreview(preview) {
     if (!fs.existsSync(preview)) {
-        console.warn('Error occurred while adding preview image, please check the file path');
-        return;
+      console.warn('Error occurred while adding preview image, please check the file path');
+      return;
     }
 
     fs.ensureDirSync(STORAGE_PREVIEW_DIR);
