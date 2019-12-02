@@ -15,7 +15,6 @@ declare class Layer {
   isFlippedVertical: boolean;
   isLocked: boolean;
   isVisible: boolean;
-  layerListExpandedType: number;
   name: string;
   nameIsFixed: boolean;
   resizingConstraint: number;

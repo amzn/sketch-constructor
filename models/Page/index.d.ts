@@ -6,8 +6,6 @@ declare class Page extends Group {
 
   constructor(args?: any, json?: any);
 
-  getID(): string;
-
   getArtboards(predicate?: string | RegExp): Artboard[];
 
   getArtboard(name: string): Artboard | undefined;

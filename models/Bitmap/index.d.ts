@@ -11,58 +11,24 @@
  * and limitations under the License.
  */
 
- 
-export interface BitmapLayer {
-  _class?: 'bitmapLayer'
-  booleanOperation?: number
-  clippingMask: Record<string, any>
-  clippingMaskMode?: number
-  do_objectID?: string
-  exportOptions?: {
-    [k: string]: any
-  }
-  fillReplacesImage?: boolean
-  flow?: {
-    [k: string]: any
-  }
-  frame?: {
-    [k: string]: any
-  }
-  hasClippingMask?: boolean
-  image?: {
-    [k: string]: any
-  }
-  imageHash?: {
-    [k: string]: any
-  }
+import Layer = require('../Layer');
+
+declare class Bitmap extends Layer {
+  _class: 'bitmap';
+  clippingMask: Record<string, any>;
+  clippingMaskMode?: number;
+  fillReplacesImage?: boolean;
+  flow?: Record<string, any>;
+  hasClippingMask?: boolean;
+  image?: Record<string, any>;
+  imageHash?: Record<string, any>;
   /**
    * The scale the image was imported with into Sketch. This can be derived on import from the DPI of the image or the suffixes (@2x) of the filename. On legacy documents defaults to 0, which is meant to be the default image DPI of 72.
    */
-  intendedDPI?: number
-  isFixedToViewport?: boolean
-  isFlippedHorizontal?: boolean
-  isFlippedVertical?: boolean
-  isLocked?: boolean
-  isVisible?: boolean
-  layerListExpandedType?: number
-  name?: {
-    [k: string]: any
-  }
-  nameIsFixed?: boolean
-  originalObjectID?: {
-    [k: string]: any
-  }
-  resizingConstraint?: number
-  resizingType?: number
-  rotation?: number
-  sharedStyleID?: {
-    [k: string]: any
-  }
-  shouldBreakMaskChain?: boolean
-  style?: {
-    [k: string]: any
-  }
-  userInfo?: {
-    [k: string]: any
-  }
+  intendedDPI?: number;
+  originalObjectID?: Record<string, any>;
+  sharedStyleID?: Record<string, any>;
+  userInfo?: Record<string, any>
 }
+
+export = Bitmap;
