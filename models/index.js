@@ -30,6 +30,7 @@ module.exports = {
   Meta: require('./Meta'),
   Oval: require('./Oval'),
   Page: require('./Page'),
+  ParagraphStyle: require('./ParagraphStyle'),
   Rect: require('./Rect'),
   Rectangle: require('./Rectangle'),
   RulerData: require('./RulerData'),

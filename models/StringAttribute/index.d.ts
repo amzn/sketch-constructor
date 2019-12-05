@@ -1,5 +1,5 @@
 import Color from '../Color';
-// import { textAlignmentMap, verticalAlignmentMap } from '../../utils/maps';
+import ParagraphStyle = require('../ParagraphStyle');
 
 declare class StringAttribute {
   _class: 'stringAttribute';
@@ -17,10 +17,7 @@ declare class StringAttribute {
     textStyleVerticalAlignmentKey: number;
     underlineStyle: number;
     strikethroughStyle: number;
-    paragraphStyle: {
-      _class: 'paragraphStyle';
-      alignment: number;
-    };
+    paragraphStyle: ParagraphStyle;
   };
   constructor(args?: any, json?: any);
 }
