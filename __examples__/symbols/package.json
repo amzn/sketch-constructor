@@ -11,7 +11,7 @@
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
-    "fs-extra": "^7.0.1",
-    "sketch-constructor": "^1.2.0"
+    "fs-extra": "^8.1.0",
+    "sketch-constructor": "^1.16.0"
   }
 }
