@@ -3,6 +3,7 @@
   "version": "0.0.0-development",
   "description": "Read/write/manipulate Sketch files in Node without Sketch plugins!",
   "main": "index.js",
+  "type": "commonjs",
   "types": "index.d.ts",
   "files": [
     "models",
