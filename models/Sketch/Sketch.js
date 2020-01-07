@@ -170,13 +170,13 @@ class Sketch {
         this.zip.folder('images').file(file, fs.readFile(`${STORAGE_IMG_DIR}/${file}`));
       });
     }
-    fs.removeSync(STORAGE_DIR);
     this.pages.forEach(page => {
       this.zip.file(`pages/${page.do_objectID}.json`, JSON.stringify(page));
     });
 
     return this.zip.generateAsync({ type: 'nodebuffer', streamFiles: true }).then(buffer => {
       fs.writeFileSync(output, buffer);
+      fs.removeSync(STORAGE_DIR);
       return output;
     });
   }
