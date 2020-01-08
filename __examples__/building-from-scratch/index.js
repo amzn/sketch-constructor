@@ -18,65 +18,73 @@ const Swatch = require('./Swatch'); // custom component
 // Output directory
 fs.ensureDirSync('./dist');
 
-const colors = [{
-  label: "Red",
-  value: "#E53935"
-}, {
-  label: "Blue",
-  value: "#1E88E5"
-},{
-  label: "Green",
-  value: "#43A047"
-},{
-  label: "Orange",
-  value: "#ff9900"
-},{
-  label: "Purple",
-  value: "#9c27b0"
-}];
+const colors = [
+  {
+    label: 'Red',
+    value: '#E53935',
+  },
+  {
+    label: 'Blue',
+    value: '#1E88E5',
+  },
+  {
+    label: 'Green',
+    value: '#43A047',
+  },
+  {
+    label: 'Orange',
+    value: '#ff9900',
+  },
+  {
+    label: 'Purple',
+    value: '#9c27b0',
+  },
+];
 
 const sketch = new Sketch();
 
 const page = new Page({
-  name: 'my page'
+  name: 'my page',
 });
 
 const artboard = new Artboard({
   name: 'my artboard',
   frame: {
     width: colors.length * 220 + 20,
-    height: 190
-  }
+    height: 190,
+  },
 });
 
 // Iterate over the colors and put our custom Swatch component
 // on the artboard and add a layer style.
-colors.forEach((color,i) => {
-  let swatch = new Swatch( Object.assign({}, color, {
+colors.forEach((color, i) => {
+  const swatch = new Swatch({
+    ...color,
     frame: {
       x: i * 220 + 20,
       y: 20,
       width: 200,
-      height: 170
-    }
-  }));
-  let layerStyle = SharedStyle.LayerStyle({
-    name: color.label,
-    fills: [{
-      color: color.value
-    }]
+      height: 170,
+    },
   });
-  sketch.addLayerStyle( layerStyle );
-  artboard.addLayer( swatch );
+  const layerStyle = SharedStyle.LayerStyle({
+    name: color.label,
+    fills: [
+      {
+        color: color.value,
+      },
+    ],
+  });
+  sketch.addLayerStyle(layerStyle);
+  artboard.addLayer(swatch);
 });
 
 // Add the pages and artboards to the sketch object
-page.addArtboard( artboard );
-sketch.addPage( page );
+page.addArtboard(artboard);
+sketch.addPage(page);
 // sketch.addArtboard( page.getID(), artboard );
 
 // Build the sketch file
-sketch.build('./dist/output.sketch')
-  .then(() => {
-    console.log("Built!");
-  });
+sketch.build('./dist/output.sketch').then(() => {
+  console.log('Built!');
+});

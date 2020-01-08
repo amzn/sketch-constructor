@@ -13,6 +13,7 @@
 
 const fs = require('fs-extra');
 const { Sketch } = require('sketch-constructor');
+
 const sketchFile = './myFile.sketch';
 const cssFile = './dist/styles.css';
 fs.ensureDirSync('./dist');
@@ -22,15 +23,16 @@ Sketch.fromFile(sketchFile).then(sketch => {
   // Loop over the shared text styles in the document
   // Map them to a css declaration string
   // Join them into a single string with line breaks
-  var css = sketch.getTextStyles()
+  const css = sketch
+    .getTextStyles()
     .map(sharedStyle => {
-      let textStyle = sharedStyle.value.textStyle;
+      const { textStyle } = sharedStyle.value;
       console.log(`Writing css declaration for: ${sharedStyle.name}`);
       return `.${sharedStyle.name} {
   color: ${textStyle.getColor().toRgbString()};
   font-size: ${textStyle.getFontSize()}px;
   font-family: '${textStyle.getFontName()}';
-}`
+}`;
     })
     .join('\n');
 
