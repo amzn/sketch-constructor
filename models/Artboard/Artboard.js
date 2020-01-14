@@ -77,6 +77,7 @@ class Artboard extends Group {
         style: new Style(args.style),
         layers: args.layers || [],
         backgroundColor: new Color(args.backgroundColor || '#fff'),
+        hasBackgroundColor: args.backgroundColor != null,
         horizontalRulerData: new RulerData(args.horizontalRulerData),
         verticalRulerData: new RulerData(args.verticalRulerData),
       });
