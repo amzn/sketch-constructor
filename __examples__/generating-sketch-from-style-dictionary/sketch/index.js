@@ -26,8 +26,10 @@ module.exports = function BuildSketchWithStyles(dictionary) {
     const font = dictionary.properties.component.typography[key];
     sketch.addTextStyle({
       name: key,
-      fontSize: font['font-size'].value,
-      color: font.color.value,
+      textStyle: {
+        fontSize: font['font-size'].value,
+        color: font.color.value,
+      },
     });
   });
 
