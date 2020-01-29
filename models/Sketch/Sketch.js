@@ -154,7 +154,7 @@ class Sketch {
     this.meta.addArtboard(pageID, artboard);
   }
 
-  build(output) {
+  build(output, compressionLevel = 0) {
     this.zip
       .file('meta.json', JSON.stringify(this.meta))
       .file('user.json', JSON.stringify(this.user))
@@ -174,11 +174,18 @@ class Sketch {
       this.zip.file(`pages/${page.do_objectID}.json`, JSON.stringify(page));
     });
 
-    return this.zip.generateAsync({ type: 'nodebuffer', streamFiles: true }).then(buffer => {
-      fs.writeFileSync(output, buffer);
-      fs.removeSync(STORAGE_DIR);
-      return output;
-    });
+    return this.zip
+      .generateAsync({
+        type: 'nodebuffer',
+        streamFiles: true,
+        compression: compressionLevel === 0 ? 'STORE' : 'DEFLATE',
+        compressionOptions: { level: compressionLevel },
+      })
+      .then(buffer => {
+        fs.writeFileSync(output, buffer);
+        fs.removeSync(STORAGE_DIR);
+        return output;
+      });
   }
 }
 
