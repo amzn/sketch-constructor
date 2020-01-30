@@ -40,4 +40,20 @@ describe('SharedStyle', () => {
       expect(layerStyle.value.fills[0].color.red).toEqual(1);
     });
   });
+
+  describe('TextStyle', () => {
+    it('should work', () => {
+      const textStyle = SharedStyle.TextStyle({
+        name: 'test',
+        textStyle: {
+          fontName: 'Arial',
+          fontSize: 10,
+        },
+      });
+      expect(textStyle.value.textStyle.encodedAttributes.MSAttributedStringFontAttribute.attributes).toEqual({
+        name: 'Arial',
+        size: 10,
+      });
+    });
+  });
 });

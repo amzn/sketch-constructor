@@ -12,7 +12,6 @@
  */
 
 const uuid = require('uuid-v4');
-const TextStyle = require('../TextStyle');
 const Style = require('../Style');
 
 class SharedStyle {
@@ -32,7 +31,7 @@ class SharedStyle {
     return new SharedStyle({
       name: args.name,
       id,
-      textStyle: new TextStyle(Object.assign(args, { id })),
+      textStyle: args.textStyle,
     });
   }
 
