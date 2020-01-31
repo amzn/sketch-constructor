@@ -39,7 +39,7 @@ declare class Sketch {
 
   addArtboard(pageID: string, artboard: any): void;
 
-  build(output: fs.PathLike | number): Promise<fs.PathLike | number>;
+  build(output: fs.PathLike | number, compressLevel: number): Promise<fs.PathLike | number>;
 }
 
 export = Sketch;
