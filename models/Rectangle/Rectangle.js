@@ -19,6 +19,15 @@ const Style = require('../Style');
 
 const points = ['{0, 0}', '{1, 0}', '{1, 1}', '{0, 1}'];
 
+const cornerRadius = (radius, index) => {
+  if (radius) {
+    if (Array.isArray(radius)) {
+      return radius[index];
+    }
+    return radius;
+  }
+  return 0;
+};
 /**
  *
  */
@@ -61,14 +70,17 @@ class Rectangle extends Layer {
     if (!json) {
       const id = args.id || uuid().toUpperCase();
       Object.assign(this, Rectangle.Model, {
-        points: points.map(
-          point =>
-            new CurvePoint({
-              curveFrom: point,
-              curveTo: point,
-              point,
-            })
-        ),
+        points:
+          args.points ||
+          points.map(
+            (point, index) =>
+              new CurvePoint({
+                curveFrom: point,
+                curveTo: point,
+                cornerRadius: cornerRadius(args.cornerRadius, index),
+                point,
+              })
+          ),
         do_objectID: id,
         frame: new Rect({
           x: args.x,
