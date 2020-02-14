@@ -35,6 +35,14 @@ describe('Sketch', () => {
       });
     });
 
+    it('should work when file is Buffer', () => {
+      expect(true).toBeTruthy();
+      const fileBuffer = fs.readFileSync(`${process.cwd()}/__tests__/__sketch-files/test.sketch`);
+      return Sketch.fromFile(fileBuffer).then(sketch => {
+        expect(sketch).toBeDefined();
+      });
+    });
+
     it('should have the same do_objectID', () =>
       Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`).then(sketch => {
         const artboard = sketch.getPage('Page 1').getArtboard('Artboard');
