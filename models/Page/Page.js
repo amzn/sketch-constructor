@@ -36,7 +36,7 @@ class Page extends Group {
   constructor(args = {}, json) {
     super(args, json);
     if (!json) {
-      const id = uuid().toUpperCase();
+      const id = args.id || uuid().toUpperCase();
       Object.assign(this, Page.Model, {
         do_objectID: id,
         name: args.name || id,
