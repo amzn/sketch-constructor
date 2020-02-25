@@ -17,6 +17,7 @@ const Layer = require('../Layer');
 const Style = require('../Style');
 const AttributedString = require('../AttributedString');
 const { textBehaviourMap } = require('../../utils/maps');
+const { resizingConstraintsMap } = require('../../utils/maps.js');
 
 /**
  * Text Layer Class
@@ -81,7 +82,7 @@ class Text extends Layer {
         layers: [],
         name: args.name || id,
         nameIsFixed: false,
-        resizingConstraint: 47,
+        resizingConstraint: resizingConstraintsMap.height,
         resizingType: 0,
         rotation: 0,
         shouldBreakMaskChain: false,
