@@ -14,6 +14,7 @@
 const ExportOptions = require('../ExportOptions');
 const Rect = require('../Rect');
 const Style = require('../Style');
+const { resizingConstraintsMap } = require('../../utils/maps.js');
 
 /**
  * Base layer class
@@ -49,7 +50,7 @@ class Layer {
       layerListExpandedType: 0,
       name: '',
       nameIsFixed: false,
-      resizingConstraint: 47,
+      resizingConstraint: resizingConstraintsMap.none,
       resizingType: 0,
       rotation: 0,
       shouldBreakMaskChain: false,

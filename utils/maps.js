@@ -93,10 +93,29 @@ Object.keys(blendModeMap).forEach(key => {
   blendModeMap[blendModeMap[key]] = key;
 });
 
+/**
+ * Maps resizing contrains int enums to human-readable strings
+ * @example
+ * resizingConstraintsMap.top // => 31
+ */
+const resizingConstraintsMap = {
+  top: 31,
+  right: 62,
+  bottom: 55,
+  left: 59,
+  width: 61,
+  height: 47,
+  none: 63,
+};
+
+const containsAllItems = (needles, haystack) => needles.every(needle => haystack.includes(needle));
+
 module.exports = {
   textAlignmentMap,
   verticalAlignmentMap,
   textTransformMap,
   textBehaviourMap,
   blendModeMap,
+  resizingConstraintsMap,
+  containsAllItems,
 };

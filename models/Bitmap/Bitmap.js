@@ -32,7 +32,6 @@ class Bitmap extends Layer {
    * @property {boolean} hasClippingMask
    * @property {integer} intendedDPI
    * @property {integer} layerListExpandedType
-   * @property {integer} resizingConstraint
    * @property {integer} resizingType
    * @property {float} rotation
    * @property {boolean} shouldBreakMaskChain
@@ -46,7 +45,6 @@ class Bitmap extends Layer {
       hasClippingMask: false,
       intendedDPI: 72,
       layerListExpandedType: 0,
-      resizingConstraint: 63,
       resizingType: 0,
       rotation: 0,
       shouldBreakMaskChain: false,
