@@ -28,11 +28,17 @@ describe('Sketch', () => {
   });
 
   describe('build', () => {
-    it('should work', () => {
-      expect(true).toBeTruthy();
-      return Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`).then(sketch => {
-        expect(sketch).toBeDefined();
-      });
+    it('should work', async done => {
+      const sketch = await Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`);
+      expect(sketch).toBeDefined();
+      done();
+    });
+
+    it('should work when file is Buffer', async done => {
+      const fileBuffer = fs.readFileSync(`${process.cwd()}/__tests__/__sketch-files/test.sketch`);
+      const sketch = await Sketch.fromFile(fileBuffer);
+      expect(sketch).toBeDefined();
+      done();
     });
 
     it('should have the same do_objectID', () =>

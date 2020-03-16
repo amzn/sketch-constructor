@@ -23,10 +23,12 @@ const SharedStyle = require('../SharedStyle');
 const { STORAGE_DIR, STORAGE_IMG_DIR, STORAGE_PREVIEW_DIR, STORAGE_PREVIEW_FILE } = require('../../utils/paths');
 
 class Sketch {
-  static fromFile(filePath) {
+  static fromFile(filePathOrBuffer) {
     const sketch = new Sketch();
+    const isBuffer = Buffer.isBuffer(filePathOrBuffer);
+    const fileEntry = isBuffer ? filePathOrBuffer : fs.readFileSync(filePathOrBuffer);
 
-    return JSZip.loadAsync(fs.readFileSync(filePath)).then(zip =>
+    return JSZip.loadAsync(fileEntry).then(zip =>
       Promise.all([
         zip.file('document.json').async('string'),
         zip.file('meta.json').async('string'),
