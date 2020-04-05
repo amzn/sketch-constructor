@@ -13,7 +13,7 @@
 
 const uuid = require('uuid-v4');
 const fs = require('fs-extra');
-const md5File = require('md5-file');
+const crypto = require('crypto');
 const Layer = require('../Layer');
 const Rect = require('../Rect');
 const Style = require('../Style');
@@ -75,7 +75,10 @@ class Bitmap extends Layer {
         style: new Style(args.style),
         layers: args.layers || [],
       });
-      const fileHash = md5File.sync(args.filePath);
+      const fileHash = crypto
+        .createHash('sha1')
+        .update(args.filePath)
+        .digest('hex');
       this.image._ref = `images/${fileHash}.png`;
       fs.ensureDirSync(STORAGE_IMG_DIR);
       fs.copyFileSync(args.filePath, `${STORAGE_DIR}/${this.image._ref}`);

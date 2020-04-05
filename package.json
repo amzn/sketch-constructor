@@ -69,7 +69,6 @@
     "@types/tinycolor2": "^1.4.2",
     "fs-extra": "^8.1.0",
     "jszip": "^3.1.5",
-    "md5-file": "^4.0.0",
     "tinycolor2": "^1.4.1",
     "uuid-v4": "^0.1.0"
   },
