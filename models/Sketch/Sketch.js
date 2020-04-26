@@ -12,6 +12,7 @@
  */
 
 const fs = require('fs-extra');
+const JsonStreamStringify = require('json-stream-stringify');
 const path = require('path');
 const JSZip = require('jszip');
 const Meta = require('../Meta');
@@ -28,7 +29,7 @@ class Sketch {
     const isBuffer = Buffer.isBuffer(filePathOrBuffer);
     const fileEntry = isBuffer ? filePathOrBuffer : fs.readFileSync(filePathOrBuffer);
 
-    return JSZip.loadAsync(fileEntry).then(zip =>
+    return JSZip.loadAsync(fileEntry).then((zip) =>
       Promise.all([
         zip.file('document.json').async('string'),
         zip.file('meta.json').async('string'),
@@ -40,11 +41,11 @@ class Sketch {
           sketch.user = new User(null, JSON.parse(user));
 
           return Promise.all(
-            Object.keys(sketch.meta.pagesAndArtboards).map(pageID => zip.file(`pages/${pageID}.json`).async('string'))
+            Object.keys(sketch.meta.pagesAndArtboards).map((pageID) => zip.file(`pages/${pageID}.json`).async('string'))
           );
         })
-        .then(args => {
-          sketch.pages = args.map(str => new Page(null, JSON.parse(str)));
+        .then((args) => {
+          sketch.pages = args.map((str) => new Page(null, JSON.parse(str)));
           return sketch;
         })
     );
@@ -63,13 +64,13 @@ class Sketch {
         sketch.user = new User(null, user);
 
         return Promise.all(
-          Object.keys(sketch.meta.pagesAndArtboards).map(pageID =>
+          Object.keys(sketch.meta.pagesAndArtboards).map((pageID) =>
             fs.readJSON(path.resolve(filePath, `pages/${pageID}.json`), { encoding: 'utf8' })
           )
         );
       })
-      .then(args => {
-        sketch.pages = args.map(str => new Page(null, str));
+      .then((args) => {
+        sketch.pages = args.map((str) => new Page(null, str));
         return sketch;
       });
   }
@@ -103,7 +104,7 @@ class Sketch {
   }
 
   getPage(name) {
-    return this.pages.find(page => page.name === name);
+    return this.pages.find((page) => page.name === name);
   }
 
   getLayerStyles() {
@@ -142,7 +143,7 @@ class Sketch {
     this.meta.addPage(page);
     this.user.addPage(page.getID(), args);
     this.pages = this.pages.concat(page);
-    page.getArtboards().forEach(artboard => {
+    page.getArtboards().forEach((artboard) => {
       this.meta.addArtboard(page.getID(), artboard);
     });
   }
@@ -151,43 +152,46 @@ class Sketch {
     if (!(artboard instanceof Artboard)) {
       artboard = new Artboard(artboard);
     }
-    const page = this.pages.find(p => p.getID() === pageID);
+    const page = this.pages.find((p) => p.getID() === pageID);
     page.addArtboard(artboard);
     this.meta.addArtboard(pageID, artboard);
   }
 
   build(output, compressionLevel = 0) {
     this.zip
-      .file('meta.json', JSON.stringify(this.meta))
-      .file('user.json', JSON.stringify(this.user))
-      .file('document.json', JSON.stringify(this.document));
+      .file('meta.json', new JsonStreamStringify(this.meta))
+      .file('user.json', new JsonStreamStringify(this.user))
+      .file('document.json', new JsonStreamStringify(this.document));
     this.zip.folder('pages');
     this.zip.folder('previews');
 
     if (fs.existsSync(STORAGE_PREVIEW_FILE))
-      this.zip.folder('previews').file('preview.png', fs.readFile(STORAGE_PREVIEW_FILE));
+      this.zip.folder('previews').file('preview.png', fs.createReadStream(STORAGE_PREVIEW_FILE));
 
     if (fs.existsSync(STORAGE_IMG_DIR)) {
-      fs.readdirSync(STORAGE_IMG_DIR).forEach(file => {
-        this.zip.folder('images').file(file, fs.readFile(`${STORAGE_IMG_DIR}/${file}`));
+      fs.readdirSync(STORAGE_IMG_DIR).forEach((file) => {
+        this.zip.folder('images').file(file, fs.createReadStream(`${STORAGE_IMG_DIR}/${file}`));
       });
     }
-    this.pages.forEach(page => {
-      this.zip.file(`pages/${page.do_objectID}.json`, JSON.stringify(page));
+    this.pages.forEach((page) => {
+      this.zip.file(`pages/${page.do_objectID}.json`, new JsonStreamStringify(page));
     });
 
-    return this.zip
-      .generateAsync({
-        type: 'nodebuffer',
-        streamFiles: true,
-        compression: compressionLevel === 0 ? 'STORE' : 'DEFLATE',
-        compressionOptions: { level: compressionLevel },
-      })
-      .then(buffer => {
-        fs.writeFileSync(output, buffer);
-        fs.removeSync(STORAGE_DIR);
-        return output;
-      });
+    return new Promise((resolve, reject) =>
+      this.zip
+        .generateNodeStream({
+          type: 'nodebuffer',
+          streamFiles: true,
+          compression: compressionLevel === 0 ? 'STORE' : 'DEFLATE',
+          compressionOptions: { level: compressionLevel },
+        })
+        .pipe(fs.createWriteStream(output))
+        .on('error', reject)
+        .on('finish', function () {
+          fs.removeSync(STORAGE_DIR);
+          resolve(output);
+        })
+    );
   }
 }
 
