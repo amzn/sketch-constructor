@@ -95,6 +95,9 @@
     "standard-version": "^7.1.0",
     "typescript": "^3.6.5"
   },
+  "engines": {
+    "node": ">= 10"
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

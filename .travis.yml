@@ -1,6 +1,8 @@
 language: node_js
 node_js:
-  - "8"
+  - "10"
+  - "12"
+  - "14"
 
 branches:
   only:
@@ -11,7 +13,7 @@ jobs:
     - stage: test
       script: npm run test
     - stage: npm release
-      node_js: "8"
+      node_js: "12"
       script: echo "Deploying to npm ..."
       deploy:
         provider: script
