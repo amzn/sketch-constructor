@@ -17,4 +17,5 @@ jobs:
         provider: script
         skip_cleanup: true
         script:
+          - npm prune --production
           - npx semantic-release
