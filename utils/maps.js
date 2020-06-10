@@ -84,9 +84,10 @@ const blendModeMap = {
   exclusion: 11,
   hue: 12,
   saturation: 13,
-  luminosity: 14,
-  plusDarker: 15,
-  plusLighter: 16,
+  color: 14,
+  luminosity: 15,
+  plusDarker: 16,
+  plusLighter: 17,
 };
 
 Object.keys(blendModeMap).forEach(key => {
