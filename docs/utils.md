@@ -10,6 +10,30 @@ textAlignmentMap.left // => 0
 
 * * *
 
+## textBehaviourMap 
+
+
+Maps text text behaviour integer enums to human-readable strings
+
+**Example**  
+```js
+textBehaviourMap.auto // => 0
+```
+
+* * *
+
+## textTransformMap 
+
+
+Maps text transform integer enums to human-readable strings
+
+**Example**  
+```js
+textTransformMap.uppercase // => 1
+```
+
+* * *
+
 ## verticalAlignmentMap 
 
 
@@ -19,6 +43,62 @@ Maps vertical alignment int enums to human-readable strings
 ```js
 verticalAlignmentMap.top // => 0
 ```
+
+* * *
+
+## blendModeMap 
+
+
+Maps blend modes int enums to human-readable strings
+
+**Example**  
+```js
+blendModeMap.multiply // => 2
+```
+
+* * *
+
+## resizingConstraintsMap 
+
+
+Maps resizing contrains int enums to human-readable strings
+
+**Example**  
+```js
+resizingConstraintsMap.top // => 31
+```
+
+* * *
+
+## STORAGE_DIR 
+
+
+Path to the temporary sketch constructor folder
+
+
+* * *
+
+## STORAGE_IMG_DIR 
+
+
+Path to the temporary local image folder
+
+
+* * *
+
+## STORAGE_PREVIEW_DIR 
+
+
+Path to directory with preview file
+
+
+* * *
+
+## STORAGE_PREVIEW_FILE 
+
+
+Path to preview file
+
 
 * * *
 

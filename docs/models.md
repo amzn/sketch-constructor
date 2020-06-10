@@ -94,6 +94,95 @@ An AttributedString is a string of text that has certain parts of it with differ
 
 * * *
 
+## Bitmap 
+
+
+A bitmap layer is used for imagesCurrently supported file types: PNG
+
+**Extends**: [<code>Layer</code>](#Layer)  
+
+* [Bitmap](#Bitmap) ⇐ [<code>Layer</code>](#Layer)
+    * [new Bitmap(args, json)](#new_Bitmap_new)
+    * _instance_
+        * [.getLayers([predicate])](#Layer+getLayers) ⇒ [<code>Array.&lt;Layer&gt;</code>](#Layer)
+        * [.getAllLayers([predicate])](#Layer+getAllLayers) ⇒ [<code>Array.&lt;Layer&gt;</code>](#Layer)
+    * _static_
+        * [.Model](#Bitmap.Model)
+
+
+* * *
+
+### Bitmap 
+
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| args | <code>Object</code> |  |
+| args.filePath | <code>String</code> | Local path of the image in PNG format |
+| args.frame | <code>Object</code> | Sent to [Rect](#Rect) |
+| args.style | <code>Object</code> | Sent to [Style](#Style) |
+| json | [<code>Model</code>](#Bitmap.Model) |  |
+
+
+* * *
+
+### getLayers 
+> bitmap.getLayers([predicate]) ⇒ [<code>Array.&lt;Layer&gt;</code>](#Layer)
+
+
+
+
+Get all direct child layers, and optionally filter them by a predicate function.
+
+**Overrides**: [<code>getLayers</code>](#Layer+getLayers)  
+**Returns**: [<code>Array.&lt;Layer&gt;</code>](#Layer) - An array of layers. Will only be the direct children layers.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [predicate] | <code>function</code> | Filter function if you want to only return certain layers |
+
+
+* * *
+
+### getAllLayers 
+> bitmap.getAllLayers([predicate]) ⇒ [<code>Array.&lt;Layer&gt;</code>](#Layer)
+
+
+
+
+Get all child, grandchild, etc layers, and optionally filter them by a predicate function.
+
+**Overrides**: [<code>getAllLayers</code>](#Layer+getAllLayers)  
+**Returns**: [<code>Array.&lt;Layer&gt;</code>](#Layer) - An array of all layers. Will return all direct children, grandchildren, etc.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [predicate] | <code>function</code> | Filter function if you want to only return certain layers |
+
+
+* * *
+
+### Model 
+
+
+**Mixes**: [<code>Model</code>](#Layer.Model)  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| fillReplacesImage | <code>boolean</code> | 
+| hasClippingMask | <code>boolean</code> | 
+| intendedDPI | <code>integer</code> | 
+| layerListExpandedType | <code>integer</code> | 
+| resizingType | <code>integer</code> | 
+| rotation | <code>float</code> | 
+| shouldBreakMaskChain | <code>boolean</code> | 
+| image | <code>Object</code> | 
+
+
+* * *
+
 ## Border 
 
 
@@ -447,6 +536,24 @@ A Document is a sketch file
 
 * * *
 
+## ExportFormat 
+
+
+
+* * *
+
+### ExportFormat 
+
+
+
+| Param | Type |
+| --- | --- |
+| args | <code>Object</code> | 
+| json | <code>ExportFormat.Model</code> | 
+
+
+* * *
+
 ## ExportOptions 
 
 
@@ -521,7 +628,7 @@ Options for exporting an artboard
 | --- | --- |
 | isEnabled | <code>boolean</code> | 
 | color | [<code>Model</code>](#Color.Model) | 
-| fillType | <code>integer</code> | 
+| fillType | [<code>FillType</code>](#Fill.FillType) | 
 | noiseIndex | <code>integer</code> | 
 | noiseIntensity | <code>integer</code> | 
 | patternFillType | <code>integer</code> | 
@@ -551,11 +658,6 @@ Options for exporting an artboard
 Gradient
 
 
-* [Gradient](#Gradient)
-    * [new Gradient(args, json)](#new_Gradient_new)
-    * [.Model](#Gradient.Model)
-
-
 * * *
 
 ### Gradient 
@@ -565,13 +667,45 @@ Gradient
 | Param | Type |
 | --- | --- |
 | args | <code>Object</code> | 
-| json | [<code>Model</code>](#Gradient.Model) | 
+| json | <code>Gradient.Model</code> | 
+
+
+* * *
+
+## GraphicsContextSettings 
+
+
+Options for exporting an artboard
+
+
+* [GraphicsContextSettings](#GraphicsContextSettings)
+    * [new GraphicsContextSettings(args, json)](#new_GraphicsContextSettings_new)
+    * [.Model](#GraphicsContextSettings.Model)
+
+
+* * *
+
+### GraphicsContextSettings 
+
+
+
+| Param | Type |
+| --- | --- |
+| args | [<code>Model</code>](#GraphicsContextSettings.Model) | 
+| json | [<code>Model</code>](#GraphicsContextSettings.Model) | 
 
 
 * * *
 
 ### Model 
 
+
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| blendMode | <code>integer</code> | 
+| opacity | <code>float</code> | 
 
 
 * * *
@@ -587,6 +721,7 @@ A group extends
     * [new Group(args, json)](#new_Group_new)
     * _instance_
         * [.getLayers([predicate])](#Layer+getLayers) ⇒ [<code>Array.&lt;Layer&gt;</code>](#Layer)
+        * [.getAllLayers([predicate])](#Layer+getAllLayers) ⇒ [<code>Array.&lt;Layer&gt;</code>](#Layer)
     * _static_
         * [.Model](#Group.Model)
 
@@ -616,7 +751,26 @@ A group extends
 
 Get all direct child layers, and optionally filter them by a predicate function.
 
+**Overrides**: [<code>getLayers</code>](#Layer+getLayers)  
 **Returns**: [<code>Array.&lt;Layer&gt;</code>](#Layer) - An array of layers. Will only be the direct children layers.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [predicate] | <code>function</code> | Filter function if you want to only return certain layers |
+
+
+* * *
+
+### getAllLayers 
+> group.getAllLayers([predicate]) ⇒ [<code>Array.&lt;Layer&gt;</code>](#Layer)
+
+
+
+
+Get all child, grandchild, etc layers, and optionally filter them by a predicate function.
+
+**Overrides**: [<code>getAllLayers</code>](#Layer+getAllLayers)  
+**Returns**: [<code>Array.&lt;Layer&gt;</code>](#Layer) - An array of all layers. Will return all direct children, grandchildren, etc.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -635,14 +789,13 @@ Get all direct child layers, and optionally filter them by a predicate function.
 ## Layer 
 
 
-Base layer class
-
-This is an abstract class and should not be directly instantiated.
+Base layer classThis is an abstract class and should not be directly instantiated.
 
 
 * [Layer](#Layer)
     * _instance_
         * [.getLayers([predicate])](#Layer+getLayers) ⇒ [<code>Array.&lt;Layer&gt;</code>](#Layer)
+        * [.getAllLayers([predicate])](#Layer+getAllLayers) ⇒ [<code>Array.&lt;Layer&gt;</code>](#Layer)
     * _static_
         * [.Model](#Layer.Model)
 
@@ -658,6 +811,23 @@ This is an abstract class and should not be directly instantiated.
 Get all direct child layers, and optionally filter them by a predicate function.
 
 **Returns**: [<code>Array.&lt;Layer&gt;</code>](#Layer) - An array of layers. Will only be the direct children layers.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [predicate] | <code>function</code> | Filter function if you want to only return certain layers |
+
+
+* * *
+
+### getAllLayers 
+> layer.getAllLayers([predicate]) ⇒ [<code>Array.&lt;Layer&gt;</code>](#Layer)
+
+
+
+
+Get all child, grandchild, etc layers, and optionally filter them by a predicate function.
+
+**Returns**: [<code>Array.&lt;Layer&gt;</code>](#Layer) - An array of all layers. Will return all direct children, grandchildren, etc.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -726,6 +896,51 @@ This is an internal class, you shouldn't be directly dealing with this class. It
 | fonts | <code>Array</code> | 
 | compatibilityVersion | <code>integer</code> | 
 | app | <code>String</code> | 
+
+
+* * *
+
+## Oval 
+
+
+
+* [Oval](#Oval)
+    * [new Oval(args, json)](#new_Oval_new)
+    * [.Model](#Oval.Model)
+
+
+* * *
+
+### Oval 
+
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| args | <code>Object</code> |  |
+| args.name | <code>String</code> |  |
+| args.x | <code>integer</code> |  |
+| args.y | <code>integer</code> |  |
+| args.height | <code>integer</code> |  |
+| args.width | <code>integer</code> |  |
+| args.style | <code>Object</code> | Passed to [LayerStyle](LayerStyle) |
+| json | [<code>Model</code>](#Oval.Model) |  |
+
+
+* * *
+
+### Model 
+
+
+**Mixes**: [<code>Model</code>](#Layer.Model)  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| edited | <code>boolean</code> | 
+| isClosed | <code>boolean</code> | 
+| pointRadiusBehaviour | <code>integer</code> | 
+| points | <code>Array.&lt;String&gt;</code> | 
 
 
 * * *
@@ -935,6 +1150,52 @@ Underlying JSON object structure in a Sketch document
 
 * * *
 
+## ShapePath 
+
+
+
+* [ShapePath](#ShapePath)
+    * [new ShapePath(args, json)](#new_ShapePath_new)
+    * [.Model](#ShapePath.Model)
+
+
+* * *
+
+### ShapePath 
+
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| args | <code>Object</code> |  |
+| args.name | <code>String</code> |  |
+| args.x | <code>integer</code> |  |
+| args.y | <code>integer</code> |  |
+| args.height | <code>integer</code> |  |
+| args.width | <code>integer</code> |  |
+| args.points | [<code>Array.&lt;CurvePoint&gt;</code>](#CurvePoint) |  |
+| args.style | <code>Object</code> | Passed to [LayerStyle](LayerStyle) |
+| json | [<code>Model</code>](#ShapePath.Model) |  |
+
+
+* * *
+
+### Model 
+
+
+**Mixes**: [<code>Model</code>](#Layer.Model)  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| edited | <code>boolean</code> | 
+| isClosed | <code>boolean</code> | 
+| pointRadiusBehaviour | <code>integer</code> | 
+| points | <code>Array.&lt;String&gt;</code> | 
+
+
+* * *
+
 ## Style 
 
 
@@ -977,7 +1238,7 @@ Underlying JSON object structure in a Sketch document
 | fills | [<code>Array.&lt;Model&gt;</code>](#Fill.Model) | 
 | shadows | <code>Array.&lt;Shadow.Model&gt;</code> | 
 | textStyle | <code>TextStyle.Model</code> | 
-| contextSettings | <code>Object</code> | 
+| contextSettings | [<code>Model</code>](#GraphicsContextSettings.Model) | 
 
 
 * * *
@@ -1037,11 +1298,7 @@ Underlying JSON object structure in a Sketch document
 ## SymbolInstance 
 
 
-This class is incomplete
-
-**Todo**
-
-- [ ] add OverrideValue class
+This class is WIP
 
 
 * [SymbolInstance](#SymbolInstance)
@@ -1066,6 +1323,16 @@ This class is incomplete
 ### Model 
 
 
+The underlying JSON object structure in a Sketch document.
+
+**Mixes**: [<code>Model</code>](#Layer.Model)  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| symbolID | <code>string</code> | 
+| overrideValues | <code>Array.&lt;overrideValue&gt;</code> | 
+
 
 * * *
 
@@ -1080,6 +1347,7 @@ Text Layer Class
     * [new Text([args], [json])](#new_Text_new)
     * _instance_
         * [.getLayers([predicate])](#Layer+getLayers) ⇒ [<code>Array.&lt;Layer&gt;</code>](#Layer)
+        * [.getAllLayers([predicate])](#Layer+getAllLayers) ⇒ [<code>Array.&lt;Layer&gt;</code>](#Layer)
     * _static_
         * [.Model](#Text.Model) : <code>Object</code>
 
@@ -1114,7 +1382,26 @@ const text = new Text({
 
 Get all direct child layers, and optionally filter them by a predicate function.
 
+**Overrides**: [<code>getLayers</code>](#Layer+getLayers)  
 **Returns**: [<code>Array.&lt;Layer&gt;</code>](#Layer) - An array of layers. Will only be the direct children layers.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [predicate] | <code>function</code> | Filter function if you want to only return certain layers |
+
+
+* * *
+
+### getAllLayers 
+> text.getAllLayers([predicate]) ⇒ [<code>Array.&lt;Layer&gt;</code>](#Layer)
+
+
+
+
+Get all child, grandchild, etc layers, and optionally filter them by a predicate function.
+
+**Overrides**: [<code>getAllLayers</code>](#Layer+getAllLayers)  
+**Returns**: [<code>Array.&lt;Layer&gt;</code>](#Layer) - An array of all layers. Will return all direct children, grandchildren, etc.  
 
 | Param | Type | Description |
 | --- | --- | --- |
