@@ -35,8 +35,16 @@ declare const maps: {
 };
 declare const stackLayers: (layers: Layer[], gutter?: number) => Layer[];
 
+declare const paths: {
+    STORAGE_DIR: string;
+    STORAGE_IMG_DIR: string;
+    STORAGE_PREVIEW_DIR: string;
+    STORAGE_PREVIEW_FILE: string;
+};
+
 export {
   layerToClass,
   maps,
   stackLayers,
+  paths,
 };
