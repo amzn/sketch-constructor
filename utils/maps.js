@@ -45,7 +45,7 @@ const textTransformMap = {
   lowercase: 2,
 };
 
-Object.keys(textAlignmentMap).forEach(key => {
+Object.keys(textAlignmentMap).forEach((key) => {
   textAlignmentMap[textAlignmentMap[key]] = key;
 });
 
@@ -56,11 +56,11 @@ Object.keys(textAlignmentMap).forEach(key => {
  */
 const verticalAlignmentMap = {
   top: 0,
-  bottom: 1,
-  center: 2,
+  middle: 1,
+  bottom: 2,
 };
 
-Object.keys(verticalAlignmentMap).forEach(key => {
+Object.keys(verticalAlignmentMap).forEach((key) => {
   verticalAlignmentMap[verticalAlignmentMap[key]] = key;
 });
 
@@ -90,7 +90,7 @@ const blendModeMap = {
   plusLighter: 17,
 };
 
-Object.keys(blendModeMap).forEach(key => {
+Object.keys(blendModeMap).forEach((key) => {
   blendModeMap[blendModeMap[key]] = key;
 });
 
@@ -109,7 +109,7 @@ const resizingConstraintsMap = {
   none: 63,
 };
 
-const containsAllItems = (needles, haystack) => needles.every(needle => haystack.includes(needle));
+const containsAllItems = (needles, haystack) => needles.every((needle) => haystack.includes(needle));
 
 module.exports = {
   textAlignmentMap,
