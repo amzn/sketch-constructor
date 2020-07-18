@@ -187,7 +187,7 @@ class Sketch {
         })
         .pipe(fs.createWriteStream(output))
         .on('error', reject)
-        .on('finish', function () {
+        .on('finish', () => {
           fs.removeSync(STORAGE_DIR);
           resolve(output);
         })

@@ -96,7 +96,7 @@ class SymbolMaster extends Artboard {
           }
           break;
         case 'group':
-          prop.layers.forEach(l => {
+          prop.layers.forEach((l) => {
             getOverrideNames(l, overrideNames);
           });
           break;
@@ -106,7 +106,7 @@ class SymbolMaster extends Artboard {
       return overrideNames;
     };
 
-    getOverrideNames(layer, []).forEach(name => {
+    getOverrideNames(layer, []).forEach((name) => {
       this.overrideProperties.push({
         ...MSImmutableOverrideProperty,
         canOverride,
@@ -127,15 +127,15 @@ class SymbolMaster extends Artboard {
    * @property {string|Object} [args[].style] - for textStyles only, pass in TextStyle object or do_objectID
    */
   updateInstance(symbolInstance, args) {
-    args.forEach(arg => {
-      const overrideLayer = this.getAllLayers().find(l => l.name === arg.name);
+    args.forEach((arg) => {
+      const overrideLayer = this.getAllLayers().find((l) => l.name === arg.name);
 
       if (overrideLayer !== undefined) {
         const overrideName = overrideLayer.do_objectID;
 
         symbolInstance.overrideValues
-          .filter(prop => prop.overrideName.split('_')[0] === overrideName)
-          .forEach(prop => {
+          .filter((prop) => prop.overrideName.split('_')[0] === overrideName)
+          .forEach((prop) => {
             if (prop.overrideName.includes('_stringValue')) {
               prop.value = arg.value;
             }
@@ -170,7 +170,7 @@ class SymbolMaster extends Artboard {
       allowsOverrides: this.allowsOverrides,
     });
 
-    symbolInstance.overrideValues = this.overrideProperties.map(prop => ({
+    symbolInstance.overrideValues = this.overrideProperties.map((prop) => ({
       _class: 'overrideValue',
       do_objectID: uuid().toUpperCase(),
       overrideName: prop.overrideName,

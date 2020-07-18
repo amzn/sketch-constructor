@@ -28,13 +28,13 @@ describe('Sketch', () => {
   });
 
   describe('build', () => {
-    it('should work', async done => {
+    it('should work', async (done) => {
       const sketch = await Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`);
       expect(sketch).toBeDefined();
       done();
     });
 
-    it('should work when file is Buffer', async done => {
+    it('should work when file is Buffer', async (done) => {
       const fileBuffer = fs.readFileSync(`${process.cwd()}/__tests__/__sketch-files/test.sketch`);
       const sketch = await Sketch.fromFile(fileBuffer);
       expect(sketch).toBeDefined();
@@ -42,15 +42,15 @@ describe('Sketch', () => {
     });
 
     it('should have the same do_objectID', () =>
-      Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`).then(sketch => {
+      Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`).then((sketch) => {
         const artboard = sketch.getPage('Page 1').getArtboard('Artboard');
         expect(artboard.do_objectID).toBe('5863D14C-8C6E-4C73-801F-A5BF691CF415');
       }));
 
     it('should build', () =>
       Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`)
-        .then(sketch => sketch.build(`${process.cwd()}/__tests__/__output/test2.sketch`))
-        .then(output => {
+        .then((sketch) => sketch.build(`${process.cwd()}/__tests__/__output/test2.sketch`))
+        .then((output) => {
           expect(output).toEqual(`${process.cwd()}/__tests__/__output/test2.sketch`);
         }));
   });
@@ -58,7 +58,7 @@ describe('Sketch', () => {
   describe('add shared text style', () => {
     it('should work', () =>
       Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`)
-        .then(sketch => {
+        .then((sketch) => {
           const textStyle = SharedStyle.TextStyle({
             name: 'foobar',
           });
@@ -79,7 +79,7 @@ describe('Sketch', () => {
           sketch.document.addLayerStyle(layerStyle);
           return sketch.build(`${process.cwd()}/__tests__/__output/test3.sketch`);
         })
-        .then(output => {
+        .then((output) => {
           expect(output).toEqual(`${process.cwd()}/__tests__/__output/test3.sketch`);
         }));
   });
@@ -87,7 +87,7 @@ describe('Sketch', () => {
   describe('add page', () => {
     it('should work', () =>
       Sketch.fromFile(`${process.cwd()}/__tests__/__sketch-files/test.sketch`)
-        .then(sketch => {
+        .then((sketch) => {
           const page = new Page({
             name: 'my page',
           });
@@ -102,14 +102,14 @@ describe('Sketch', () => {
           sketch.addArtboard(page.getID(), artboard);
           return sketch.build(`${process.cwd()}/__tests__/__output/test4.sketch`);
         })
-        .then(output => {
+        .then((output) => {
           expect(output).toEqual(`${process.cwd()}/__tests__/__output/test4.sketch`);
         }));
   });
 
   describe('from extracted file', () => {
     it('should work', () => {
-      Sketch.fromExtractedFile(`${process.cwd()}/__tests__/__sketch-files/test-sketch`).then(sketch => {
+      Sketch.fromExtractedFile(`${process.cwd()}/__tests__/__sketch-files/test-sketch`).then((sketch) => {
         expect(sketch).toBeDefined();
         expect(sketch.getPages().length).toBe(2);
       });

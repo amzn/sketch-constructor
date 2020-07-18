@@ -75,10 +75,7 @@ class Bitmap extends Layer {
         style: new Style(args.style),
         layers: args.layers || [],
       });
-      const fileHash = crypto
-        .createHash('sha1')
-        .update(args.filePath)
-        .digest('hex');
+      const fileHash = crypto.createHash('sha1').update(args.filePath).digest('hex');
       this.image._ref = `images/${fileHash}.png`;
       fs.ensureDirSync(STORAGE_IMG_DIR);
       fs.copyFileSync(args.filePath, `${STORAGE_DIR}/${this.image._ref}`);
