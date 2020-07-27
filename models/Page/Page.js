@@ -57,7 +57,7 @@ class Page extends Group {
    * @returns {Artboard[]}
    */
   getArtboards(predicate) {
-    const arr = this.layers.filter(layer => layer._class === 'artboard');
+    const arr = this.layers.filter((layer) => layer._class === 'artboard');
     if (predicate) {
       return arr.filter(predicate);
     }
@@ -70,7 +70,7 @@ class Page extends Group {
    * @returns {Artboard}
    */
   getArtboard(name) {
-    return this.getArtboards().find(artboard => artboard.name === name);
+    return this.getArtboards().find((artboard) => artboard.name === name);
   }
 
   /**

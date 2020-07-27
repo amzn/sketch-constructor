@@ -57,8 +57,8 @@ class Color {
     }
     // Map all tinycolor's methods
     // TODO: should check if this will cause performance issues
-    Object.keys(TinyColor.prototype).forEach(key => {
-      this[key] = arg => {
+    Object.keys(TinyColor.prototype).forEach((key) => {
+      this[key] = (arg) => {
         const ret = this._getTinyColor()[key](arg);
         // If the return value is a TinyColor class,
         // it is modifying the value

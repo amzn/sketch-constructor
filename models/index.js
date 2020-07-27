@@ -39,6 +39,7 @@ module.exports = {
   ShapePath: require('./ShapePath'),
   SharedStyle: require('./SharedStyle'),
   Sketch: require('./Sketch'),
+  Slice: require('./Slice'),
   StringAttribute: require('./StringAttribute'),
   Style: require('./Style'),
   SymbolInstance: require('./SymbolInstance'),

@@ -35,7 +35,7 @@ describe('getLayers', () => {
     group.addLayer(text1);
     group.addLayer(text2);
 
-    const layers = group.getLayers().map(l => l.name);
+    const layers = group.getLayers().map((l) => l.name);
 
     expect(layers.sort()).toEqual(['text1', 'text2'].sort());
   });
@@ -55,7 +55,7 @@ describe('getLayers', () => {
     innerGroup.addLayer(text);
     outerGroup.addLayer(innerGroup);
 
-    const layers = outerGroup.getLayers().map(l => l.name);
+    const layers = outerGroup.getLayers().map((l) => l.name);
 
     expect(layers.sort()).toEqual(['inner group'].sort());
   });
@@ -77,7 +77,7 @@ describe('getAllLayers', () => {
     innerGroup.addLayer(text);
     outerGroup.addLayer(innerGroup);
 
-    const layers = outerGroup.getAllLayers().map(l => l.name);
+    const layers = outerGroup.getAllLayers().map((l) => l.name);
 
     expect(layers.sort()).toEqual(['inner group', 'text'].sort());
   });

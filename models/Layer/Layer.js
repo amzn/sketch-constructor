@@ -85,7 +85,7 @@ class Layer {
   // getGroup(id) {}
 
   getGroups() {
-    return this.layers.filter(layer => layer._class === 'group');
+    return this.layers.filter((layer) => layer._class === 'group');
   }
 
   /**
@@ -112,7 +112,7 @@ class Layer {
       }
       const childLayers = current.getLayers();
       if (childLayers !== undefined) {
-        childLayers.forEach(layer => {
+        childLayers.forEach((layer) => {
           list.push(layer);
           getRecursiveLayers(layer, list);
         });

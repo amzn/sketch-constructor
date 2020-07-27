@@ -63,9 +63,9 @@ class Document {
       Object.assign(this, json);
       // Create nested classes
       this.layerTextStyles.objects = this.layerTextStyles.objects.map(
-        sharedStyle => new SharedStyle(null, sharedStyle)
+        (sharedStyle) => new SharedStyle(null, sharedStyle)
       );
-      this.layerStyles.objects = this.layerStyles.objects.map(sharedStyle => new SharedStyle(null, sharedStyle));
+      this.layerStyles.objects = this.layerStyles.objects.map((sharedStyle) => new SharedStyle(null, sharedStyle));
     } else {
       const id = args.id || uuid().toUpperCase();
 
@@ -89,7 +89,7 @@ class Document {
    * @returns {SharedStyle}
    */
   getLayerStyle(name) {
-    return this.layerStyles.objects.find(style => style.name === name);
+    return this.layerStyles.objects.find((style) => style.name === name);
   }
 
   /**

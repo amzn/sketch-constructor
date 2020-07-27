@@ -51,8 +51,8 @@ class Style {
     const id = args.id || uuid().toUpperCase();
     return new Style({
       id,
-      fills: (args.fills || []).map(fill => new Fill(fill)),
-      borders: (args.borders || []).map(border => new Border(border)),
+      fills: (args.fills || []).map((fill) => new Fill(fill)),
+      borders: (args.borders || []).map((border) => new Border(border)),
     });
   }
 
@@ -76,16 +76,16 @@ class Style {
     if (json) {
       Object.assign(this, json);
       if (this.textStyle) this.textStyle = new TextStyle(null, this.textStyle);
-      if (this.fills) this.fills = this.fills.map(fill => new Fill(null, fill));
-      if (this.borders) this.borders = this.borders.map(border => new Border(null, border));
-      if (this.shadows) this.shadows = this.shadows.map(shadow => new Shadow(null, shadow));
+      if (this.fills) this.fills = this.fills.map((fill) => new Fill(null, fill));
+      if (this.borders) this.borders = this.borders.map((border) => new Border(null, border));
+      if (this.shadows) this.shadows = this.shadows.map((shadow) => new Shadow(null, shadow));
     } else {
       const id = args.id || uuid().toUpperCase();
       Object.assign(this, Style.Model, {
         do_objectID: id,
-        borders: (args.borders || []).map(border => new Border(border)),
-        fills: (args.fills || []).map(fill => new Fill(fill)),
-        shadows: (args.shadows || []).map(shadow => new Shadow(shadow)),
+        borders: (args.borders || []).map((border) => new Border(border)),
+        fills: (args.fills || []).map((fill) => new Fill(fill)),
+        shadows: (args.shadows || []).map((shadow) => new Shadow(shadow)),
         textStyle: args.textStyle ? new TextStyle(args.textStyle) : undefined,
       });
     }
