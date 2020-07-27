@@ -1,5 +1,6 @@
 import Color from '../Color';
 import Gradient from '../Gradient';
+import GraphicsContextSettings from '../GraphicsContextSettings';
 
 declare const enum FillType {
   Color = 0,
@@ -20,6 +21,7 @@ declare class Fill {
   patternFillType: number;
   patternTileScale: number;
   gradient: Gradient;
+  contextSettings: GraphicsContextSettings;
 
   constructor(args?: any, json?: any);
 }
