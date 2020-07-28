@@ -2,6 +2,7 @@ import Artboard from './Artboard';
 import AttributedString from './AttributedString';
 import Group from './Group';
 import Bitmap from './Bitmap';
+import Blur from './Blur';
 import Border from './Border';
 import BorderOptions from './BorderOptions';
 import Color from './Color';
@@ -42,6 +43,7 @@ export {
   AttributedString,
   Group,
   Bitmap,
+  Blur,
   Border,
   BorderOptions,
   Color,

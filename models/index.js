@@ -17,6 +17,7 @@ module.exports = {
   AttributedString: require('./AttributedString'),
   Group: require('./Group'),
   Bitmap: require('./Bitmap'),
+  Blur: require('./Blur'),
   Border: require('./Border'),
   BorderOptions: require('./BorderOptions'),
   Color: require('./Color'),

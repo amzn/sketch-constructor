@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "commonjs",
   "types": "index.d.ts",
+  "typings": "index.d.ts",
   "files": [
     "models",
     "utils",
