@@ -1,4 +1,4 @@
-import TinyColor from 'tinycolor2';
+import { Instance } from 'tinycolor2';
 
 declare class Color {
   _class: 'color';
@@ -9,9 +9,9 @@ declare class Color {
 
   constructor(args?: any, json?: any);
 
-  set(tinyColor: TinyColor.Instance): Color;
+  set(tinyColor: Instance): Color;
 
-  _getTinyColor(): TinyColor.Instance;
+  _getTinyColor(): Instance;
 }
 
 export = Color;
