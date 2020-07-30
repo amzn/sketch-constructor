@@ -13,6 +13,7 @@
 
 const Color = require('../Color');
 const Gradient = require('../Gradient');
+const GraphicsContextSettings = require('../GraphicsContextSettings');
 
 /**
  *
@@ -26,6 +27,7 @@ class Fill {
    * @property {integer} noiseIntensity
    * @property {integer} patternFillType
    * @property {integer} patternTileScale
+   * @property {GraphicsContextSettings.Model} contextSettings
    */
   static get Model() {
     return {
@@ -38,6 +40,7 @@ class Fill {
       patternFillType: 0,
       patternTileScale: 1,
       gradient: Gradient.Model,
+      contextSettings: GraphicsContextSettings.Model,
     };
   }
 
@@ -45,6 +48,7 @@ class Fill {
    *
    * @param {Object} args
    * @param {String|Object} args.color Passed to {@link Color} constructor
+   * @param {float|Object} args.opacity Passed to {@link GraphicsContextSettings} constructor
    * @param {Fill.Model} json
    */
   constructor(args = {}, json) {
@@ -69,6 +73,7 @@ class Fill {
         patternFillType: args.patternFillType || 0,
         patternTileScale: args.patternTileScale || 1,
         gradient: args.gradient ? new Gradient(args.gradient) : undefined,
+        contextSettings: new GraphicsContextSettings({ opacity: args.opacity }),
       });
     }
     return this;
