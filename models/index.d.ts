@@ -27,6 +27,7 @@ import ShapePath from './ShapePath';
 import SharedStyle from './SharedStyle';
 import Sketch from './Sketch';
 import Slice from './Slice';
+import Star from './Star';
 import StringAttribute from './StringAttribute';
 import Style from './Style';
 import SymbolInstance from './SymbolInstance';
@@ -68,6 +69,7 @@ export {
   SharedStyle,
   Sketch,
   Slice,
+  Star,
   StringAttribute,
   Style,
   SymbolInstance,

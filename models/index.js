@@ -41,6 +41,7 @@ module.exports = {
   SharedStyle: require('./SharedStyle'),
   Sketch: require('./Sketch'),
   Slice: require('./Slice'),
+  Star: require('./Star'),
   StringAttribute: require('./StringAttribute'),
   Style: require('./Style'),
   SymbolInstance: require('./SymbolInstance'),
