@@ -40,7 +40,7 @@ class GraphicsContextSettings {
     } else {
       Object.assign(this, GraphicsContextSettings.Model, args, {
         blendMode: blendModeMap[args.blendMode || 'normal'],
-        opacity: args.opacity || 1,
+        opacity: Number.isFinite(args.opacity) ? args.opacity : 1,
       });
     }
     return this;
