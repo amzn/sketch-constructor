@@ -19,4 +19,12 @@ describe('GraphicsContextSettings', () => {
     const graphicsContextSettings = new GraphicsContextSettings(null, json);
     expect(JSON.stringify(json, null, 2)).toEqual(JSON.stringify(graphicsContextSettings, null, 2));
   });
+
+  it('should correctly handle opacity = 0', () => {
+    const graphicsContextSettings = new GraphicsContextSettings({
+      opacity: 0,
+    });
+
+    expect(graphicsContextSettings.opacity).toBe(0);
+  });
 });
