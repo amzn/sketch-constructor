@@ -11,4 +11,17 @@
  * and limitations under the License.
  */
 
-module.exports = require('./Blur');
+const Blur = require('./index');
+
+const json = {};
+
+describe('Blur', () => {
+  it('should work from raw JSON', () => {
+    expect(true).toBeTruthy();
+  });
+
+  it('should work from user generated', () => {
+    const blur = new Blur({});
+    expect(true).toBeTruthy();
+  });
+});
