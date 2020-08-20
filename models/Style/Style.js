@@ -43,7 +43,6 @@ class Style {
       borders: [],
       fills: [],
       shadows: [],
-      textStyle: {},
       contextSettings: GraphicsContextSettings.Model,
     };
   }
