@@ -44,6 +44,7 @@ module.exports = {
   Star: require('./Star'),
   StringAttribute: require('./StringAttribute'),
   Style: require('./Style'),
+  Swatch: require('./Swatch'),
   SymbolInstance: require('./SymbolInstance'),
   SymbolMaster: require('./SymbolMaster'),
   Text: require('./Text'),

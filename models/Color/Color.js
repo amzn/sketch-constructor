@@ -45,9 +45,30 @@ class Color {
    */
   constructor(args, json) {
     if (json) {
-      Object.assign(this, json);
+      if (json._class === 'swatch') {
+        Object.assign(this, Color.Model, {
+          swatchID: json.do_objectID,
+          alpha: json.value.alpha,
+          blue: json.value.blue,
+          green: json.value.green,
+          red: json.value.red,
+        });
+      } else {
+        Object.assign(this, json);
+      }
     } else {
-      const color = TinyColor(args || '#000').toRgb();
+      let color = TinyColor(args || '#000').toRgb();
+
+      if (args && args.swatchID) {
+        this.swatchID = args.swatchID;
+        color = args.toRgb();
+      }
+
+      if (args && args._class === 'swatch') {
+        this.swatchID = args.do_objectID;
+        color = args.value.toRgb();
+      }
+
       Object.assign(this, Color.Model, {
         alpha: color.a,
         blue: color.b / 255,
@@ -92,12 +113,18 @@ class Color {
    * @returns {TinyColor}
    */
   _getTinyColor() {
-    return TinyColor({
+    const c = TinyColor({
       r: Math.round(this.red * 255),
       g: Math.round(this.green * 255),
       b: Math.round(this.blue * 255),
       a: this.alpha,
     });
+
+    if (this.swatchID) {
+      c.swatchID = this.swatchID;
+    }
+
+    return c;
   }
 }
 

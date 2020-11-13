@@ -97,7 +97,8 @@ An AttributedString is a string of text that has certain parts of it with differ
 ## Bitmap 
 
 
-A bitmap layer is used for imagesCurrently supported file types: PNG
+A bitmap layer is used for images
+Currently supported file types: PNG
 
 **Extends**: [<code>Layer</code>](#Layer)  
 
@@ -179,6 +180,43 @@ Get all child, grandchild, etc layers, and optionally filter them by a predicate
 | rotation | <code>float</code> | 
 | shouldBreakMaskChain | <code>boolean</code> | 
 | image | <code>Object</code> | 
+
+
+* * *
+
+## Blur 
+
+
+
+* [Blur](#Blur)
+    * [new Blur(args, json)](#new_Blur_new)
+    * [.fromJSON(json)](#Blur.fromJSON) ⇒ [<code>Blur</code>](#Blur)
+
+
+* * *
+
+### Blur 
+
+
+
+| Param | Type |
+| --- | --- |
+| args | <code>Blur.Model</code> | 
+| json | <code>Blur.Model</code> | 
+
+
+* * *
+
+### fromJSON 
+> Blur.fromJSON(json) ⇒ [<code>Blur</code>](#Blur)
+
+
+
+
+
+| Param | Type |
+| --- | --- |
+| json | <code>Blur.Model</code> | 
 
 
 * * *
@@ -443,6 +481,8 @@ A Document is a sketch file
     * [.addLayerStyle(style)](#Document+addLayerStyle) ⇒ <code>this</code>
     * [.getTextStyles()](#Document+getTextStyles) ⇒ <code>Array.&lt;SharedStyle&gt;</code>
     * [.addTextStyle(style)](#Document+addTextStyle) ⇒ <code>this</code>
+    * [.getSwatches()](#Document+getSwatches) ⇒ [<code>Array.&lt;Swatch&gt;</code>](#Swatch)
+    * [.addSwatch(swatch)](#Document+addSwatch) ⇒ <code>this</code>
     * [.addPage(pageID)](#Document+addPage) ⇒ <code>this</code>
 
 
@@ -518,6 +558,30 @@ A Document is a sketch file
 | Param | Type |
 | --- | --- |
 | style | <code>SharedStyle</code> | 
+
+
+* * *
+
+### getSwatches 
+> document.getSwatches() ⇒ [<code>Array.&lt;Swatch&gt;</code>](#Swatch)
+
+
+
+
+**Returns**: [<code>Array.&lt;Swatch&gt;</code>](#Swatch) - An array of Swatches  
+
+* * *
+
+### addSwatch 
+> document.addSwatch(swatch) ⇒ <code>this</code>
+
+
+
+
+
+| Param | Type |
+| --- | --- |
+| swatch | [<code>Swatch</code>](#Swatch) | 
 
 
 * * *
@@ -614,6 +678,7 @@ Options for exporting an artboard
 | --- | --- | --- |
 | args | <code>Object</code> |  |
 | args.color | <code>String</code> \| <code>Object</code> | Passed to [Color](#Color) constructor |
+| args.opacity | <code>float</code> \| <code>Object</code> | Passed to [GraphicsContextSettings](#GraphicsContextSettings) constructor |
 | json | [<code>Model</code>](#Fill.Model) |  |
 
 
@@ -633,6 +698,7 @@ Options for exporting an artboard
 | noiseIntensity | <code>integer</code> | 
 | patternFillType | <code>integer</code> | 
 | patternTileScale | <code>integer</code> | 
+| contextSettings | [<code>Model</code>](#GraphicsContextSettings.Model) | 
 
 
 * * *
@@ -789,7 +855,9 @@ Get all child, grandchild, etc layers, and optionally filter them by a predicate
 ## Layer 
 
 
-Base layer classThis is an abstract class and should not be directly instantiated.
+Base layer class
+
+This is an abstract class and should not be directly instantiated.
 
 
 * [Layer](#Layer)
@@ -1196,6 +1264,24 @@ Underlying JSON object structure in a Sketch document
 
 * * *
 
+## Slice 
+
+
+
+* * *
+
+### Slice 
+
+
+
+| Param | Type |
+| --- | --- |
+| args | <code>Object</code> | 
+| json | <code>Object</code> | 
+
+
+* * *
+
 ## Style 
 
 
@@ -1220,6 +1306,8 @@ Underlying JSON object structure in a Sketch document
 | args.fills | <code>Array.&lt;Object&gt;</code> | Sent to [Fill](#Fill) |
 | args.borders | <code>Array.&lt;Object&gt;</code> | Sent to [Border](#Border) |
 | args.shadows | <code>Array.&lt;Object&gt;</code> | Sent to [Shadow](Shadow) |
+| args.textStyle | <code>Object</code> | Sent to [TextStyle](#TextStyle) |
+| args.blur | [<code>Blur</code>](#Blur) | Sent to [Blur](#Blur) |
 | json | [<code>Model</code>](#Style.Model) |  |
 
 
@@ -1291,6 +1379,28 @@ Underlying JSON object structure in a Sketch document
 | Saturation | <code>integer</code> | <code>13</code> | 
 | Color | <code>integer</code> | <code>14</code> | 
 | Luminosity | <code>integer</code> | <code>15</code> | 
+
+
+* * *
+
+## Swatch 
+
+
+Also known as 'Color Variables'
+
+
+* * *
+
+### Swatch 
+
+
+
+| Param | Type |
+| --- | --- |
+| args | <code>Object</code> | 
+| args.name | <code>String</code> | 
+| args.color | [<code>Color</code>](#Color) | 
+| json | [<code>Model</code>](#Color.Model) | 
 
 
 * * *

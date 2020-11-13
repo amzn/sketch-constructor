@@ -5,6 +5,7 @@ import User from '../User';
 import Document from '../Document';
 import Page from '../Page';
 import SharedStyle from '../SharedStyle';
+import Swatch from '../Swatch';
 
 declare class Sketch {
   static fromFile(path: fs.PathLike): Promise<Sketch>;
@@ -34,6 +35,10 @@ declare class Sketch {
   addTextStyle(style: SharedStyle): void;
 
   getTextStyles(): SharedStyle[];
+
+  addSwatch(swatch: Swatch): void;
+
+  getSwatches(): Swatch[];
 
   addPage(page: any, args?: any): void;
 
