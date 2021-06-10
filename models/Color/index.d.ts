@@ -6,6 +6,7 @@ declare class Color {
   blue: number;
   green: number;
   red: number;
+  swatchID?: string;
 
   constructor(args?: any, json?: any);
 

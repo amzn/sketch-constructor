@@ -135,6 +135,14 @@ class Sketch {
     return this.document.getTextStyles();
   }
 
+  addSwatch(swatch) {
+    this.document.addSwatch(swatch);
+  }
+
+  getSwatches() {
+    return this.document.getSwatches();
+  }
+
   addPage(page, args) {
     if (!(page instanceof Page)) {
       page = new Page(page);

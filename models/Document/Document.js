@@ -49,6 +49,10 @@ class Document {
         _class: 'sharedTextStyleContainer',
         objects: [],
       },
+      sharedSwatches: {
+        _class: 'swatchContainer',
+        objects: [],
+      },
       pages: [],
     };
   }
@@ -116,6 +120,23 @@ class Document {
    */
   addTextStyle(style) {
     this.layerTextStyles.objects = this.layerTextStyles.objects.concat(style);
+    return this;
+  }
+
+  /**
+   * @returns {Swatch[]} An array of Swatches
+   */
+  getSwatches() {
+    return this.sharedSwatches.objects;
+  }
+
+  /**
+   *
+   * @param {Swatch} swatch
+   * @returns {this}
+   */
+  addSwatch(swatch) {
+    this.sharedSwatches.objects = this.sharedSwatches.objects.concat(swatch);
     return this;
   }
 

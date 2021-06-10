@@ -30,6 +30,7 @@ import Slice from './Slice';
 import Star from './Star';
 import StringAttribute from './StringAttribute';
 import Style from './Style';
+import Swatch from './Swatch';
 import SymbolInstance from './SymbolInstance';
 import SymbolMaster from './SymbolMaster';
 import Text from './Text';
@@ -72,6 +73,7 @@ export {
   Star,
   StringAttribute,
   Style,
+  Swatch,
   SymbolInstance,
   SymbolMaster,
   Text,
