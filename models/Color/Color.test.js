@@ -12,6 +12,7 @@
  */
 
 const Color = require('./index');
+const { Swatch } = require('../index');
 
 const json = {
   _class: 'color',
@@ -41,5 +42,22 @@ describe('Color', () => {
     const color = new Color('#000');
     color.lighten(100);
     expect(color.toHexString()).toEqual('#ffffff');
+  });
+
+  it('should accept swatchID as property along with color components', () => {
+    const swatchID = '6D02695C-C1FF-471B-9948-A13985E7618E';
+    const alpha = 0.77;
+    const color = new Color({ swatchID, r: 1, g: 0, b: 0, a: alpha });
+    expect(color.swatchID).toEqual(swatchID);
+    expect(color.alpha).toEqual(alpha);
+    expect(color.blue).toEqual(0);
+  });
+
+  it('should accept result of swatch.asColor()', () => {
+    const swatch = new Swatch({ color: new Color('purple') });
+    const refColor = swatch.asColor();
+    const color = new Color(refColor);
+    expect(color.swatchID).toEqual(swatch.do_objectID);
+    expect(color.red).toEqual(refColor.r / 255);
   });
 });

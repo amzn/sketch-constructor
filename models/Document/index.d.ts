@@ -1,6 +1,7 @@
 import Color from '../Color';
 import Page from '../Page';
 import SharedStyle from '../SharedStyle';
+import Swatch from '../Swatch';
 
 declare class Document {
   _class: 'document';
@@ -32,6 +33,10 @@ declare class Document {
     _class: 'sharedTextStyleContainer';
     objects: SharedStyle[];
   };
+  sharedSwatches: {
+    _class: 'swatchContainer';
+    objects: Swatch[];
+  };
   pages: Page[];
 
   constructor(args?: any, json?: any);
@@ -45,6 +50,10 @@ declare class Document {
   getTextStyles(): SharedStyle[];
 
   addTextStyle(style: SharedStyle): Document;
+
+  getSwatches(): Swatch[];
+
+  addSwatch(swatch: Swatch): Document;
 
   addPage(pageID: string): Document;
 }
