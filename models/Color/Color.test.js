@@ -44,7 +44,7 @@ describe('Color', () => {
     expect(color.toHexString()).toEqual('#ffffff');
   });
 
-  it('shoud accept swatchID as property along with color components', () => {
+  it('should accept swatchID as property along with color components', () => {
     const swatchID = '6D02695C-C1FF-471B-9948-A13985E7618E';
     const alpha = 0.77;
     const color = new Color({ swatchID, r: 1, g: 0, b: 0, a: alpha });
