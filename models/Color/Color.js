@@ -40,33 +40,17 @@ class Color {
 
   /**
    *
-   * @param {String|Object} args This is passed to tinycolor 2. As long as tinycolor2 can understand this argument, the color will work.
+   * @param {String|Object|Color} args If a Color, used as-is, otherwised passed to tinycolor2. As long as tinycolor2 can understand this argument, the color will work.
    * @param {Color.Model} json
    */
   constructor(args, json) {
     if (json) {
-      if (json._class === 'swatch') {
-        Object.assign(this, Color.Model, {
-          swatchID: json.do_objectID,
-          alpha: json.value.alpha,
-          blue: json.value.blue,
-          green: json.value.green,
-          red: json.value.red,
-        });
-      } else {
-        Object.assign(this, json);
-      }
+      Object.assign(this, json);
     } else {
-      let color = TinyColor(args || '#000').toRgb();
+      const color = TinyColor(args || '#000').toRgb();
 
       if (args && args.swatchID) {
         this.swatchID = args.swatchID;
-        color = args.toRgb();
-      }
-
-      if (args && args._class === 'swatch') {
-        this.swatchID = args.do_objectID;
-        color = args.value.toRgb();
       }
 
       Object.assign(this, Color.Model, {
@@ -113,18 +97,12 @@ class Color {
    * @returns {TinyColor}
    */
   _getTinyColor() {
-    const c = TinyColor({
+    return TinyColor({
       r: Math.round(this.red * 255),
       g: Math.round(this.green * 255),
       b: Math.round(this.blue * 255),
       a: this.alpha,
     });
-
-    if (this.swatchID) {
-      c.swatchID = this.swatchID;
-    }
-
-    return c;
   }
 }
 

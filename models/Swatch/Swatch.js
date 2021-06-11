@@ -24,12 +24,21 @@ class Swatch {
       this.value = new Color(this.value);
     } else {
       const id = args.id || uuid().toUpperCase();
+      const name = args.name || args.color.toHex().toUpperCase();
       Object.assign(this, Swatch.Model, {
-        name: args.name || 'Name',
+        name,
         do_objectID: id,
         value: args.color,
       });
     }
+  }
+
+  /**
+   * Get an object suitable for use in constructing colors
+   * @returns {Color} A color with the `swatchID` set
+   */
+  asColor() {
+    return { ...this.value.toRgb(), swatchID: this.do_objectID };
   }
 }
 
