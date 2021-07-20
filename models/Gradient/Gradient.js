@@ -37,7 +37,7 @@ class Gradient {
     if (json) {
       Object.assign(this, json);
     } else {
-      Object.assign(this, Gradient.Model, {});
+      Object.assign(this, Gradient.Model, args);
     }
   }
 }
