@@ -25,26 +25,26 @@ class Meta {
    */
   static get Model() {
     return {
-      commit: 'ebc3e0ead0906f5810891944454a71b877934b56',
+      commit: '238f363ed3de77eb1d86e03176f8a10f7928ed51',
       pagesAndArtboards: {},
-      version: 112,
+      version: 134,
       fonts: [],
       compatibilityVersion: 99,
       app: 'com.bohemiancoding.sketch3',
       autosaved: 0,
       variant: 'NONAPPSTORE',
       created: {
-        commit: 'ebc3e0ead0906f5810891944454a71b877934b56',
-        appVersion: '52.5',
-        build: 67469,
+        commit: '238f363ed3de77eb1d86e03176f8a10f7928ed51',
+        appVersion: '69',
+        build: 107357,
         app: 'com.bohemiancoding.sketch3',
         compatibilityVersion: 99,
-        version: 112,
+        version: 134,
         variant: 'NONAPPSTORE',
       },
       saveHistory: ['NONAPPSTORE.67469'],
-      appVersion: '52.5',
-      build: 67469,
+      appVersion: '69',
+      build: 107357,
     };
   }
 
