@@ -23,6 +23,7 @@ class SharedStyle {
       fills: args.fills,
       borders: args.borders,
       shadows: args.shadows,
+      innerShadows: args.innerShadows,
     });
   }
 
@@ -52,6 +53,7 @@ class SharedStyle {
           borders: args.borders,
           fills: args.fills,
           shadows: args.shadows,
+          innerShadows: args.innerShadows,
         }),
       });
     }

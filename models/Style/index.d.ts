@@ -2,6 +2,7 @@ import Border from '../Border';
 import Fill from '../Fill';
 import GraphicsContextSettings from '../GraphicsContextSettings';
 import Shadow from '../Shadow';
+import InnerShadow from '../InnerShadow';
 import TextStyle from '../TextStyle';
 
 declare const enum MarkerType {
@@ -15,7 +16,7 @@ declare const enum MarkerType {
   filledSquare = 7
 }
 
-declare const enum WindingRule {} // TODO
+declare const enum WindingRule { } // TODO
 
 declare const enum BlendMode {
   Normal = 0,
@@ -56,6 +57,7 @@ declare class Style {
   borders: Border[];
   fills: Fill[];
   shadows: Shadow[];
+  innerShadows: InnerShadow[];
   textStyle: TextStyle;
   contextSettings: GraphicsContextSettings;
 
