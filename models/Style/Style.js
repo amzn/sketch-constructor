@@ -17,6 +17,7 @@ const Fill = require('../Fill');
 const Blur = require('../Blur');
 const Border = require('../Border');
 const Shadow = require('../Shadow');
+const InnerShadow = require('../InnerShadow');
 const GraphicsContextSettings = require('../GraphicsContextSettings');
 
 /**
@@ -29,6 +30,7 @@ class Style {
    * @property {Border.Model[]} border
    * @property {Fill.Model[]} fills
    * @property {Shadow.Model[]} shadows
+   * @property {InnerShadow.Model[]} innerShadows
    * @property {TextStyle.Model} textStyle
    * @property {GraphicsContextSettings.Model} contextSettings
    */
@@ -43,6 +45,7 @@ class Style {
       borders: [],
       fills: [],
       shadows: [],
+      innerShadows: [],
       contextSettings: GraphicsContextSettings.Model,
     };
   }
@@ -70,6 +73,7 @@ class Style {
    * @param {Object[]} args.fills Sent to {@link Fill}
    * @param {Object[]} args.borders Sent to {@link Border}
    * @param {Object[]} args.shadows Sent to {@link Shadow}
+   * @param {Object[]} args.innerShadows Sent to {@link InnerShadow}
    * @param {Object} args.textStyle Sent to {@link TextStyle}
    * @param {Blur} args.blur Sent to {@link Blur}
    * @param {Style.Model} json
@@ -81,6 +85,8 @@ class Style {
       if (this.fills) this.fills = this.fills.map((fill) => new Fill(null, fill));
       if (this.borders) this.borders = this.borders.map((border) => new Border(null, border));
       if (this.shadows) this.shadows = this.shadows.map((shadow) => new Shadow(null, shadow));
+      if (this.innerShadows)
+        this.innerShadows = this.innerShadows.map((innerShadow) => new InnerShadow(null, innerShadow));
       if (this.blur) this.blur = new Blur(this.blur);
     } else {
       const id = args.id || uuid().toUpperCase();
@@ -89,6 +95,7 @@ class Style {
         borders: (args.borders || []).map((border) => new Border(border)),
         fills: (args.fills || []).map((fill) => new Fill(fill)),
         shadows: (args.shadows || []).map((shadow) => new Shadow(shadow)),
+        innerShadows: (args.innerShadows || []).map((innerShadow) => new InnerShadow(innerShadow)),
         ...(args.textStyle ? { textStyle: new TextStyle(args.textStyle) } : {}),
         ...(args.blur ? { blur: new Blur(args.blur) } : {}),
       });
