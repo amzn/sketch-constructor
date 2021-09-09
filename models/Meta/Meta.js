@@ -42,7 +42,7 @@ class Meta {
         version: 134,
         variant: 'NONAPPSTORE',
       },
-      saveHistory: ['NONAPPSTORE.67469'],
+      saveHistory: ['NONAPPSTORE.107357'],
       appVersion: '69',
       build: 107357,
     };
