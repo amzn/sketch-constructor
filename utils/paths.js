@@ -11,10 +11,19 @@
  * and limitations under the License.
  */
 
+const fs = require('fs');
+const exitHook = require('async-exit-hook');
+
 /**
  * Path to the temporary sketch constructor folder
  */
 const STORAGE_DIR = process.env.STORAGE_DIR || '.sketch-constructor';
+
+exitHook(() => {
+  if (fs.existsSync(STORAGE_DIR) && fs.readdirSync(STORAGE_DIR).length > 0) {
+    fs.rmdirSync(STORAGE_DIR, { recursive: true, force: true });
+  }
+});
 
 /**
  * Path to the temporary local image folder
