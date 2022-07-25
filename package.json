@@ -88,11 +88,11 @@
     "husky": "^3.1.0",
     "jest": "^26.6.3",
     "jsdoc": "^3.6.4",
-    "jsdoc-to-markdown": "^6.0.1",
+    "jsdoc-to-markdown": "^7.1.1",
     "lint-staged": "^10.1.7",
     "minami": "^1.2.3",
     "prettier": "^2.0.5",
-    "semantic-release": "^17.1.1",
+    "semantic-release": "^19.0.3",
     "standard-version": "^9.0.0",
     "typescript": "^3.6.5"
   },
